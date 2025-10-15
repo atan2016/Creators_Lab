@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>What We Teach — For Parents & Students</title>
+    <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85L4ZPPPP0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-85L4ZPPPP0');
+    </script>
+    <style>
+      :root{--green-900:#064e3b;--green-700:#047857;--yellow-400:#facc15;--muted:rgba(6,78,59,.7)}
+      html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;} 
+      .container{max-width:80rem;margin:0 auto;padding:1rem 1.5rem}
+      header{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(4,120,87,.06);z-index:40}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+      .brand{display:flex;align-items:center;gap:.5rem;color:var(--green-900);font-weight:700}
+      .nav a{color:var(--green-900);text-decoration:none}
+      .card{background:#fff;border-radius:12px;padding:2rem;border:1px solid rgba(4,120,87,.08);box-shadow:0 6px 18px rgba(6,78,59,.04);margin-bottom:2rem}
+      .muted{color:var(--muted)}
+      .section{padding:2rem 0}
+      footer{background:var(--green-700);color:#fff;padding:1.5rem 0}
+      .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+      .center{text-align:center}
+      .concept-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.5rem}
+      .concept-icon{font-size:3rem;line-height:1}
+      .concept-title{margin:0 0 0.5rem;color:var(--green-700);font-size:2rem}
+      .concept-subtitle{color:var(--muted);font-size:1.1rem;margin-bottom:1rem;font-weight:500}
+      .concept-section{margin-top:1.5rem}
+      .concept-section h3{color:var(--green-700);margin-bottom:0.75rem;font-size:1.3rem}
+      .concept-section ul{margin:0.5rem 0;padding-left:1.5rem;line-height:1.8}
+      .concept-section ul li{margin-bottom:0.5rem}
+      .highlight-box{background:#f0fdf4;border-left:4px solid var(--green-700);padding:1.25rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+      .highlight-box strong{color:var(--green-700)}
+      .example-box{background:#fefce8;border:1px solid var(--yellow-400);border-radius:8px;padding:1.25rem;margin:1rem 0}
+      .example-box h4{color:var(--green-700);margin:0 0 0.5rem;font-size:1.1rem}
+      
+      /* Mobile Responsive Styles */
+      @media (max-width: 768px) {
+        .container{padding:1rem}
+        .nav{flex-direction:column;gap:1rem;padding:1rem 0.5rem}
+        .nav nav{flex-wrap:wrap;justify-content:center;gap:1rem}
+        .nav a{font-size:0.9rem}
+        .section{padding:1.5rem 0}
+        .footer-row{flex-direction:column;text-align:center;gap:1rem}
+        .card{padding:1.5rem}
+        .concept-title{font-size:1.5rem}
+        .concept-header{flex-direction:column;gap:0.5rem}
+        .concept-icon{font-size:2.5rem}
+      }
+      
+      @media (max-width: 480px) {
+        .container{padding:0.5rem}
+        .nav{padding:0.5rem}
+        .nav nav{gap:0.5rem}
+        .nav a{font-size:0.8rem}
+        .section{padding:1rem 0}
+        .card{padding:1rem}
+        .concept-title{font-size:1.3rem}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React & Babel (for in-browser JSX) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Section({children,className='',id='',style={}}){
+        return <section id={id} className={'section '+className} style={style}><div className="container">{children}</div></section>
+      }
+
+      function WhatWeTeachPage(){
+        return (
+          <div>
+            <header>
+              <div className="container nav" style={{justifyContent:'space-between'}}>
+                <a className="brand" href="/index.html" style={{display:'flex',alignItems:'center',gap:8}}>
+                  <img src="/creatorslab_logo.png" alt="CreatorsLab" style={{height:'3.69140625em',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
+                </a>
+                <nav style={{display:'flex',gap:'2rem',alignItems:'center',flexWrap:'wrap'}}>
+                  <a href="/index.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Home</a>
+                  <a href="/what-we-teach.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>What We Teach</a>
+                  <a href="/index.html#programs" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Explore Programs</a>
+                  <a href="/resources.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Resources</a>
+                  <a href="/index.html#contact" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Contact Us</a>
+                </nav>
+              </div>
+            </header>
+
+            <Section>
+              <div style={{textAlign:'center',maxWidth:'56ch',margin:'0 auto 3rem'}}>
+                <h1 style={{color:'var(--green-700)',fontSize:'2.5rem',marginBottom:'1rem'}}>What We Teach</h1>
+                <p className="muted" style={{fontSize:'1.125rem',lineHeight:1.6}}>
+                  Discover the core concepts that make our programs unique. We blend cutting-edge technology with creative thinking to help students build the future, while providing parents with the information they need to support their children's learning journey.
+                </p>
+              </div>
+
+              {/* Vibe Coding Section */}
+              <div className="card">
+                <div className="concept-header">
+                  <div className="concept-icon">💻</div>
+                  <div style={{flex:1}}>
+                    <h2 className="concept-title">Vibe Coding</h2>
+                    <p className="concept-subtitle">Coding with AI as your creative partner</p>
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>What is Vibe Coding?</h3>
+                  <p>Vibe Coding is our revolutionary approach to programming that combines human creativity with AI assistance. Instead of writing every line of code from scratch, you'll learn to work alongside AI tools like Windsurf IDE to build amazing projects faster and more creatively.</p>
+                  
+                  <div className="highlight-box">
+                    <strong>Think of it like this:</strong> Instead of painting every brushstroke yourself, you're directing an AI assistant to help you create your masterpiece while you focus on the big picture and creative vision.
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>How It Works</h3>
+                  <ul>
+                    <li><strong>You describe what you want to build</strong> - Using plain English, you tell the AI your ideas</li>
+                    <li><strong>AI helps generate the code</strong> - Tools like Windsurf create the technical foundation</li>
+                    <li><strong>You refine and customize</strong> - You make it uniquely yours with your own creative touches</li>
+                    <li><strong>You learn by doing</strong> - Each project teaches you new coding concepts and problem-solving skills</li>
+                  </ul>
+                </div>
+
+                <div className="concept-section">
+                  <h3>Real-World Skills You'll Learn</h3>
+                  <ul>
+                    <li>How to communicate effectively with AI tools</li>
+                    <li>Understanding code structure and logic</li>
+                    <li>Debugging and problem-solving</li>
+                    <li>Project planning and iteration</li>
+                    <li>Working with modern development tools</li>
+                  </ul>
+                </div>
+
+                <div className="example-box">
+                  <h4>Example Project</h4>
+                  <p>Build a personal website: You describe the layout and features you want, AI helps generate the HTML/CSS code, and you customize the colors, content, and interactions to make it uniquely yours!</p>
+                </div>
+              </div>
+
+              {/* AI Section */}
+              <div className="card">
+                <div className="concept-header">
+                  <div className="concept-icon">🤖</div>
+                  <div style={{flex:1}}>
+                    <h2 className="concept-title">Artificial Intelligence (AI)</h2>
+                    <p className="concept-subtitle">Understanding and using AI as a creative tool</p>
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>What is AI, Really?</h3>
+                  <p>Artificial Intelligence isn't just robots and sci-fi movies. It's a powerful set of tools that can help you think, create, and solve problems in new ways. At CreatorsLab, we focus on practical AI that you can use right now to build cool stuff.</p>
+                  
+                  <div className="highlight-box">
+                    <strong>The key insight:</strong> AI isn't here to replace human creativity - it's here to amplify it. The best projects combine human imagination with AI capabilities.
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>Types of AI You'll Work With</h3>
+                  <ul>
+                    <li><strong>Code Generation AI</strong> - Helps you write and debug code (like Windsurf, GitHub Copilot)</li>
+                    <li><strong>Design AI</strong> - Assists with creating graphics, layouts, and visual content</li>
+                    <li><strong>Text AI</strong> - Helps with writing, brainstorming, and communication</li>
+                    <li><strong>Data AI</strong> - Analyzes information and finds patterns</li>
+                  </ul>
+                </div>
+
+                <div className="concept-section">
+                  <h3>Why AI Skills Matter for Your Future</h3>
+                  <ul>
+                    <li><strong>Career readiness</strong> - AI is transforming every industry</li>
+                    <li><strong>Creative superpowers</strong> - Turn your ideas into reality faster</li>
+                    <li><strong>Problem-solving</strong> - Learn to think like an AI and work with AI</li>
+                    <li><strong>Entrepreneurship</strong> - Build solutions that weren't possible before AI</li>
+                  </ul>
+                </div>
+
+                <div className="example-box">
+                  <h4>Real Example</h4>
+                  <p>Create a mobile app: Use AI to generate the initial code structure, design the user interface, write marketing copy, and even analyze user feedback to improve your app!</p>
+                </div>
+              </div>
+
+              {/* Design Thinking Section */}
+              <div className="card">
+                <div className="concept-header">
+                  <div className="concept-icon">💡</div>
+                  <div style={{flex:1}}>
+                    <h2 className="concept-title">Design Thinking</h2>
+                    <p className="concept-subtitle">A human-centered approach to solving problems</p>
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>What is Design Thinking?</h3>
+                  <p>Design Thinking is a step-by-step process for solving real problems that real people face. It's used by companies like Apple, Google, and Airbnb to create products and services that people actually want to use.</p>
+                  
+                  <div className="highlight-box">
+                    <strong>The magic formula:</strong> Empathy + Creativity + Testing = Solutions that actually work for real people.
+                  </div>
+                </div>
+
+                <div className="concept-section">
+                  <h3>The 5-Step Design Thinking Process</h3>
+                  <ul>
+                    <li><strong>1. Empathize</strong> - Really understand the people you're designing for</li>
+                    <li><strong>2. Define</strong> - Clearly state the problem you're trying to solve</li>
+                    <li><strong>3. Ideate</strong> - Brainstorm tons of creative solutions</li>
+                    <li><strong>4. Prototype</strong> - Build quick, cheap versions to test your ideas</li>
+                    <li><strong>5. Test</strong> - Get real feedback and improve your solution</li>
+                  </ul>
+                </div>
+
+                <div className="concept-section">
+                  <h3>Skills You'll Develop</h3>
+                  <ul>
+                    <li><strong>User research</strong> - Learning what people really need</li>
+                    <li><strong>Creative problem-solving</strong> - Thinking outside the box</li>
+                    <li><strong>Prototyping</strong> - Building and testing ideas quickly</li>
+                    <li><strong>Feedback integration</strong> - Learning from users and improving</li>
+                    <li><strong>Storytelling</strong> - Communicating your ideas effectively</li>
+                  </ul>
+                </div>
+
+                <div className="concept-section">
+                  <h3>Why Design Thinking Matters</h3>
+                  <ul>
+                    <li><strong>Builds empathy</strong> - You learn to see problems from other people's perspectives</li>
+                    <li><strong>Encourages experimentation</strong> - Failure becomes learning, not defeat</li>
+                    <li><strong>Develops leadership</strong> - You learn to guide projects from idea to reality</li>
+                    <li><strong>Prepares for entrepreneurship</strong> - Essential skills for starting your own business</li>
+                  </ul>
+                </div>
+
+                <div className="example-box">
+                  <h4>Project Example</h4>
+                  <p>Redesign your school's website: Interview students and teachers to understand their needs, brainstorm creative solutions, build wireframes and prototypes, then test with real users to make it better!</p>
+                </div>
+              </div>
+
+              {/* How It All Comes Together */}
+              <div className="card" style={{background:'var(--green-700)',color:'white'}}>
+                <h2 style={{color:'white',marginTop:0,marginBottom:'1rem'}}>How It All Comes Together</h2>
+                <p style={{fontSize:'1.1rem',lineHeight:1.6,marginBottom:0}}>
+                  When you combine <strong>Vibe Coding</strong>, <strong>AI</strong>, and <strong>Design Thinking</strong>, you become a creator who can identify real problems, design solutions that people actually want, and build them using the most powerful tools available. You're not just learning to code - you're learning to create the future.
+                </p>
+              </div>
+
+            </Section>
+
+            <footer>
+              <Section>
+                <div className="footer-row">
+                  <div style={{display:'flex',alignItems:'center',gap:'2rem',flexWrap:'wrap'}}>
+                    <a href="/about.html" style={{color:'#fff',textDecoration:'none'}}>About Us</a>
+                    <a href="/careers.html" style={{color:'#fff',textDecoration:'none'}}>Careers</a>
+                    <a href="/login.html" style={{color:'#fff',textDecoration:'none'}}>Member Login</a>
+                  </div>
+                  <div className="center">© {new Date().getFullYear()} Creators Lab (a Rokk Research LLC company) • All rights reserved.</div>
+                  <div style={{display:'flex',gap:12}}><a href="#home" style={{color:'#fff'}}>Back to top</a></div>
+                </div>
+              </Section>
+            </footer>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<WhatWeTeachPage />);
+    </script>
+  </body>
+</html>

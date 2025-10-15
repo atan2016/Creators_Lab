@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CreatorsLab — Single-file JSX Preview</title>
+    <style>
+      :root{--green-900:#064e3b;--green-700:#047857;--yellow-400:#facc15;--muted:rgba(6,78,59,.7)}
+      html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;} 
+      .container{max-width:80rem;margin:0 auto;padding:1rem 1.5rem}
+      header{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(4,120,87,.06);z-index:40}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+      .brand{display:flex;align-items:center;gap:.5rem;color:var(--green-900);font-weight:700}
+      .nav a{color:var(--green-900);text-decoration:none}
+      .hero{background:var(--green-700);color:#fff;padding:3rem 0}
+      .grid{display:grid;gap:1.5rem}
+      @media(min-width:768px){.two{grid-template-columns:1fr 1fr}}
+      .hero h1{font-size:2.25rem;margin:0 0 .8rem;line-height:1.05}
+      @media(min-width:768px){.hero h1{font-size:3rem}}
+      .btn{background:#fff;color:var(--green-700);padding:.75rem 1rem;border-radius:999px;border:none;font-weight:600}
+      .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;padding:.75rem 1rem;border-radius:999px}
+      .card{background:#fff;border-radius:12px;padding:1rem;border:1px solid rgba(4,120,87,.08);box-shadow:0 6px 18px rgba(6,78,59,.04)}
+      .cards{display:grid;gap:1rem}
+      @media(min-width:768px){.cards{grid-template-columns:repeat(3,1fr)}}
+      .muted{color:var(--muted)}
+      /* Improve readability for paragraphs on the hero background and make them responsive */
+      .hero .muted {
+        color: rgba(255,255,255,0.95); /* high contrast on green hero */
+        max-width: min(1100px, 100%);  /* let it expand up to a sensible max */
+        font-size: clamp(1rem, 1.6vw + 0.6rem, 1.125rem); /* responsive font sizing */
+        line-height: 1.6;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem; /* breathing room on small screens */
+        padding-right: 1rem;
+      }
+      .section{padding:3rem 0}
+      .img-hero{width:100%;height:420px;object-fit:cover;border-radius:12px;border:6px solid #fff}
+      footer{background:var(--green-700);color:#fff;padding:2rem 0}
+      .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+      .center{text-align:center}
+      .form-input,textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(6,78,59,.08)}
+      .form{max-width:420px}
+      .mentor-img{width:100%;height:14rem;object-fit:cover}
+      .grid-4{display:grid;gap:1rem}
+      @media(min-width:768px){.grid-4{grid-template-columns:repeat(4,1fr)}}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React & Babel (for in-browser JSX) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Sparkles(){
+        return (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <path d="M12 2l1.5 3 3 1.5-3 1.5L12 12l-1.5-3L7 7.5 10 6 12 2z" fill="#facc15" />
+          </svg>
+        );
+      }
+      function Mail(){return <span style={{display:'inline-block',width:18}}>@</span>}
+      function Phone(){return <span style={{display:'inline-block',width:18}}>☎</span>}
+      function MapPin(){return <span style={{display:'inline-block',width:18}}>📍</span>}
+
+      function Section({id, children, className=''}){
+        return <section id={id} className={className}><div className="container">{children}</div></section>
+      }
+
+      function CreatorsLabSite(){
+        return (
+          <div style={{color:'var(--green-900)'}}>
+            <header>
+              <div className="container nav">
+                <a className="brand" href="#home" style={{display:'flex',alignItems:'center',gap:8}}>
+                  <img src="/creators_lab_chatgpt.png" alt="CreatorsLab" style={{height:'clamp(48px,5.25vw,72px)',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
+                </a>
+                <nav style={{display:'none'}} />
+                <div style={{display:'flex',gap:8}}>
+                  <a className="btn" href="#programs">Explore Programs</a>
+                  <a className="btn btn-outline" href="#community">Join Our Community</a>
+                </div>
+              </div>
+            </header>
+
+            <div id="home" className="hero">
+              <Section>
+                <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'2rem',alignItems:'center'}}>
+                  <div>
+                    <h1>Empower Youth Innovations</h1>
+                    <p className="muted">Our mission is to equip teens with the creativity, confidence, and entrepreneurial mindset to thrive in a world shaped by AI and innovation — one community, one project, one young creator at a time.</p>
+                    <div style={{marginTop:'1rem',display:'flex',gap:10}}>
+                      <a className="btn" href="#programs">Explore Programs</a>
+                      <a className="btn btn-outline" href="#community">Join Our Community</a>
+                    </div>
+                  </div>
+                  <div>
+                    <img className="img-hero" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop" alt="Teenagers collaborating and learning together" />
+                  </div>
+                </div>
+              </Section>
+            </div>
+
+            <Section id="why" className="section">
+              <div style={{textAlign:'center',maxWidth:56+'ch',margin:'0 auto'}}>
+                <h2 style={{fontSize:'1.75rem'}}>Why Learn AI, Vibe Coding & Entrepreneurship?</h2>
+                <p className="muted">Teens today are surrounded by technology — but few learn how to create with it. We help students turn curiosity into capability, building confidence, collaboration, and real-world problem solving.</p>
+              </div>
+
+              <div style={{display:'grid',gap:12,marginTop:20,gridTemplateColumns:'1fr',maxWidth:'64rem',marginLeft:'auto',marginRight:'auto'}}>
+                <div style={{display:'grid',gap:12,gridTemplateColumns:'1fr',marginTop:12}}>
+                  <div className="card"> <h4>Creativity over Consumption</h4><p className="muted">Shift from passive screen time to purposeful making and building.</p></div>
+                  <div className="card"> <h4>Confidence through Projects</h4><p className="muted">Every cohort ships something — and presents it with pride.</p></div>
+                  <div className="card"> <h4>AI as a Partner</h4><p className="muted">Learn to guide AI tools thoughtfully to accelerate learning and creativity.</p></div>
+                </div>
+
+                <div style={{display:'flex',justifyContent:'center'}}>
+                  <iframe className="rounded-xl shadow-md" width="560" height="315" src="https://www.youtube.com/embed/zgAmNwe45Yo" title="AI Future at 13? Vibe-Coding" frameBorder="0" allowFullScreen></iframe>
+                </div>
+              </div>
+            </Section>
+
+            <div id="community" style={{background:'#f0fdf4',borderTop:'1px solid rgba(4,120,87,.06)',borderBottom:'1px solid rgba(4,120,87,.06)'}}>
+              <Section className="section two">
+                <div>
+                  <h3>Powered by Community. Built for the Next Generation.</h3>
+                  <p className="muted">We partner with local community centers so access isn’t a barrier. Learning happens close to home, where projects strengthen neighborhoods and inspire families.</p>
+                  <p className="muted">Join a local cohort in Millbrae, San Bruno, or San Mateo — or invite us to your community center.</p>
+                </div>
+                <div>
+                  <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?q=80&w=1600&auto=format&fit=crop" alt="Teens collaborating at a rec center" style={{borderRadius:12,width:'100%',border:'1px solid rgba(4,120,87,.08)'}} />
+                </div>
+              </Section>
+            </div>
+
+            <Section id="programs" className="section">
+              <div style={{textAlign:'center',maxWidth:56+'ch',margin:'0 auto'}}>
+                <h2 style={{fontSize:'1.75rem'}}>Programs</h2>
+                <p className="muted">Hands-on programs that turn ideas into impact.</p>
+              </div>
+
+              <div className="cards" style={{marginTop:'1.5rem'}}>
+                {[{title:"Vibe Coding 101 (12–14)",desc:"Natural-language coding, git basics, and MVP design. Weekly 90‑min sessions.",image:"https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop"},{title:"Vibe Coding 101 (14–16)",desc:"Problem definition, prototyping, databases primer, and mini‑showcases.",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop"},{title:"Teen Venture Studio (14–18)",desc:"Teamwork, negotiation, lean canvas, prototyping, and pitch day.",image:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
+                  <div key={i} className="card">
+                    <img src={p.image} alt={p.title} style={{width:'100%',height:160,objectFit:'cover',borderRadius:8}} />
+                    <h4 style={{marginTop:8}}>{p.title}</h4>
+                    <p className="muted" style={{fontSize:13}}>{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{display:'grid',gridTemplateColumns:'1fr',gap:12,marginTop:16}}>
+                {[{title:"Advanced Vibe Coding",desc:"Go deeper: build with LLMs and services; explore MCP servers. (Prereq: Vibe Coding 101)",image:"https://images.unsplash.com/photo-1554891074-8c0c9c51e85e?q=80&w=1600&auto=format&fit=crop"},{title:"Summer Camp — 1 Week (Half Day)",desc:"Daily builds, git collaboration, and MVP showcase. 9:00–12:30.",image:"https://images.unsplash.com/photo-1485815457792-d1a966f9ef3f?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
+                  <div key={i} className="card">
+                    <img src={p.image} alt={p.title} style={{width:'100%',height:160,objectFit:'cover',borderRadius:8}} />
+                    <h4 style={{marginTop:8}}>{p.title}</h4>
+                    <p className="muted" style={{fontSize:13}}>{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            <div id="about" style={{background:'#f0fdf4',borderTop:'1px solid rgba(4,120,87,.06)',borderBottom:'1px solid rgba(4,120,87,.06)'}}>
+              <Section className="section two">
+                <div>
+                  <h3>About CreatorsLab</h3>
+                  <p className="muted">We’re seasoned entrepreneurs bringing real-world experience into community spaces where teens can create and grow. AI is a creative partner — and we teach young minds to use it responsibly and imaginatively.</p>
+                  <p className="muted">Our mission is to equip young people with the mindset and tools to create, lead, and thrive in a world shaped by innovation.</p>
+                </div>
+                <div>
+                  <h3>About Ashley</h3>
+                  <p className="muted">Ashley Tan is a technologist and entrepreneur with 20+ years building products and teams. She holds a BS in Computer Engineering (RPI) and an MS in Information Management & Systems (UC Berkeley). Inspired by her teens’ curiosity, she started CreatorsLab to help young people use AI as a tool for creativity, not just consumption.</p>
+                </div>
+              </Section>
+            </div>
+
+            <Section id="mentors" className="section">
+              <div style={{textAlign:'center',maxWidth:56+'ch',margin:'0 auto'}}>
+                <h3>Meet Our Mentors</h3>
+                <p className="muted">Builders, educators, and entrepreneurs who love mentoring teens.</p>
+              </div>
+
+              <div className="grid-4" style={{marginTop:16}}>
+                {[ 
+                  { name: "Ashley Tan", role: "Program Lead – Venture Studio", img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop" },
+                  { name: "Ryland Chen", role: "AI & Coding Mentor", img: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=1200&auto=format&fit=crop" },
+                  { name: "Priya Patel", role: "Design & Product Coach", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" },
+                  { name: "Mike Voytovich", role: "Technical Mentor & Co‑Founder", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" }
+                ].map((m, i) => (
+                  <div key={i} className="card">
+                    <img src={m.img} alt={m.name} className="mentor-img" />
+                    <div style={{padding:'0.5rem 0',textAlign:'center'}}>
+                      <strong style={{display:'block'}}>{m.name}</strong>
+                      <small className="muted">{m.role}</small>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            <Section id="resources" className="section">
+              <div style={{textAlign:'center',maxWidth:56+'ch',margin:'0 auto'}}>
+                <h3>Resources & Food for Thought</h3>
+                <p className="muted">Curated ideas for families and budding builders.</p>
+              </div>
+
+              <div style={{display:'grid',gap:12,gridTemplateColumns:'1fr',marginTop:16}}>
+                <div className="card" style={{background:'#f0fdf4'}}>
+                  <h4>For Parents</h4>
+                  <p className="muted">Why it’s important for your kids to learn about AI and entrepreneurship.</p>
+                  <a href="https://youtube.com/shorts/zgAmNwe45Yo?si=zCDRT5paE5bwAUuO" style={{color:'var(--yellow-400)'}}>Watch: AI Future at 13? (Vibe‑Coding)</a>
+                </div>
+                <div className="card" style={{background:'#f0fdf4'}}>
+                  <h4>Learning Resources</h4>
+                  <ul className="muted" style={{paddingLeft:16}}>
+                    <li><a href="https://www.youtube.com/watch?v=IPYeCltXpxw" style={{color:'var(--yellow-400)'}}>Start with Why – Simon Sinek</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=fEvKo90qBns" style={{color:'var(--yellow-400)'}}>Lean Startup – Eric Ries</a></li>
+                    <li>Design Thinking: How to Design Breakthrough Inventions</li>
+                  </ul>
+                </div>
+              </div>
+            </Section>
+
+            <div id="contact" style={{background:'#f0fdf4',borderTop:'1px solid rgba(4,120,87,.06)'}}>
+              <Section className="section two">
+                <div>
+                  <h3>Contact Us</h3>
+                  <p className="muted">We’d love to hear from you about programs, partnerships, or volunteer opportunities.</p>
+                  <div style={{marginTop:12}} className="muted">
+                    <div style={{display:'flex',alignItems:'center',gap:8}}><Mail/> hello@creators-lab.org</div>
+                    <div style={{display:'flex',alignItems:'center',gap:8}}><Phone/> (800) 555‑0199</div>
+                    <div style={{display:'flex',alignItems:'center',gap:8}}><MapPin/> Millbrae • San Mateo County, CA</div>
+                  </div>
+                </div>
+                <div>
+                  <div className="card form">
+                    <form onSubmit={(e)=>e.preventDefault()}>
+                      <input className="form-input" placeholder="Your Name" required />
+                      <div style={{height:8}}/>
+                      <input className="form-input" placeholder="Email" type="email" required />
+                      <div style={{height:8}}/>
+                      <textarea className="form-input" placeholder="Message" rows={5}></textarea>
+                      <div style={{height:8}}/>
+                      <button className="btn" style={{width:'100%'}}>Send Message</button>
+                    </form>
+                  </div>
+                </div>
+              </Section>
+            </div>
+
+            <Section id="login" className="section">
+              <div className="card" style={{maxWidth:480,margin:'0 auto'}}>
+                <h3 style={{textAlign:'center'}}>Member Login</h3>
+                <form onSubmit={(e)=>e.preventDefault()}>
+                  <input className="form-input" placeholder="Email" type="email" required />
+                  <div style={{height:8}}/>
+                  <input className="form-input" placeholder="Password" type="password" required />
+                  <div style={{height:8}}/>
+                  <button className="btn" style={{width:'100%'}}>Login</button>
+                </form>
+              </div>
+            </Section>
+
+            <footer>
+              <Section>
+                <div className="footer-row">
+                  <div style={{display:'flex',alignItems:'center',gap:8}}><Sparkles/>CreatorsLab</div>
+                  <div className="center">© {new Date().getFullYear()} Rokk Research LLC • All rights reserved.</div>
+                  <div style={{display:'flex',gap:12}}><a href="#home" style={{color:'#fff'}}>Back to top</a></div>
+                </div>
+              </Section>
+            </footer>
+          </div>
+        )
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<CreatorsLabSite />)
+    </script>
+  </body>
+</html>

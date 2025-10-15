@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resources — For Parents</title>
+    <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85L4ZPPPP0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-85L4ZPPPP0');
+    </script>
+    <style>
+      :root{--green-900:#064e3b;--green-700:#047857;--yellow-400:#facc15;--muted:rgba(6,78,59,.7)}
+      html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;} 
+      .container{max-width:80rem;margin:0 auto;padding:1rem 1.5rem}
+      header{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(4,120,87,.06);z-index:40}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+      .brand{display:flex;align-items:center;gap:.5rem;color:var(--green-900);font-weight:700}
+      .nav a{color:var(--green-900);text-decoration:none}
+      .card{background:#fff;border-radius:12px;padding:2rem;border:1px solid rgba(4,120,87,.08);box-shadow:0 6px 18px rgba(6,78,59,.04);margin-bottom:2rem}
+      .muted{color:var(--muted)}
+      .section{padding:2rem 0}
+      footer{background:var(--green-700);color:#fff;padding:1.5rem 0}
+      .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+      .center{text-align:center}
+      
+      /* Mobile Responsive Styles */
+      @media (max-width: 768px) {
+        .container{padding:1rem}
+        .nav{flex-direction:column;gap:1rem;padding:1rem 0.5rem}
+        .nav nav{flex-wrap:wrap;justify-content:center;gap:1rem}
+        .nav a{font-size:0.9rem}
+        .section{padding:1.5rem 0}
+        .footer-row{flex-direction:column;text-align:center;gap:1rem}
+        .card{padding:1.5rem}
+      }
+      
+      @media (max-width: 480px) {
+        .container{padding:0.5rem}
+        .nav{padding:0.5rem}
+        .nav nav{gap:0.5rem}
+        .nav a{font-size:0.8rem}
+        .section{padding:1rem 0}
+        .card{padding:1rem}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React & Babel (for in-browser JSX) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Section({children,className='',id='',style={}}){
+        return <section id={id} className={'section '+className} style={style}><div className="container">{children}</div></section>
+      }
+
+      function ResourcesPage(){
+        return (
+          <div>
+            <header>
+              <div className="container nav" style={{justifyContent:'space-between'}}>
+                <a className="brand" href="/index.html" style={{display:'flex',alignItems:'center',gap:8}}>
+                  <img src="/creatorslab_logo.png" alt="CreatorsLab" style={{height:'3.69140625em',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
+                </a>
+                <nav style={{display:'flex',gap:'2rem',alignItems:'center',flexWrap:'wrap'}}>
+                  <a href="/index.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Home</a>
+                  <a href="/what-we-teach.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>What We Teach</a>
+                  <a href="/index.html#programs" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Explore Programs</a>
+                  <a href="/resources.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Resources</a>
+                  <a href="/index.html#contact" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Contact Us</a>
+                </nav>
+              </div>
+            </header>
+
+            <Section>
+              <div style={{textAlign:'center',maxWidth:'56ch',margin:'0 auto 3rem'}}>
+                <h1 style={{color:'var(--green-700)',fontSize:'2.5rem',marginBottom:'1rem'}}>Resources</h1>
+                <p className="muted" style={{fontSize:'1.125rem',lineHeight:1.6}}>
+                  Essential information, tools, and insights for parents and students. Stay updated with the latest trends in AI education and access the resources you need to support your child's learning journey.
+                </p>
+              </div>
+
+              {/* Industry News Section - Moved to top */}
+              <div className="card">
+                <h2 style={{color:'var(--green-700)',marginTop:0,marginBottom:'1.5rem'}}>Industry News & Insights</h2>
+                <p className="muted" style={{marginBottom:'2rem'}}>Stay updated with the latest trends in AI education, vibe coding, and tech innovation.</p>
+                
+                <div id="news-container" style={{display:'flex',flexDirection:'column',gap:'1.5rem'}}>
+                  {/* News items will be loaded dynamically via JavaScript */}
+                  <div style={{textAlign:'center',padding:'2rem',color:'var(--muted)'}}>Loading latest news...</div>
+                </div>
+              </div>
+
+              {/* For Parents Section */}
+              <div className="card" style={{background:'#f0fdf4',padding:'2rem',borderRadius:'16px'}}>
+                <div style={{marginBottom:'3rem'}}>
+                  <h2 style={{color:'var(--green-700)',fontSize:'1.8rem',marginBottom:'2rem',borderBottom:'3px solid var(--green-700)',paddingBottom:'1rem',textAlign:'center'}}>Why it's important for your kids to learn about AI and entrepreneurship</h2>
+                  
+                  <div style={{marginLeft:'2rem',marginBottom:'2.5rem',padding:'1.5rem',background:'rgba(255,255,255,0.7)',borderRadius:'12px'}}>
+                    <h3 style={{color:'var(--green-700)',fontSize:'1.3rem',marginBottom:'1rem'}}>The U.S. is Behind in AI Education</h3>
+                    <p style={{fontSize:'1rem',lineHeight:1.7,marginBottom:'1.5rem'}}>Relative to China and other countries, the U.S. is behind in implementing AI education broadly in public schools. While this doesn't mean "no progress," there are real structural, cultural, and political barriers.</p>
+                    
+                    <h4 style={{color:'var(--green-700)',fontSize:'1.1rem',marginBottom:'1rem'}}>Key Evidence the U.S. Lags:</h4>
+                    <ul style={{fontSize:'0.95rem',lineHeight:1.7,paddingLeft:'1.5rem',marginBottom:'1.5rem'}}>
+                      <li style={{marginBottom:'0.8rem'}}><strong>China's Mandate:</strong> Starting September 2025, China requires 8 hours/year of AI lessons in primary, middle, and high schools nationwide</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>U.S. Status:</strong> No federal mandate for AI in public K-12 schools, middle schools, or high schools; adoption is mostly voluntary or pilot-based</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Teacher Support:</strong> China requires teacher training in AI tools; U.S. has only ~18% of K-12 teachers using AI as of Fall 2023</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Equity Gap:</strong> U.S. adoption is patchy, with wealthier districts ahead while under-resourced districts lag significantly</li>
+                    </ul>
+                  </div>
+
+                  <div style={{marginLeft:'2rem',marginBottom:'2.5rem',padding:'1.5rem',background:'rgba(255,255,255,0.7)',borderRadius:'12px'}}>
+                    <h4 style={{color:'var(--green-700)',fontSize:'1.1rem',marginBottom:'1rem'}}>Why the U.S. Lags Behind:</h4>
+                    <ul style={{fontSize:'0.95rem',lineHeight:1.7,paddingLeft:'1.5rem',marginBottom:'1rem'}}>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Decentralized Education:</strong> No national curriculum means district-by-district adoption</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Funding Constraints:</strong> Tight budgets make AI education a "nice to have" rather than essential</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Teacher Training Gap:</strong> Lack of confidence and training with AI tools</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Privacy Concerns:</strong> Worries about data privacy and academic integrity slow adoption</li>
+                      <li style={{marginBottom:'0.8rem'}}><strong>Cultural Inertia:</strong> Education systems are conservative and resistant to rapid change</li>
+                    </ul>
+                  </div>
+
+                  <div style={{background:'rgba(4,120,87,0.1)',padding:'1.5rem',borderRadius:'12px',border:'1px solid rgba(4,120,87,0.2)'}}>
+                    <p style={{fontSize:'1rem',lineHeight:1.7,margin:0,fontWeight:600,color:'var(--green-700)'}}>This is exactly why programs like CreatorsLab are crucial — we're filling the gap and preparing your children for the AI-driven future that our education system isn't yet ready to provide.</p>
+                  </div>
+                </div>
+                
+                <div style={{marginBottom:'2rem'}}>
+                  <h2 style={{color:'var(--green-700)',fontSize:'1.5rem',marginBottom:'1rem'}}>Third Party Tools</h2>
+                  <p style={{marginBottom:'1rem'}}>During the program, students will explore a variety of trusted third-party tools that support creativity, coding, and product design. These platforms provide hands-on experience with real-world technologies in a safe, guided environment.</p>
+                  
+                  <ul style={{paddingLeft:'1.5rem',lineHeight:1.8}}>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>Windsurf IDE</strong> — Students will use Windsurf as the primary platform for AI Vibe Coding. Windsurf allows students to build web and mobile app prototypes using natural-language AI prompts. Free student accounts are available with a .edu email address. Personal email users can try a two-week free trial, then continue with the Pro plan ($15/month).
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>Cursor IDE</strong> — Students will also explore Cursor, an AI-powered code editor that provides intelligent code completion, chat-based coding assistance, and seamless integration with AI models. Cursor offers a free tier and helps students understand different approaches to AI-assisted development.
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>Lovable.dev</strong> — Students will use Lovable to visually design and prototype apps. Free student account required.
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>Supabase</strong> — Students will connect their projects to Supabase, an open-source backend platform. Free student account required.
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>SQLite</strong> — Students will learn how SQLite manages data locally and introducing core database concepts such as tables, queries, and relationships.
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>Figma</strong> — Students will use Figma to visualize ideas and design products using AI-prompting and collaborative tools.
+                    </li>
+                    <li style={{marginBottom:'0.75rem'}}>
+                      <strong style={{color:'var(--green-700)'}}>GitHub</strong> — Students will use GitHub to store, share, and collaborate on their projects. Free GitHub account required.
+                    </li>
+                  </ul>
+
+                  <p style={{marginTop:'1rem',fontStyle:'italic'}}>All tools are introduced and used in a supervised, age-appropriate way. Instructors will walk students through account setup, environment configuration, and responsible tool use.</p>
+                </div>
+              </div>
+
+              {/* Learning Resources Section */}
+              <div className="card" style={{background:'#f0fdf4',padding:'2rem'}}>
+                <h2 style={{color:'var(--green-700)',marginTop:0}}>Learning Resources</h2>
+                <div style={{fontSize:'1rem',lineHeight:1.8}}>
+                  <p style={{marginBottom:'1rem'}}>Essential videos for understanding entrepreneurship and innovation:</p>
+                  <ul style={{paddingLeft:'1.5rem'}}>
+                    <li style={{marginBottom:'0.5rem'}}><a href="https://youtu.be/u4ZoJKF_VuA" style={{color:'var(--yellow-400)',textDecoration:'none',fontWeight:500}}>Start with Why – Simon Sinek</a></li>
+                    <li style={{marginBottom:'0.5rem'}}><a href="https://www.youtube.com/watch?v=fEvKo90qBns" style={{color:'var(--yellow-400)',textDecoration:'none',fontWeight:500}}>Lean Startup – Eric Ries</a></li>
+                    <li style={{marginBottom:'0.5rem'}}><a href="https://youtu.be/_9TIspgTbLM" style={{color:'var(--yellow-400)',textDecoration:'none',fontWeight:500}}>Design Thinking: How to Design Breakthrough Inventions</a></li>
+                  </ul>
+                </div>
+              </div>
+            </Section>
+
+            <footer>
+              <Section>
+                <div className="footer-row">
+                  <div style={{display:'flex',alignItems:'center',gap:'2rem',flexWrap:'wrap'}}>
+                    <a href="/about.html" style={{color:'#fff',textDecoration:'none'}}>About Us</a>
+                    <a href="/careers.html" style={{color:'#fff',textDecoration:'none'}}>Careers</a>
+                    <a href="/login.html" style={{color:'#fff',textDecoration:'none'}}>Member Login</a>
+                  </div>
+                  <div className="center">© {new Date().getFullYear()} Creators Lab (a Rokk Research LLC company) • All rights reserved.</div>
+                  <div style={{display:'flex',gap:12}}><a href="#home" style={{color:'#fff'}}>Back to top</a></div>
+                </div>
+              </Section>
+            </footer>
+          </div>
+        );
+      }
+
+      // Load news feed dynamically
+      async function loadNewsFeed() {
+        try {
+          const response = await fetch('/news-feed.json');
+          const newsItems = await response.json();
+          
+          const newsContainer = document.getElementById('news-container');
+          if (newsContainer) {
+            newsContainer.innerHTML = newsItems.map(item => `
+              <div style="border:1px solid rgba(4,120,87,0.1);border-radius:12px;padding:1.5rem;background:#fff">
+                <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem">
+                  <span style="background:${item.type === 'video' ? 'var(--yellow-400)' : 'var(--green-700)'};color:white;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:600;text-transform:uppercase">
+                    ${item.type}
+                  </span>
+                  <span style="color:var(--muted);font-size:0.9rem">${new Date(item.date).toLocaleDateString()}</span>
+                </div>
+                <h3 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.2rem">
+                  <a href="${item.url}" target="_blank" style="color:var(--green-700);textDecoration:'none'">${item.title}</a>
+                </h3>
+                <p style="margin:0 0 0.75rem;color:var(--muted);lineHeight:1.6">${item.description}</p>
+                <div style="display:flex;justifyContent:'space-between';alignItems:'center'">
+                  <span style="color:var(--muted);fontSize:0.9rem">Source: ${item.source}</span>
+                  <a href="${item.url}" target="_blank" style="color:var(--yellow-400);textDecoration:'none';fontWeight:500">Read More →</a>
+                </div>
+              </div>
+            `).join('');
+          }
+        } catch (error) {
+          console.error('Failed to load news feed:', error);
+          const newsContainer = document.getElementById('news-container');
+          if (newsContainer) {
+            newsContainer.innerHTML = '<div style="textAlign:center;padding:2rem;color:var(--muted)">Unable to load news feed at this time.</div>';
+          }
+        }
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<ResourcesPage />);
+      
+      // Load news feed after page renders
+      setTimeout(loadNewsFeed, 100);
+    </script>
+  </body>
+</html>

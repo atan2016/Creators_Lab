@@ -1,0 +1,20 @@
+[
+  {
+    "type": "article",
+    "title": "The Rise of Vibe Coding",
+    "url": "https://open.substack.com/pub/techscoop/p/when-every-developer-becomes-a-digital?utm_campaign=post&utm_medium=email",
+    "description": "Google Cloud's 2025 DORA report reveals that 90% of developers now use AI tools daily, dedicating a median of 2 hours per day collaborating with AI assistants. This represents a fundamental shift in how software is created, with developers becoming orchestrators of intelligent systems rather than just code writers.",
+    "date": "2025-10-15",
+    "source": "Tech Scoop",
+    "author": "Maria Urot"
+  },
+  {
+    "type": "video",
+    "title": "The Vibe Coding Advantage: Alexandr Wang's Powerful Advice for the Next Generation",
+    "url": "https://www.facebook.com/alvin.foosc/videos/the-vibe-coding-advantage-alexandr-wangs-powerful-advice-for-the-next-generation/24748194908146407/?utm_source=chatgpt.com",
+    "description": "Alexandr Wang, founder of Scale AI, shares powerful insights about the future of coding and how the next generation can leverage AI tools to build amazing things. Essential viewing for students and parents interested in the future of technology education.",
+    "date": "2025-10-14",
+    "source": "Facebook",
+    "author": "Alvin Foo"
+  }
+]

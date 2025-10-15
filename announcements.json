@@ -1,0 +1,26 @@
+// [
+//   {
+//     "title": "Registration Now Open for Winter 2025 Programs",
+//    "description": "Secure your spot in our AI Vibe Coding 101 and Teen Venture Studio programs. Limited spaces available for our 8-week sessions starting January 2025.",
+//     "date": "2025-10-14",
+//     "type": "registration",
+//     "action": "Register Now",
+//     "actionUrl": "https://secure.rec1.com/CA/millbrae-ca/catalog"
+//   },
+//   {
+//     "title": "New Advanced Vibe Coding Program Launching",
+//     "description": "We're excited to announce our Advanced Vibe Coding program for students who've completed AI Vibe Coding 101. Learn to build LLMs from scratch and create MCP servers.",
+//     "date": "2025-10-10",
+//     "type": "program",
+//     "action": "Learn More",
+//     "actionUrl": "/index.html#programs"
+//   },
+//   {
+//     "title": "Demo Day Success - Fall 2025 Cohort",
+//     "description": "Congratulations to our Fall 2025 students who presented amazing projects at Demo Day! From AI-powered mobile apps to innovative web platforms, our students are already building the future.",
+//     "date": "2025-10-05",
+//     "type": "success",
+//     "action": "View Gallery",
+//     "actionUrl": "/index.html#contact"
+//   }
+// ]
