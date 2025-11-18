@@ -1,0 +1,191 @@
+[
+  {
+    "title": "Home - CreatorsLab",
+    "url": "/index.html",
+    "section": "Home",
+    "content": "Empower Youth Innovations. We're on a mission to empower the next generation of innovators by teaching them how to harness AI and modern development tools to build real-world solutions.",
+    "keywords": ["youth", "innovation", "AI", "coding", "development", "empower", "students", "technology"]
+  },
+  {
+    "title": "Programs - CreatorsLab",
+    "url": "/index.html#programs",
+    "section": "Programs",
+    "content": "Our Programs. Discover our comprehensive learning paths designed to take students from beginners to confident creators. Each program combines hands-on projects with mentorship.",
+    "keywords": ["programs", "courses", "learning", "education", "training", "curriculum"]
+  },
+  {
+    "title": "Program Location - Millbrae",
+    "url": "/index.html#programs",
+    "section": "Programs",
+    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. We also provide online learning options to accommodate students who prefer remote learning or live outside the Millbrae area. Interested in bringing CreatorsLab to your local community center? Contact us to discuss partnership opportunities.",
+    "keywords": ["location", "locations", "where", "near me", "in-person", "online", "virtual", "classroom", "center", "facility", "address", "city", "area", "region", "millbrae", "millbrae location", "community center", "partnership", "bring to my area"]
+  },
+  {
+    "title": "Contact Us - CreatorsLab",
+    "url": "/index.html#contact",
+    "section": "Contact",
+    "content": "Contact Us. Get in touch with us to learn more about our programs or ask any questions.",
+    "keywords": ["contact", "email", "support", "questions", "inquiry", "reach out"]
+  },
+  {
+    "title": "Program Location - Millbrae",
+    "url": "/index.html#contact",
+    "section": "Contact",
+    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. Contact us to learn more about our programs and scheduling options. We also offer online learning for students outside the Millbrae area. Want to bring CreatorsLab to your local community center? Contact us to discuss partnership opportunities.",
+    "keywords": ["near me", "find", "local", "area", "nearby", "close", "distance", "find programs", "where are you", "my area", "my city", "millbrae", "millbrae location", "community center", "partnership", "bring to my area"]
+  },
+  {
+    "title": "Community Center Programs - Bring CreatorsLab to Your Area",
+    "url": "/index.html#contact",
+    "section": "Contact",
+    "content": "Community Center Programs. Interested in having CreatorsLab programs at your local community center? We're always looking to expand our reach and bring innovative coding education to more communities. Contact us to discuss partnership opportunities and how we can bring our programs to your area.",
+    "keywords": ["community center", "community", "partnership", "bring to my area", "local programs", "expand", "partnership opportunities", "community programs", "local community", "bring programs", "my community", "community partnership", "local center", "area programs"]
+  },
+  {
+    "title": "Program Cost & Pricing - Millbrae Rec Center",
+    "url": "https://apm.activecommunities.com/millbraeparksandrecreation/activity/search?onlineSiteId=0&activity_select_param=2&activity_keyword=creatorslab&viewProduct=true",
+    "section": "Programs",
+    "content": "Program Cost & Pricing. For current pricing and registration information, please visit the Millbrae Recreation Center page. Pricing varies by program and session. Visit the Millbrae Rec Center website to view available programs, costs, and register online.",
+    "keywords": ["cost", "price", "pricing", "how much", "tuition", "fee", "fees", "payment", "pay", "afford", "expensive", "cheap", "budget", "money", "registration fee", "program cost", "class cost"]
+  },
+  {
+    "title": "Computer Requirements for Coding Classes",
+    "url": "/index.html#programs",
+    "section": "Programs",
+    "content": "Computer Requirements. Students will need either a Mac or Windows computer for our coding classes. Both operating systems are fully supported. Please ensure your computer meets basic requirements: reliable internet connection, updated operating system, and sufficient storage space for development tools.",
+    "keywords": ["requirements", "computer requirements", "what do i need", "laptop", "computer", "mac", "windows", "pc", "system requirements", "equipment", "what to bring", "prerequisites", "needed", "necessary", "specs", "specifications"]
+  },
+  {
+    "title": "Online Programs - Virtual Learning",
+    "url": "/index.html#programs",
+    "section": "Programs",
+    "content": "Online Programs. We offer comprehensive virtual learning programs that bring the CreatorsLab experience directly to your home. Perfect for students who prefer remote learning or live in areas without physical locations.",
+    "keywords": ["online", "virtual", "remote", "distance learning", "at home", "digital", "web-based", "zoom", "video", "internet"]
+  },
+  {
+    "title": "In-Person Programs - Millbrae Location",
+    "url": "/index.html#programs",
+    "section": "Programs",
+    "content": "In-Person Programs - Millbrae Location. Join us at our Millbrae learning center for hands-on, collaborative learning experiences. Work alongside peers and receive direct mentorship from our expert instructors.",
+    "keywords": ["in-person", "local", "center", "facility", "classroom", "physical", "onsite", "face-to-face", "hands-on", "collaborative", "millbrae", "millbrae location"]
+  },
+  {
+    "title": "What We Teach - Vibe Coding",
+    "url": "/what-we-teach.html",
+    "section": "What We Teach",
+    "content": "Vibe Coding. A revolutionary approach to software development that combines AI assistance with human creativity. Students learn to leverage AI tools like ChatGPT, Claude, and GitHub Copilot to accelerate development while maintaining creative control.",
+    "keywords": ["vibe coding", "AI", "ChatGPT", "Claude", "Copilot", "teaching", "curriculum", "learning"]
+  },
+  {
+    "title": "What We Teach - Entrepreneurship",
+    "url": "/what-we-teach.html",
+    "section": "What We Teach",
+    "content": "Entrepreneurship & Innovation. Beyond coding, we teach students how to identify problems, validate ideas, and build solutions that matter. Students learn lean startup methodology, user research, and how to pitch their ideas.",
+    "keywords": ["entrepreneurship", "innovation", "startup", "business", "ideas", "problem solving"]
+  },
+  {
+    "title": "What We Teach - Real-World Projects",
+    "url": "/what-we-teach.html",
+    "section": "What We Teach",
+    "content": "Real-World Projects. Students don't just learn theory—they build actual applications that solve real problems. From web apps to mobile applications, every project is designed to be portfolio-worthy.",
+    "keywords": ["projects", "portfolio", "web apps", "mobile apps", "hands-on", "practical"]
+  },
+  {
+    "title": "Student Showcase - Projects",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Student Showcase. Discover the incredible projects that can be created at the end of programs. From innovative websites to engaging mobile apps and exciting games, see what's possible when creativity meets technology.",
+    "keywords": ["showcase", "projects", "student work", "portfolio", "examples", "demos"]
+  },
+  {
+    "title": "Student Showcase - Eco-Connect",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Eco-Connect. A sustainability-focused social platform connecting eco-conscious individuals and organizations. Features include carbon footprint tracking, green initiative discovery, and community challenges.",
+    "keywords": ["eco", "sustainability", "environment", "social platform", "green", "carbon footprint"]
+  },
+  {
+    "title": "Student Showcase - Study Buddy",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Study Buddy. An AI-powered study companion that helps students organize notes, create study schedules, and test their knowledge with adaptive quizzes.",
+    "keywords": ["study", "education", "AI", "learning", "notes", "quizzes", "students"]
+  },
+  {
+    "title": "Student Showcase - Galactic Guardian",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Galactic Guardian. An exciting space shooter game with stunning visuals and engaging gameplay. Features power-ups, boss battles, and a compelling storyline.",
+    "keywords": ["game", "space", "shooter", "gaming", "entertainment", "fun"]
+  },
+  {
+    "title": "Student Showcase - Pet Pal",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Pet Pal. A comprehensive pet care management app that helps owners track feeding schedules, vet appointments, and health records for their furry friends.",
+    "keywords": ["pet", "animals", "care", "health", "mobile app", "tracking"]
+  },
+  {
+    "title": "Student Showcase - Restaurant Finder",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Restaurant Finder. A mobile app that helps users find their desirable restaurants along their travel path within a customizable distance. Perfect for road trips and exploring new areas.",
+    "keywords": ["restaurant", "food", "travel", "mobile app", "finder", "dining"]
+  },
+  {
+    "title": "Student Showcase - Task Master",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Task Master. A powerful productivity app with task management, project tracking, and team collaboration features. Stay organized and get things done.",
+    "keywords": ["productivity", "tasks", "project management", "organization", "collaboration"]
+  },
+  {
+    "title": "Student Showcase - Code Quest",
+    "url": "/showcase.html",
+    "section": "Showcase",
+    "content": "Code Quest. An educational game that teaches programming concepts through interactive challenges and puzzles. Learn coding while having fun.",
+    "keywords": ["coding", "education", "game", "programming", "learning", "interactive"]
+  },
+  {
+    "title": "Resources - Industry News",
+    "url": "/resources.html",
+    "section": "Resources",
+    "content": "Industry News & Insights. Stay updated with the latest trends in AI education, vibe coding, and tech innovation.",
+    "keywords": ["news", "industry", "trends", "AI", "technology", "updates"]
+  },
+  {
+    "title": "Resources - Why It's Important",
+    "url": "/resources.html",
+    "section": "Resources",
+    "content": "Why it's important for your kids. In today's rapidly evolving digital landscape, understanding AI and modern development practices isn't just beneficial—it's essential. AI is transforming every industry. Students who understand AI tools will have a significant advantage in their careers.",
+    "keywords": ["importance", "future", "careers", "AI", "skills", "education", "parents"]
+  },
+  {
+    "title": "Resources - Third Party Tools",
+    "url": "/resources.html",
+    "section": "Resources",
+    "content": "Third Party Tools. We introduce students to industry-standard tools that professionals use every day: GitHub, IDE (Interactive Development Environment), Cursor IDE, OpenAI API, Vercel, and Netlify.",
+    "keywords": ["tools", "GitHub", "IDE", "Cursor", "Interactive Development Environment", "OpenAI", "Vercel", "Netlify"]
+  },
+  {
+    "title": "Resources - Learning Resources",
+    "url": "/resources.html",
+    "section": "Resources",
+    "content": "Learning Resources. Essential videos for understanding entrepreneurship and innovation: Start with Why by Simon Sinek, Lean Startup by Eric Ries, and How Great Leaders Inspire Action.",
+    "keywords": ["learning", "videos", "Simon Sinek", "Lean Startup", "entrepreneurship", "resources"]
+  },
+  {
+    "title": "About Us - CreatorsLab",
+    "url": "/about.html",
+    "section": "About",
+    "content": "About CreatorsLab. Learn more about our mission, vision, and the team behind CreatorsLab.",
+    "keywords": ["about", "mission", "vision", "team", "company", "who we are"]
+  },
+  {
+    "title": "Careers - Join Our Team",
+    "url": "/careers.html",
+    "section": "Careers",
+    "content": "Careers at CreatorsLab. Join our team and help empower the next generation of innovators. We're looking for passionate educators and developers.",
+    "keywords": ["careers", "jobs", "hiring", "employment", "opportunities", "join team"]
+  }
+]

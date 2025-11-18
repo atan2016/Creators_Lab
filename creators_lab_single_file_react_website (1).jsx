@@ -189,7 +189,7 @@ export default function CreatorsLabSite() {
             <CardTitle className="text-green-900 mb-3">Development Tools</CardTitle>
             <p className="text-green-800/80 mb-3">AI-powered coding environments we use in our programs.</p>
             <ul className="list-disc list-inside text-green-800/80 space-y-1 text-sm">
-              <li><a href="https://windsurf.dev" className="text-yellow-500 hover:text-yellow-400 underline">Windsurf IDE</a> - AI-powered development environment</li>
+              <li><a href="https://windsurf.dev" className="text-yellow-500 hover:text-yellow-400 underline">IDE (Interactive Development Environment)</a> - AI-powered development environment</li>
               <li><a href="https://cursor.sh" className="text-yellow-500 hover:text-yellow-400 underline">Cursor IDE</a> - AI code editor with chat assistance</li>
               <li><a href="https://github.com" className="text-yellow-500 hover:text-yellow-400 underline">GitHub</a> - Code collaboration and version control</li>
             </ul>

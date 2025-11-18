@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>What We Teach — For Parents & Students</title>
     <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    <link rel="stylesheet" href="/search.css" />
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-85L4ZPPPP0"></script>
@@ -88,13 +89,25 @@
                 <a className="brand" href="/index.html" style={{display:'flex',alignItems:'center',gap:8}}>
                   <img src="/creatorslab_logo.png" alt="CreatorsLab" style={{height:'3.69140625em',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
                 </a>
-                <nav style={{display:'flex',gap:'2rem',alignItems:'center',flexWrap:'wrap'}}>
-                  <a href="/index.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Home</a>
-                  <a href="/what-we-teach.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>What We Teach</a>
-                  <a href="/index.html#programs" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Explore Programs</a>
-                  <a href="/resources.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Resources</a>
-                  <a href="/index.html#contact" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Contact Us</a>
-                </nav>
+        <nav style={{display:'flex',gap:'2rem',alignItems:'center',flexWrap:'wrap'}}>
+          <a href="/index.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Home</a>
+          <a href="/what-we-teach.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>What We Teach</a>
+          <a href="/index.html#programs" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Explore Programs</a>
+          <a href="/showcase.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Showcase</a>
+          <a href="/resources.html" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Resources</a>
+          <a href="/index.html#contact" style={{textDecoration:'none',color:'var(--green-900)',fontSize:'1rem',fontWeight:500}}>Contact Us</a>
+          <div className="search-container">
+            <div className="search-icon" id="searchIcon" aria-label="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <div className="search-input-wrapper" id="searchInputWrapper">
+              <input type="text" className="search-input" id="searchInput" placeholder="Search..." aria-label="Search input" />
+              <div className="search-results" id="searchResults"></div>
+            </div>
+          </div>
+        </nav>
               </div>
             </header>
 
@@ -118,7 +131,7 @@
 
                 <div className="concept-section">
                   <h3>What is Vibe Coding?</h3>
-                  <p>Vibe Coding is our revolutionary approach to programming that combines human creativity with AI assistance. Instead of writing every line of code from scratch, you'll learn to work alongside AI tools like Windsurf IDE to build amazing projects faster and more creatively.</p>
+                  <p>Vibe Coding is our revolutionary approach to programming that combines human creativity with AI assistance. Instead of writing every line of code from scratch, you'll learn to work alongside AI tools like Cursor IDE (Interactive Development Environment) to build amazing projects faster and more creatively.</p>
                   
                   <div className="highlight-box">
                     <strong>Think of it like this:</strong> Instead of painting every brushstroke yourself, you're directing an AI assistant to help you create your masterpiece while you focus on the big picture and creative vision.
@@ -129,7 +142,7 @@
                   <h3>How It Works</h3>
                   <ul>
                     <li><strong>You describe what you want to build</strong> - Using plain English, you tell the AI your ideas</li>
-                    <li><strong>AI helps generate the code</strong> - Tools like Windsurf create the technical foundation</li>
+                    <li><strong>AI helps generate the code</strong> - Tools like Cursor IDE (Interactive Development Environment) create the technical foundation</li>
                     <li><strong>You refine and customize</strong> - You make it uniquely yours with your own creative touches</li>
                     <li><strong>You learn by doing</strong> - Each project teaches you new coding concepts and problem-solving skills</li>
                   </ul>
@@ -174,7 +187,7 @@
                 <div className="concept-section">
                   <h3>Types of AI You'll Work With</h3>
                   <ul>
-                    <li><strong>Code Generation AI</strong> - Helps you write and debug code (like Windsurf, GitHub Copilot)</li>
+                    <li><strong>Code Generation AI</strong> - Helps you write and debug code (like Cursor IDE (Interactive Development Environment), GitHub Copilot)</li>
                     <li><strong>Design AI</strong> - Assists with creating graphics, layouts, and visual content</li>
                     <li><strong>Text AI</strong> - Helps with writing, brainstorming, and communication</li>
                     <li><strong>Data AI</strong> - Analyzes information and finds patterns</li>
@@ -284,5 +297,9 @@
       const root = ReactDOM.createRoot(document.getElementById('root'));
       root.render(<WhatWeTeachPage />);
     </script>
+    
+    <!-- Fuse.js for search functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script src="/search.js"></script>
   </body>
 </html>

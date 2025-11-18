@@ -1,26 +1,12 @@
-// [
-//   {
-//     "title": "Registration Now Open for Winter 2025 Programs",
-//    "description": "Secure your spot in our AI Vibe Coding 101 and Teen Venture Studio programs. Limited spaces available for our 8-week sessions starting January 2025.",
-//     "date": "2025-10-14",
-//     "type": "registration",
-//     "action": "Register Now",
-//     "actionUrl": "https://secure.rec1.com/CA/millbrae-ca/catalog"
-//   },
-//   {
-//     "title": "New Advanced Vibe Coding Program Launching",
-//     "description": "We're excited to announce our Advanced Vibe Coding program for students who've completed AI Vibe Coding 101. Learn to build LLMs from scratch and create MCP servers.",
-//     "date": "2025-10-10",
-//     "type": "program",
-//     "action": "Learn More",
-//     "actionUrl": "/index.html#programs"
-//   },
-//   {
-//     "title": "Demo Day Success - Fall 2025 Cohort",
-//     "description": "Congratulations to our Fall 2025 students who presented amazing projects at Demo Day! From AI-powered mobile apps to innovative web platforms, our students are already building the future.",
-//     "date": "2025-10-05",
-//     "type": "success",
-//     "action": "View Gallery",
-//     "actionUrl": "/index.html#contact"
-//   }
-// ]
+[
+  {
+    "title": "🎉 NEW FAMILY WORKSHOP AT CREATORS LAB!",
+    "subtitle": "💡 Design Thinking with Your Teens!",
+    "tagline": "Create. Collaborate. Connect.",
+    "description": "Ever wonder what your teen's day really feels like — or how to make life at home a little smoother (and more fun)? Join us for a hands-on 90-minute workshop where parents and teens become designers of their own lives!<br><br><strong>Together, you'll:</strong><br>✨ Share your 'Day in the Life' stories<br>💬 Practice empathy and active listening<br>🧠 Brainstorm creative ways to make everyday moments better<br>🎨 Build quick prototypes to bring your ideas to life<br><br>This session is inspired by Stanford's d.school Design Thinking Starter Kit and designed for families who love to explore, create, and laugh together.<br><br>👨‍👩‍👧 <strong>Ages:</strong> 12–17 + Parents<br>🕒 <strong>Duration:</strong> 90 minutes<br>📅 <strong>Date:</strong> November 8th, 4-6pm<br>🍕 <strong>Free event with pizza and drinks!</strong>",
+    "date": "2025-11-08",
+    "type": "workshop",
+    "action": "Register Now",
+    "actionUrl": "/index.html#contact"
+  }
+]

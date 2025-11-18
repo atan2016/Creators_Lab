@@ -1,5 +1,14 @@
 [
   {
+    "type": "video",
+    "title": "Software is Changing (Again) and Why Teens Need to Learn Vibe Coding",
+    "url": "https://youtu.be/LCEmiRjPEtQ",
+    "description": "Andrej Karpathy, the creator of the term 'Vibe Coding,' explains how software development is fundamentally changing and why teens need to learn this new approach. Essential viewing for understanding the future of coding education and AI-powered development.",
+    "date": "2025-10-21",
+    "source": "YouTube",
+    "author": "Andrej Karpathy"
+  },
+  {
     "type": "article",
     "title": "The Rise of Vibe Coding",
     "url": "https://open.substack.com/pub/techscoop/p/when-every-developer-becomes-a-digital?utm_campaign=post&utm_medium=email",

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Showcase - CreatorsLab</title>
+    <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    <link rel="stylesheet" href="/search.css" />
+    <style>
+      :root{--green-700:#047857;--green-900:#064e3b;--muted:#6b7280;--yellow-500:#eab308}
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:#1f2937;background:#f9fafb}
+      header{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(4,120,87,.06);z-index:40}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+      .brand{display:flex;align-items:center;gap:.5rem;color:var(--green-900);font-weight:700}
+      .nav a{color:var(--green-900);text-decoration:none}
+      .section{padding:3rem 0}
+      .container{max-width:1200px;margin:0 auto;padding:1rem 1.5rem}
+      .muted{color:var(--muted)}
+      footer{background:var(--green-700);color:#fff;padding:1.5rem 0}
+      .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+      .center{text-align:center}
+      
+      /* Filter buttons */
+      .filter-section{text-align:center;margin:2rem 0}
+      .filter-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+      .filter-btn{padding:0.75rem 1.5rem;border:2px solid var(--green-700);background:transparent;color:var(--green-700);border-radius:8px;cursor:pointer;transition:all 0.3s ease;font-weight:500}
+      .filter-btn:hover,.filter-btn.active{background:var(--green-700);color:#fff}
+      
+      /* Projects grid */
+      .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+      
+      /* Project card styles */
+      .project-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease}
+      .project-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.15)}
+      
+      .project-image{width:100%;height:250px;position:relative;overflow:hidden;background:linear-gradient(135deg,#f0fdf4,#e0f2fe)}
+      
+      /* Project type labels */
+      .project-type-label{position:absolute;top:12px;right:12px;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;color:#fff}
+      .project-type-label.website{background:#3b82f6}
+      .project-type-label.mobile-app{background:#ef4444}
+      .project-type-label.game{background:#ec4899}
+      
+      /* Project content */
+      .project-content{padding:1.5rem}
+      .project-title{font-size:1.25rem;font-weight:700;color:var(--green-900);margin-bottom:0.5rem;line-height:1.3}
+      .project-author{color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem}
+      .project-course{color:var(--green-700);font-size:0.9rem;font-weight:600;margin-bottom:1rem}
+      .project-description{color:var(--muted);margin-bottom:1.5rem;line-height:1.5}
+      
+      /* View project button */
+      .view-project-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border:2px solid var(--green-700);background:transparent;color:var(--green-700);border-radius:8px;text-decoration:none;font-weight:500;transition:all 0.3s ease}
+      .view-project-btn:hover{background:var(--green-700);color:#fff}
+      
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .container{padding:1rem}
+        .nav{flex-direction:column;gap:1rem;padding:1rem 0.5rem}
+        .nav nav{flex-wrap:wrap;justify-content:center;gap:1rem}
+        .nav a{font-size:0.9rem}
+        .projects-grid{grid-template-columns:1fr;gap:1.5rem;max-width:100%}
+        .filter-buttons{gap:0.5rem}
+        .filter-btn{padding:0.5rem 1rem;font-size:0.9rem}
+        .section{padding:2rem 0}
+        .footer-row{flex-direction:column;text-align:center;gap:1rem}
+      }
+      
+      @media (max-width: 480px) {
+        .container{padding:0.5rem}
+        .project-content{padding:1rem}
+        .project-image{height:200px}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav" style="justify-content:space-between">
+        <a class="brand" href="/index.html" style="display:flex;align-items:center;gap:8px">
+          <img src="/creatorslab_logo.png" alt="CreatorsLab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
+        </a>
+        <nav style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+          <a href="/index.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Home</a>
+          <a href="/what-we-teach.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">What We Teach</a>
+          <a href="/index.html#programs" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Explore Programs</a>
+          <a href="/showcase.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Showcase</a>
+          <a href="/resources.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Resources</a>
+          <a href="/index.html#contact" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Contact Us</a>
+          <div class="search-container">
+            <div class="search-icon" id="searchIcon" aria-label="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <div class="search-input-wrapper" id="searchInputWrapper">
+              <input type="text" class="search-input" id="searchInput" placeholder="Search..." aria-label="Search input" />
+              <div class="search-results" id="searchResults"></div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div style="text-align:center;max-width:56ch;margin:0 auto 3rem">
+            <h1 style="color:var(--green-700);font-size:2.5rem;margin-bottom:1rem">Student Showcase</h1>
+            <p class="muted" style="font-size:1.125rem;line-height:1.6">
+              Discover the incredible projects that can be created at the end of programs. From innovative websites to engaging mobile apps and exciting games, see what's possible when creativity meets technology.
+            </p>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="websites">Website</button>
+              <button class="filter-btn" data-filter="apps">Mobile App</button>
+              <button class="filter-btn" data-filter="games">Game</button>
+            </div>
+          </div>
+
+          <div class="projects-grid" id="projectsGrid">
+            <!-- Eco-Connect Project -->
+            <div class="project-card" data-category="websites">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/eco-connect.webp') center/cover;position:relative">
+                <div class="project-type-label website">Website</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Eco-Connect: Community Recycling Platform</h3>
+                <div class="project-course">AI Vibe Coding 101</div>
+                <p class="project-description">A web application designed to connect community members for easier recycling and waste reduction. Features include local drop-off points, material sorting guides, and community events.</p>
+              </div>
+            </div>
+
+            <!-- Study Buddy Project -->
+            <div class="project-card" data-category="apps">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/study-buddy.webp') center/cover;position:relative">
+                <div class="project-type-label mobile-app">Mobile App</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Study Buddy: AI-Powered Learning Assistant</h3>
+                <div class="project-course">Advanced Vibe Coding</div>
+                <p class="project-description">An iOS and Android application that uses AI to create personalized study schedules, generate practice quizzes, and provide instant feedback on learning progress.</p>
+              </div>
+            </div>
+
+            <!-- Galactic Guardian Project -->
+            <div class="project-card" data-category="games">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/galactic-guardian.webp') center/cover;position:relative">
+                <div class="project-type-label game">Game</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Galactic Guardian: A Space Adventure</h3>
+                <div class="project-course">AI Vibe Coding 101</div>
+                <p class="project-description">A 2D arcade-style game where players navigate a spaceship through asteroid fields, collect power-ups, and defeat alien invaders. Developed using Python and Pygame.</p>
+              </div>
+            </div>
+
+            <!-- Pet Pal Project -->
+            <div class="project-card" data-category="websites">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/pet-pal.webp') center/cover;position:relative">
+                <div class="project-type-label website">Website</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Pet Pal: Adoptable Animal Finder</h3>
+                <div class="project-course">AI Vibe Coding 101</div>
+                <p class="project-description">A web platform connecting families with adoptable pets. Features advanced search filters, pet profiles, and streamlined adoption process with AI-powered matching.</p>
+              </div>
+            </div>
+
+            <!-- Task Master Project -->
+            <div class="project-card" data-category="apps">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/task_master.png') center/cover;position:relative">
+                <div class="project-type-label mobile-app">Mobile App</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Task Master: AI-Powered Productivity</h3>
+                <div class="project-course">Advanced Vibe Coding</div>
+                <p class="project-description">A smart productivity app that uses AI to prioritize tasks, suggest optimal work schedules, and provide personalized productivity insights and recommendations.</p>
+              </div>
+            </div>
+
+            <!-- Restaurant Finder Project -->
+            <div class="project-card" data-category="apps">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/restaurant_finder_1.PNG') center/cover;position:relative">
+                <div class="project-type-label mobile-app">Mobile App</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Restaurant Finder: Travel Dining Companion</h3>
+                <div class="project-course">AI Vibe Coding 101</div>
+                <p class="project-description">A mobile app that helps users find their desirable restaurants along their travel path within a customizable distance. Features real-time location tracking, restaurant ratings, and personalized recommendations based on cuisine preferences and dietary restrictions.</p>
+              </div>
+            </div>
+
+            <!-- Code Quest Project -->
+            <div class="project-card" data-category="games">
+              <div class="project-image" style="background:url('/student-showcase/src/assets/code_quest.png') center/cover;position:relative">
+                <div class="project-type-label game">Game</div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Code Quest: Programming Adventure</h3>
+                <div class="project-course">AI Vibe Coding 101</div>
+                <p class="project-description">An educational game that teaches programming concepts through interactive puzzles and challenges. Players solve coding problems to progress through levels and unlock new abilities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-row">
+          <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+            <a href="/about.html" style="color:#fff;text-decoration:none">About Us</a>
+            <a href="/careers.html" style="color:#fff;text-decoration:none">Careers</a>
+            <a href="/login.html" style="color:#fff;text-decoration:none">Member Login</a>
+          </div>
+          <div class="center">© 2024 Creators Lab (a Rokk Research LLC company) • All rights reserved.</div>
+          <div style="display:flex;gap:12px"><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#fff">Back to top</a></div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Filter functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+              if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        });
+      });
+    </script>
+
+    <!-- Fuse.js for search functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script src="/search.js"></script>
+  </body>
+</html>
