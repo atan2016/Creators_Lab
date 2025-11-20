@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events — CreatorsLab</title>
+    <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    <link rel="stylesheet" href="/search.css" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85L4ZPPPP0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-85L4ZPPPP0');
+    </script>
+    
+    <style>
+      :root{--green-900:#064e3b;--green-700:#047857;--yellow-400:#facc15;--muted:rgba(6,78,59,.7)}
+      html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;} 
+      .container{max-width:80rem;margin:0 auto;padding:1rem 1.5rem}
+      header{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(4,120,87,.06);z-index:40}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+      .brand{display:flex;align-items:center;gap:.5rem;color:var(--green-900);font-weight:700}
+      .nav a{color:var(--green-900);text-decoration:none}
+      .hero{background:var(--green-700);color:#fff;padding:2rem 0}
+      .section{padding:2rem 0}
+      .card{background:#fff;border-radius:12px;padding:1rem;border:1px solid rgba(4,120,87,.08);box-shadow:0 6px 18px rgba(6,78,59,.04)}
+      .muted{color:var(--muted)}
+      footer{background:var(--green-700);color:#fff;padding:1.5rem 0}
+      .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+      .center{text-align:center}
+      
+      /* Mobile Responsive Styles */
+      @media (max-width: 768px) {
+        .container{padding:1rem}
+        .nav{flex-direction:column;gap:1rem;padding:1rem 0.5rem}
+        .nav nav{flex-wrap:wrap;justify-content:center;gap:1rem}
+        .nav a{font-size:0.9rem}
+        .section{padding:1.5rem 0}
+        .footer-row{flex-direction:column;text-align:center;gap:1rem}
+        h1{font-size:2rem !important}
+        h2{font-size:1.5rem !important}
+        h3{font-size:1.2rem !important}
+        .hero{padding:1.5rem 0}
+      }
+      
+      @media (max-width: 480px) {
+        .container{padding:0.5rem}
+        .nav{padding:0.5rem}
+        .nav nav{gap:0.5rem}
+        .nav a{font-size:0.8rem}
+        .section{padding:1rem 0}
+        h1{font-size:1.8rem !important}
+        h2{font-size:1.3rem !important}
+        h3{font-size:1.1rem !important}
+        .hero{padding:1rem 0}
+        .card{padding:0.75rem}
+      }
+
+      .event-card {
+        padding:1.5rem;
+        background:#fff;
+        border-radius:12px;
+        border:2px solid var(--yellow-400);
+        margin-bottom:1.5rem;
+        box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        transition:transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .event-card:hover {
+        transform:translateY(-2px);
+        box-shadow:0 6px 16px rgba(0,0,0,0.12);
+      }
+
+      .event-date {
+        color:var(--green-700);
+        font-weight:600;
+        font-size:0.9rem;
+        margin-bottom:0.5rem;
+      }
+
+      .event-badge {
+        display:inline-block;
+        padding:0.25rem 0.75rem;
+        border-radius:999px;
+        font-size:0.85rem;
+        font-weight:600;
+        margin-bottom:1rem;
+      }
+
+      .badge-upcoming {
+        background:#f0fdf4;
+        color:var(--green-700);
+        border:1px solid var(--green-700);
+      }
+
+      .badge-past {
+        background:#f9fafb;
+        color:var(--muted);
+        border:1px solid var(--muted);
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav" style="justify-content:space-between">
+            <a class="brand" href="/index.html" style="display:flex;align-items:center;gap:8px">
+                <img src="/creatorslab_logo.png" alt="CreatorsLab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
+            </a>
+            <nav style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+                <a href="/index.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Home</a>
+                <a href="/what-we-teach.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">What We Teach</a>
+                <a href="/index.html#programs" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Explore Programs</a>
+                <a href="/showcase.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Showcase</a>
+                <a href="/resources.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Resources</a>
+                <a href="/events.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Events</a>
+                <a href="/index.html#contact" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Contact Us</a>
+                <div class="search-container">
+                    <div class="search-icon" id="searchIcon" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div class="search-input-wrapper" id="searchInputWrapper">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search..." aria-label="Search input" />
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <section>
+            <div class="container">
+                <h1 style="font-size:2.5rem;margin:0 0 1rem;text-align:center">Events</h1>
+                <p style="font-size:1.25rem;text-align:center;opacity:0.95;max-width:800px;margin:0 auto">Stay up to date with our upcoming workshops, events, and community gatherings.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="events" style="background:#fff;padding:3rem 0">
+        <section class="section">
+            <div class="container">
+                <div id="events-container">
+                    <div style="text-align:center;padding:2rem;color:var(--muted)">
+                        Loading events...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <section>
+            <div class="container">
+                <div class="footer-row">
+                    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+                        <a href="/about.html" style="color:#fff;text-decoration:none">About Us</a>
+                        <a href="/careers.html" style="color:#fff;text-decoration:none">Careers</a>
+                        <a href="/login.html" style="color:#fff;text-decoration:none">Member Login</a>
+                    </div>
+                    <div class="center">© 2024 Creators Lab (a Rokk Research LLC company) • All rights reserved.</div>
+                    <div style="display:flex;gap:12px"><a href="#events" style="color:#fff">Back to top</a></div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script>
+        // Format date function
+        function formatDate(dateString) {
+            const date = new Date(dateString + 'T00:00:00');
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Check if event is upcoming
+        function isUpcoming(eventDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const event = new Date(eventDate + 'T00:00:00');
+            return event >= today;
+        }
+
+        // Load all events
+        function loadEvents() {
+            const eventsContainer = document.getElementById('events-container');
+            
+            if (!eventsContainer) {
+                return;
+            }
+
+            fetch('/announcements.json?' + Date.now())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data || !Array.isArray(data) || data.length === 0) {
+                        eventsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">No events available at this time.</div>';
+                        return;
+                    }
+
+                    // Sort events by date (newest first)
+                    const sortedEvents = [...data].sort((a, b) => {
+                        const dateA = new Date(a.date + 'T00:00:00');
+                        const dateB = new Date(b.date + 'T00:00:00');
+                        return dateB - dateA;
+                    });
+
+                    // Separate upcoming and past events
+                    const upcoming = sortedEvents.filter(event => isUpcoming(event.date));
+                    const past = sortedEvents.filter(event => !isUpcoming(event.date));
+
+                    let html = '';
+
+                    // Upcoming events section
+                    if (upcoming.length > 0) {
+                        html += '<div style="margin-bottom:3rem">';
+                        html += '<h2 style="font-size:1.75rem;color:var(--green-700);margin-bottom:1.5rem;border-bottom:2px solid var(--green-700);padding-bottom:0.5rem">Upcoming Events</h2>';
+                        html += upcoming.map(item => `
+                            <div class="event-card">
+                                <div class="event-date">📅 ${formatDate(item.date)}</div>
+                                <span class="event-badge badge-upcoming">Upcoming</span>
+                                <div style="text-align:center;margin-bottom:1rem">
+                                    <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
+                                    ${item.subtitle ? `<h3 style="margin:0 0 0.5rem;color:var(--green-900);font-size:1.2rem;font-weight:600">${item.subtitle}</h3>` : ''}
+                                    ${item.tagline ? `<p style="margin:0 0 1rem;color:var(--green-700);font-size:1rem;font-weight:500;font-style:italic">${item.tagline}</p>` : ''}
+                                </div>
+                                <div style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem">${item.description}</div>
+                                <div style="text-align:center">
+                                    <a href="${item.actionUrl}" style="display:inline-block;padding:0.875rem 2rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease">${item.action}</a>
+                                </div>
+                            </div>
+                        `).join('');
+                        html += '</div>';
+                    }
+
+                    // Past events section
+                    if (past.length > 0) {
+                        html += '<div>';
+                        html += '<h2 style="font-size:1.75rem;color:var(--muted);margin-bottom:1.5rem;border-bottom:2px solid var(--muted);padding-bottom:0.5rem">Past Events</h2>';
+                        html += past.map(item => `
+                            <div class="event-card" style="border-color:rgba(6,78,59,0.2);opacity:0.9">
+                                <div class="event-date">📅 ${formatDate(item.date)}</div>
+                                <span class="event-badge badge-past">Past Event</span>
+                                <div style="text-align:center;margin-bottom:1rem">
+                                    <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
+                                    ${item.subtitle ? `<h3 style="margin:0 0 0.5rem;color:var(--green-900);font-size:1.2rem;font-weight:600">${item.subtitle}</h3>` : ''}
+                                    ${item.tagline ? `<p style="margin:0 0 1rem;color:var(--green-700);font-size:1rem;font-weight:500;font-style:italic">${item.tagline}</p>` : ''}
+                                </div>
+                                <div style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem">${item.description}</div>
+                            </div>
+                        `).join('');
+                        html += '</div>';
+                    }
+
+                    if (upcoming.length === 0 && past.length === 0) {
+                        html = '<div style="text-align:center;padding:2rem;color:var(--muted)">No events available at this time.</div>';
+                    }
+
+                    eventsContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading events:', error);
+                    eventsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">Error loading events. Please try again later.</div>';
+                });
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            loadEvents();
+        });
+    </script>
+
+    <!-- Fuse.js for search functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script src="/search.js"></script>
+</body>
+</html>
+

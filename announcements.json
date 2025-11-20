@@ -8,5 +8,15 @@
     "type": "workshop",
     "action": "Register Now",
     "actionUrl": "/index.html#contact"
+  },
+  {
+    "title": "🚀 Build Like a Startup, Think Like a Creator!",
+    "subtitle": "💻 Hands-On AI Workshop at Mills High School",
+    "tagline": "Create. Collaborate. Connect. Build Community",
+    "description": "Join us for an exciting free workshop at Mills High School! This special event is hosted by Mrs. Luna, the Computer Science teacher, and features Hugo (A junior at Mills) and Ashley (Our Program Director) leading a hands-on session on Vibe Coding and AI tools. Come and share your experience with AI and ChatGPT!<br><br><strong>What you'll experience:</strong><br>✨ Learn the fundamentals of Vibe Coding<br>🤖 Explore cutting-edge AI development tools<br>💡 Discover how AI can make you more productive<br>🎯 Discuss shortcomings of AI and what to watch out for<br><br>This workshop is designed for students and teachers who want to stay ahead of the curve in the rapidly evolving world of AI-powered development.<br><br>📅 <strong>Date:</strong> December 3rd during Flex<br>🏫 <strong>Location:</strong> Mills High School<br>🎓 <strong>Open to:</strong> Students and Teachers<br>🆓 <strong>Free Event</strong>",
+    "date": "2025-12-03",
+    "type": "workshop",
+    "action": "RSVP Now",
+    "actionUrl": "https://forms.gle/EYgbug1AinXW5Pim7"
   }
 ]

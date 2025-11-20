@@ -1,0 +1,9 @@
+{
+  "crons": [
+    {
+      "path": "/api/move-past-events",
+      "schedule": "0 0 1 * *"
+    }
+  ]
+}
+

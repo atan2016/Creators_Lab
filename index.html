@@ -93,6 +93,7 @@
                 <a href="#programs" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Explore Programs</a>
                 <a href="/showcase.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Showcase</a>
                 <a href="/resources.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Resources</a>
+                <a href="/events.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Events</a>
                 <a href="#contact" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Contact Us</a>
                 <div class="search-container">
                     <div class="search-icon" id="searchIcon" aria-label="Search">
@@ -424,7 +425,15 @@
             }
         }
         
-        // Load announcements function
+        // Check if event is upcoming
+        function isUpcoming(eventDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const event = new Date(eventDate + 'T00:00:00');
+            return event >= today;
+        }
+
+        // Load announcements function - only upcoming events
         function loadAnnouncements() {
             const announcementsContainer = document.getElementById('announcements-container');
             
@@ -444,8 +453,16 @@
                         return;
                     }
 
+                    // Filter only upcoming events
+                    const upcomingEvents = data.filter(item => isUpcoming(item.date));
+
+                    if (upcomingEvents.length === 0) {
+                        announcementsContainer.style.display = 'none';
+                        return;
+                    }
+
                     announcementsContainer.style.display = 'block';
-                    announcementsContainer.innerHTML = data.map(item => `
+                    announcementsContainer.innerHTML = upcomingEvents.map(item => `
                         <div style="padding:1.5rem;background:#fff;border-radius:12px;border:2px solid var(--yellow-400);margin-bottom:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
                             <div style="text-align:center;margin-bottom:1rem">
                                 <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
@@ -458,6 +475,13 @@
                             </div>
                         </div>
                     `).join('');
+                    
+                    // Add link to view all events
+                    announcementsContainer.innerHTML += `
+                        <div style="text-align:center;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(4,120,87,0.1)">
+                            <a href="/events.html" style="color:var(--green-700);text-decoration:underline;font-weight:500">View All Events →</a>
+                        </div>
+                    `;
                 })
                 .catch(error => {
                     console.error('Error loading announcements:', error);
