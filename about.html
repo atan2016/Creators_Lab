@@ -30,6 +30,8 @@
       .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       .center{text-align:center}
       
+      .student-profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+      
       /* Mobile Responsive Styles */
       @media (max-width: 768px) {
         .container{padding:1rem}
@@ -44,6 +46,7 @@
         .card{padding:1.5rem !important}
         div[style*="display:flex"][style*="gap:1.5rem"]{flex-direction:column !important;gap:1rem !important}
         img[style*="width:120px"]{width:100px !important;height:100px !important}
+        .student-profiles-grid{grid-template-columns:1fr !important}
       }
       
       @media (max-width: 480px) {
@@ -141,6 +144,44 @@
                 <p className="muted" style={{fontSize:'1rem',lineHeight:1.6,marginBottom:'1rem'}}>Mike Voytovich is a hands-on engineer, innovator, and mentor passionate about bridging technology and real-world impact. Currently a Member of Technical Staff at OpenAI, Mike brings over 15 years of experience designing and building embedded systems, IoT products, and AI-driven solutions.</p>
                 <p className="muted" style={{fontSize:'1rem',lineHeight:1.6,marginBottom:'1rem'}}>Before joining OpenAI, Mike founded Rokk Research, where he led prototyping and firmware development for cutting-edge IoT and AI applications. His earlier career includes key technical roles at Currant, PayPal, and Duff Research, where he helped create connected devices and intelligent platforms that combined software, hardware, and data science.</p>
                 <p className="muted" style={{fontSize:'1rem',lineHeight:1.6}}>At CreatorsLab, Mike helps teens unlock their curiosity and creativity through hands-on learning. He mentors students to see technology not just as a tool, but as a way to build meaningful solutions for their communities — embodying the lab's mission to inspire the next generation of makers and innovators.</p>
+              </div>
+            </Section>
+
+            <Section className="section">
+              <div style={{maxWidth:'1200px',margin:'0 auto'}}>
+                <h2 style={{color:'var(--green-700)',textAlign:'center',marginBottom:'2rem',fontSize:'2rem'}}>Student Outreach and Instructor</h2>
+                <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'2rem',marginTop:'2rem'}} className="student-profiles-grid">
+                  <div className="card" style={{padding:'2rem'}}>
+                    <div style={{display:'flex',flexDirection:'column',alignItems:'center',marginBottom:'1.5rem'}}>
+                      <img src="/hugo_profile.JPEG" alt="Hugo" style={{width:'120px',height:'120px',borderRadius:'50%',objectFit:'cover',border:'3px solid var(--green-700)',marginBottom:'1rem'}} />
+                      <h3 style={{color:'var(--green-700)',marginTop:0,marginBottom:'0.5rem',textAlign:'center'}}>Hugo</h3>
+                      <p style={{color:'var(--green-700)',fontWeight:600,margin:0,textAlign:'center'}}>Student Outreach and Instructor</p>
+                    </div>
+                    <p className="muted" style={{fontSize:'1rem',lineHeight:1.6,textAlign:'center'}}>Hugo is a junior at Mills High School with a strong passion for AI and entrepreneurship. He is an active community leader and serves on the Millbrae Youth Advisory Committee, where he helps bring student voices into local decision-making.</p>
+                  </div>
+
+                  <div className="card" style={{padding:'2rem'}}>
+                    <div style={{display:'flex',flexDirection:'column',alignItems:'center',marginBottom:'1.5rem'}}>
+                      <img src="/max_profile.png" alt="Max" style={{width:'120px',height:'120px',borderRadius:'50%',objectFit:'cover',border:'3px solid var(--green-700)',marginBottom:'1rem'}} />
+                      <h3 style={{color:'var(--green-700)',marginTop:0,marginBottom:'0.5rem',textAlign:'center'}}>Max</h3>
+                      <p style={{color:'var(--green-700)',fontWeight:600,margin:0,textAlign:'center'}}>Student Outreach and Instructor</p>
+                    </div>
+                    <p className="muted" style={{fontSize:'1rem',lineHeight:1.6,textAlign:'center'}}>Max is a sophomore at Mills High School, a student-athlete, Boy Scout, and an avid gamer whenever he can find spare time. He loves building, tinkering, and learning new skills — and he'll be the TA for Blender and Unity classes this Spring. Max is also a certified soccer referee and an active member of the local AYSO community.</p>
+                  </div>
+
+                  <div className="card" style={{padding:'2rem',cursor:'pointer',transition:'transform 0.2s ease'}} 
+                       onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                       onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                       onClick={() => window.location.href = '/index.html#contact'}
+                       title="Interested in joining? Click on Contact Us to submit a request">
+                    <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',minHeight:'200px'}}>
+                      <div style={{width:'120px',height:'120px',borderRadius:'50%',border:'3px solid var(--green-700)',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'1rem',background:'#f0fdf4'}}>
+                        <span style={{fontSize:'4rem',color:'var(--green-700)',fontWeight:'bold'}}>?</span>
+                      </div>
+                      <p style={{color:'var(--muted)',fontSize:'0.9rem',textAlign:'center',marginTop:'1rem'}}>Interested in joining? Click on Contact Us to submit a request</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Section>
 
