@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreatorsLab — Enrich Youth Innovations</title>
-    <link rel="icon" type="image/png" href="/favicon_rocket.png" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon_rocket.png" />
     <link rel="stylesheet" href="/search.css" />
     
     <!-- Google tag (gtag.js) -->
@@ -29,7 +29,7 @@
       @media(min-width:768px){.two{grid-template-columns:1fr 1fr}}
       .hero h1{font-size:2.25rem;margin:0 0 .8rem;line-height:1.05}
       @media(min-width:768px){.hero h1{font-size:3rem}}
-      .btn{background:#fff;color:var(--green-700);padding:.75rem 1rem;border-radius:999px;border:none;font-weight:600}
+      .btn{background:#fff;color:var(--green-700);padding:.75rem 1rem;border-radius:999px;border:none;font-weight:600;font-size:1rem}
       .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;padding:.75rem 1rem;border-radius:999px}
       .card{background:#fff;border-radius:12px;padding:1rem;border:1px solid rgba(4,120,87,.08);box-shadow:0 6px 18px rgba(6,78,59,.04)}
       .cards{display:grid;gap:1rem}
@@ -50,6 +50,11 @@
       footer{background:var(--green-700);color:#fff;padding:1.5rem 0}
       .footer-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       .center{text-align:center}
+      
+      /* Donation Modal Styles */
+      #donationModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
+      .donation-amount-btn:hover{background:rgba(4,120,87,0.1) !important}
+      .donation-amount-btn:active{transform:scale(0.98)}
       
       /* Mobile Responsive Styles */
       @media (max-width: 768px) {
@@ -78,6 +83,8 @@
         h3{font-size:1.1rem !important}
         .hero{padding:1rem 0}
         .card{padding:0.75rem}
+        #donationModal > div{padding:1.5rem;margin:1rem}
+        #donationModal > div h3{font-size:1.25rem}
       }
     </style>
 </head>
@@ -85,7 +92,7 @@
     <header>
         <div class="container nav" style="justify-content:space-between">
             <a class="brand" href="#home" style="display:flex;align-items:center;gap:8px">
-                <img src="/creatorslab_logo.png" alt="CreatorsLab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
+                <img src="/assets/images/creatorslab_logo.png" alt="CreatorsLab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
             </a>
             <nav style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
                 <a href="/index.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Home</a>
@@ -117,12 +124,13 @@
                     <div>
                         <h1>Empower Youth Innovations</h1>
                         <p class="muted">At CreatorsLab, we empower the next generation to dream big, build boldly, and innovate fearlessly. Our mission is to equip teens with the creativity, confidence, and entrepreneurial mindset to thrive in a world shaped by AI and innovation — one community, one project, one young creator at a time.</p>
-                        <div style="margin-top:1rem;display:flex;gap:10px">
+                        <div style="margin-top:1rem;display:flex;gap:10px;flex-wrap:wrap">
                             <a class="btn" href="#programs">Explore Programs</a>
+                            <button class="btn" id="donateBtn" style="cursor:pointer">Donate</button>
                         </div>
                     </div>
                     <div>
-                        <img class="img-hero" src="/hero_image_teens.png" alt="Teenagers learning with AI" style="width:100%;height:auto;object-fit:cover;border-radius:12px" />
+                        <img class="img-hero" src="/assets/images/hero_image_teens.png" alt="Teenagers learning with AI" style="width:100%;height:auto;object-fit:cover;border-radius:12px" />
                     </div>
                 </div>
             </div>
@@ -465,7 +473,7 @@
                         <a href="/careers.html" style="color:#fff;text-decoration:none">Careers</a>
                         <a href="/login.html" style="color:#fff;text-decoration:none">Member Login</a>
                     </div>
-                    <div class="center">© 2024 Creators Lab (a Rokk Research LLC company) • All rights reserved.</div>
+                    <div class="center">© 2024 Creators Lab (a Rokk Research LLC company) • All rights reserved. • EIN: 83-4291515</div>
                     <div style="display:flex;gap:12px"><a href="#home" style="color:#fff">Back to top</a></div>
                 </div>
             </div>
@@ -654,8 +662,187 @@
         });
     </script>
 
+    <!-- Donation Modal -->
+    <div id="donationModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+        <div style="background:#fff;border-radius:12px;padding:2rem;max-width:500px;width:90%;margin:2rem auto;box-shadow:0 10px 40px rgba(0,0,0,0.2)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+                <h3 style="margin:0;color:var(--green-700);font-size:1.5rem">Support CreatorsLab</h3>
+                <button id="closeDonationModal" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);padding:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center" aria-label="Close">&times;</button>
+            </div>
+            <p style="color:var(--muted);margin-bottom:1.5rem;line-height:1.6">Your donation helps us empower the next generation of innovators. Every contribution makes a difference!</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem">
+                <button class="donation-amount-btn" data-amount="25" style="padding:0.75rem;border:2px solid var(--green-700);background:#fff;color:var(--green-700);border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s ease">$25</button>
+                <button class="donation-amount-btn" data-amount="50" style="padding:0.75rem;border:2px solid var(--green-700);background:#fff;color:var(--green-700);border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s ease">$50</button>
+                <button class="donation-amount-btn" data-amount="100" style="padding:0.75rem;border:2px solid var(--green-700);background:#fff;color:var(--green-700);border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s ease">$100</button>
+            </div>
+            <div style="margin-bottom:1.5rem">
+                <label for="customAmount" style="display:block;margin-bottom:0.5rem;font-weight:500;color:var(--green-700)">Custom Amount</label>
+                <div style="display:flex;align-items:center;gap:0.5rem">
+                    <span style="color:var(--muted)">$</span>
+                    <input type="number" id="customAmount" placeholder="Enter amount" min="1" step="0.01" style="flex:1;padding:0.75rem;border:1px solid #d1d5db;border-radius:8px;font-size:1rem">
+                </div>
+            </div>
+            <button id="proceedDonation" style="width:100%;padding:0.75rem 1.5rem;background:var(--green-700);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s ease" disabled>Proceed to Payment</button>
+            <p style="font-size:0.85rem;color:var(--muted);margin-top:1rem;text-align:center">Secure payment powered by Stripe</p>
+        </div>
+    </div>
+
     <!-- Fuse.js for search functionality -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <script src="/search.js"></script>
+    
+    <!-- Donation functionality -->
+    <script>
+        let selectedAmount = null;
+        
+        // Donation modal handlers
+        const donationModal = document.getElementById('donationModal');
+        const donateBtn = document.getElementById('donateBtn');
+        const closeDonationModal = document.getElementById('closeDonationModal');
+        const proceedDonation = document.getElementById('proceedDonation');
+        const customAmountInput = document.getElementById('customAmount');
+        const donationAmountBtns = document.querySelectorAll('.donation-amount-btn');
+        
+        // Open donation modal
+        if (donateBtn) {
+            donateBtn.addEventListener('click', function() {
+                donationModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        // Close donation modal
+        function closeModal() {
+            donationModal.style.display = 'none';
+            document.body.style.overflow = '';
+            selectedAmount = null;
+            customAmountInput.value = '';
+            proceedDonation.disabled = true;
+            donationAmountBtns.forEach(btn => {
+                btn.style.background = '#fff';
+                btn.style.color = 'var(--green-700)';
+            });
+        }
+        
+        if (closeDonationModal) {
+            closeDonationModal.addEventListener('click', closeModal);
+        }
+        
+        // Close modal when clicking outside
+        donationModal.addEventListener('click', function(e) {
+            if (e.target === donationModal) {
+                closeModal();
+            }
+        });
+        
+        // Handle preset amount buttons
+        donationAmountBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                selectedAmount = parseFloat(this.dataset.amount);
+                customAmountInput.value = '';
+                proceedDonation.disabled = false;
+                
+                // Update button styles
+                donationAmountBtns.forEach(b => {
+                    b.style.background = '#fff';
+                    b.style.color = 'var(--green-700)';
+                });
+                this.style.background = 'var(--green-700)';
+                this.style.color = '#fff';
+            });
+        });
+        
+        // Handle custom amount input
+        if (customAmountInput) {
+            customAmountInput.addEventListener('input', function() {
+                const value = parseFloat(this.value);
+                if (value && value > 0) {
+                    selectedAmount = value;
+                    proceedDonation.disabled = false;
+                    // Reset preset button styles
+                    donationAmountBtns.forEach(btn => {
+                        btn.style.background = '#fff';
+                        btn.style.color = 'var(--green-700)';
+                    });
+                } else {
+                    selectedAmount = null;
+                    proceedDonation.disabled = true;
+                }
+            });
+        }
+        
+        // Handle donation submission
+        if (proceedDonation) {
+            proceedDonation.addEventListener('click', async function() {
+                if (!selectedAmount || selectedAmount <= 0) {
+                    alert('Please select or enter a donation amount');
+                    return;
+                }
+                
+                // Disable button during processing
+                proceedDonation.disabled = true;
+                proceedDonation.textContent = 'Processing...';
+                
+                try {
+                    const response = await fetch('/api/create-checkout-session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            amount: selectedAmount,
+                            currency: 'usd'
+                        })
+                    });
+                    
+                    // Check if response is JSON
+                    const contentType = response.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                        const text = await response.text();
+                        console.error('Non-JSON response:', text.substring(0, 200));
+                        throw new Error(`Server returned ${response.status}: ${response.statusText}. The API endpoint may not be working. Make sure you're running with "vercel dev".`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok && data.url) {
+                        // Redirect to Stripe Checkout
+                        window.location.href = data.url;
+                    } else {
+                        throw new Error(data.error || 'Failed to create checkout session');
+                    }
+                } catch (error) {
+                    console.error('Donation error:', error);
+                    let errorMessage = 'There was an error processing your donation. ';
+                    if (error.message.includes('Failed to fetch') || error.message.includes('404') || error.message.includes('Server returned')) {
+                        errorMessage += error.message;
+                    } else if (error.message.includes('Unexpected token')) {
+                        errorMessage += 'The server returned an HTML page instead of JSON. Make sure you\'re running with "vercel dev" and the API route is working.';
+                    } else {
+                        errorMessage += error.message || 'Please try again or contact us at info@creatorslab.com';
+                    }
+                    alert(errorMessage);
+                    proceedDonation.disabled = false;
+                    proceedDonation.textContent = 'Proceed to Payment';
+                }
+            });
+        }
+        
+        // Check for donation success/cancel in URL
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const donationStatus = urlParams.get('donation');
+            
+            if (donationStatus === 'success') {
+                alert('Thank you for your donation! Your support helps us empower the next generation of innovators.');
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (donationStatus === 'cancelled') {
+                // User cancelled, no action needed
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
 </body>
 </html>

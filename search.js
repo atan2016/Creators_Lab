@@ -44,8 +44,9 @@ window.addEventListener('load', function() {
     // Toggle search input when icon is clicked
     searchIcon.addEventListener('click', function(e) {
         e.stopPropagation();
-        searchInputWrapper.classList.toggle('active');
-        if (searchInputWrapper.classList.contains('active')) {
+        const isActive = searchInputWrapper.classList.toggle('active');
+        searchIcon.setAttribute('aria-expanded', isActive);
+        if (isActive) {
             searchInput.focus();
         } else {
             searchInput.value = '';
@@ -100,20 +101,13 @@ window.addEventListener('load', function() {
                     searchResults.innerHTML = results.slice(0, 8).map(result => {
                         const item = result.item;
                         return `
-                            <div class="search-result-item" data-url="${item.url}">
+                            <a href="${item.url}" class="search-result-item" role="option" tabindex="0">
                                 <div class="search-result-section">${item.section}</div>
                                 <div class="search-result-title">${item.title}</div>
                                 <div class="search-result-content">${item.content}</div>
-                            </div>
+                            </a>
                         `;
                     }).join('');
-            
-            // Add click handlers to results
-            document.querySelectorAll('.search-result-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    window.location.href = this.dataset.url;
-                });
-            });
         }
         
         searchResults.classList.add('active');
@@ -136,29 +130,23 @@ window.addEventListener('load', function() {
         }
         
         // Arrow key navigation
-        const items = searchResults.querySelectorAll('.search-result-item');
+        const items = Array.from(searchResults.querySelectorAll('.search-result-item'));
         if (items.length === 0) return;
         
-        const currentFocus = searchResults.querySelector('.search-result-item:hover');
-        let index = Array.from(items).indexOf(currentFocus);
+        const currentFocus = document.activeElement;
+        let index = items.indexOf(currentFocus);
+        if (index === -1) index = 0;
         
         if (e.key === 'ArrowDown') {
             e.preventDefault();
             index = index < items.length - 1 ? index + 1 : 0;
+            items[index].focus();
             items[index].scrollIntoView({ block: 'nearest' });
-            // Simulate hover effect
-            items.forEach(item => item.style.background = '');
-            items[index].style.background = '#f0fdf4';
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
             index = index > 0 ? index - 1 : items.length - 1;
+            items[index].focus();
             items[index].scrollIntoView({ block: 'nearest' });
-            // Simulate hover effect
-            items.forEach(item => item.style.background = '');
-            items[index].style.background = '#f0fdf4';
-        } else if (e.key === 'Enter' && index >= 0) {
-            e.preventDefault();
-            window.location.href = items[index].dataset.url;
         }
     });
 });
