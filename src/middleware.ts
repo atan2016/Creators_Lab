@@ -6,9 +6,13 @@ export async function middleware(request: NextRequest) {
   try {
     const path = request.nextUrl.pathname
 
+    // CRITICAL: Allow root path immediately to prevent any issues
+    if (path === '/') {
+      return NextResponse.next()
+    }
+
     // Define public pages and API routes first (check before any auth)
     const publicPages = [
-      '/',
       '/about',
       '/resources',
       '/events',
