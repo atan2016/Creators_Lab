@@ -19,8 +19,17 @@ export async function middleware(request: NextRequest) {
     session = null
   }
 
-  // For other API routes, require authentication
+  // For other API routes, check if they're public
   if (path.startsWith('/api/')) {
+    // Public API routes (don't require authentication)
+    const publicApiRoutes = [
+      '/api/create-checkout-session', // Stripe donations
+      '/api/move-past-events', // Cron job
+    ]
+    if (publicApiRoutes.includes(path)) {
+      return NextResponse.next()
+    }
+    // Protected API routes require authentication
     if (!session) {
       return NextResponse.json(
         { error: 'Unauthorized' },
