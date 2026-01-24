@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="64" viewBox="0 0 360 64" role="img" aria-label="CreatorsLab logo">
+  <defs>
+    <style>
+      .txt{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial; font-weight:700; font-size:40px; fill:#077a5f}
+      .accent{fill:#facc15}
+      .rocket{fill:none;stroke:#077a5f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <!-- Rocket mark -->
+  <g transform="translate(4,4) scale(0.9)">
+    <path class="rocket" d="M28 4c-6 4-10 12-10 12s4 8 10 12 10 4 10 4 0-8 0-12 0-12-10-16z"/>
+    <circle cx="28" cy="20" r="3" fill="#077a5f" />
+    <path class="rocket" d="M22 36c-3 4-4 8-4 10 0 2 6 4 10 4s10-2 10-4c0-2-1-6-4-10"/>
+    <path d="M16 46c3 2 8 2 12 2s9 0 12-2" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Text -->
+  <text x="90" y="44" class="txt">Creators<span style="fill:#facc15">Lab</span></text>
+</svg>

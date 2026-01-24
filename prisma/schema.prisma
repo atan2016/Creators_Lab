@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum ResourceType {
+  COURSE_MATERIAL
+  LESSON_PLAN
+  HOMEWORK
+  GITHUB_LINK
+  GOOGLE_DRIVE_LINK
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          UserRole
+  mustResetPassword Boolean @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  classrooms    ClassroomMember[]
+  createdClassrooms Classroom[] @relation("ClassroomCreator")
+  resources     Resource[]
+  resourceCopies ResourceCopy[]
+  forumPosts    ForumPost[]
+  homeworkSubmissions HomeworkSubmission[]
+  googleDriveLinks GoogleDriveLink[]
+}
+
+model Classroom {
+  id            String   @id @default(cuid())
+  name          String
+  description   String?
+  inviteCode    String   @unique
+  googleDriveUrl String? // Google Drive folder URL for this classroom
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  creatorId   String
+  creator     User     @relation("ClassroomCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  members     ClassroomMember[]
+  resources   Resource[]
+  forumPosts  ForumPost[]
+  syllabusEntries SyllabusEntry[]
+}
+
+model ClassroomMember {
+  id          String   @id @default(cuid())
+  classroomId String
+  userId      String
+  joinedAt    DateTime @default(now())
+
+  // Relations
+  classroom   Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([classroomId, userId])
+  @@index([classroomId])
+  @@index([userId])
+}
+
+model Resource {
+  id            String       @id @default(cuid())
+  title         String
+  description   String?
+  type          ResourceType
+  content       String?      // For text content or file URLs
+  githubUrl     String?      // For GitHub repository links
+  googleDriveUrl String?     // For Google Drive file/folder links
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  // Relations
+  classroomId String
+  classroom   Classroom    @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User         @relation(fields: [createdById], references: [id])
+  copies      ResourceCopy[]
+}
+
+model ResourceCopy {
+  id         String   @id @default(cuid())
+  resourceId String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([resourceId, userId])
+  @@index([userId])
+}
+
+model ForumPost {
+  id             String      @id @default(cuid())
+  title          String
+  content        String
+  isAnnouncement Boolean     @default(false)
+  parentId       String?     // For replies/threading
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  // Relations
+  classroomId    String
+  classroom      Classroom   @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  authorId       String
+  author         User        @relation(fields: [authorId], references: [id])
+  replies        ForumPost[] @relation("PostReplies")
+  parent         ForumPost?  @relation("PostReplies", fields: [parentId], references: [id])
+
+  @@index([classroomId])
+  @@index([parentId])
+}
+
+model HomeworkSubmission {
+  id          String   @id @default(cuid())
+  homeworkId  String   // Resource ID of type HOMEWORK
+  githubUrl   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  studentId   String
+  student     User     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([homeworkId, studentId])
+  @@index([homeworkId])
+  @@index([studentId])
+}
+
+model SyllabusEntry {
+  id          String   @id @default(cuid())
+  date        DateTime
+  activities  String   // Details/activities for that date
+  prework     String?  // Optional prework
+  lectureInfo String?  // Optional lecture information
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  classroomId String
+  classroom   Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+
+  @@index([classroomId])
+  @@index([date])
+}
+
+model GoogleDriveLink {
+  id          String   @id @default(cuid())
+  name        String
+  driveUrl    String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
+
+  @@index([createdById])
+}
