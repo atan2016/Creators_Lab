@@ -3,55 +3,54 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname
+  try {
+    const path = request.nextUrl.pathname
 
-  // Allow all NextAuth API routes (they handle their own authentication)
-  if (path.startsWith('/api/auth/')) {
-    return NextResponse.next()
-  }
+    // Define public pages and API routes first (check before any auth)
+    const publicPages = [
+      '/',
+      '/about',
+      '/resources',
+      '/events',
+      '/careers',
+      '/showcase',
+      '/what-we-teach',
+      '/login',
+      '/forgot-password',
+      '/reset-password',
+    ]
 
-  // Define public pages and API routes first (check before auth)
-  const publicPages = [
-    '/',
-    '/about',
-    '/resources',
-    '/events',
-    '/careers',
-    '/showcase',
-    '/what-we-teach',
-    '/login',
-    '/forgot-password',
-    '/reset-password',
-  ]
+    const publicApiRoutes = [
+      '/api/create-checkout-session', // Stripe donations
+      '/api/move-past-events', // Cron job
+    ]
 
-  const publicApiRoutes = [
-    '/api/create-checkout-session', // Stripe donations
-    '/api/move-past-events', // Cron job
-  ]
-
-  // Allow public API routes immediately
-  if (path.startsWith('/api/')) {
-    if (publicApiRoutes.includes(path)) {
+    // Allow all NextAuth API routes (they handle their own authentication)
+    if (path.startsWith('/api/auth/')) {
       return NextResponse.next()
     }
-  }
 
-  // Allow public pages immediately (before auth check)
-  if (publicPages.includes(path)) {
-    return NextResponse.next()
-  }
+    // Allow public API routes immediately
+    if (path.startsWith('/api/') && publicApiRoutes.includes(path)) {
+      return NextResponse.next()
+    }
 
-  // Get session - in NextAuth v5, auth() reads from request automatically
-  // Only check auth for protected routes
-  let session = null
-  try {
-    session = await auth()
-  } catch (error) {
-    // If auth fails (e.g., database connection issue), treat as no session
-    // This allows public pages to still work even if auth is temporarily unavailable
-    console.error('Middleware auth error:', error)
-    session = null
-  }
+    // Allow public pages immediately (before any auth check)
+    if (publicPages.includes(path)) {
+      return NextResponse.next()
+    }
+
+    // Get session - in NextAuth v5, auth() reads from request automatically
+    // Only check auth for protected routes
+    let session = null
+    try {
+      session = await auth()
+    } catch (error) {
+      // If auth fails (e.g., database connection issue), treat as no session
+      // This allows public pages to still work even if auth is temporarily unavailable
+      console.error('Middleware auth error:', error)
+      session = null
+    }
 
   // For other API routes, require authentication
   if (path.startsWith('/api/')) {
@@ -107,7 +106,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  return NextResponse.next()
+    return NextResponse.next()
+  } catch (error) {
+    // If middleware fails completely, log error but allow request to proceed
+    // This prevents middleware errors from causing 404s
+    console.error('Middleware error:', error)
+    return NextResponse.next()
+  }
 }
 
 export const config = {
