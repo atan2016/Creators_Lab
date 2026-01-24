@@ -1,4 +1,3 @@
-import { auth } from '@/lib/auth'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
@@ -6,6 +5,7 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
 
   // CRITICAL: Allow all public pages immediately - no auth check at all
+  // This MUST happen before any imports or async operations
   const publicPages = [
     '/',
     '/about',
@@ -35,9 +35,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // For protected routes, try to get session (but don't fail if it errors)
+  // For protected routes, dynamically import auth to prevent loading errors
   let session = null
   try {
+    const { auth } = await import('@/lib/auth')
     session = await auth()
   } catch (error) {
     // Silently fail - allow request to proceed
