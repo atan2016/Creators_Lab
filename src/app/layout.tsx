@@ -4,8 +4,8 @@ import "./creators-lab-styles.css";
 import SessionProvider from "@/components/providers/SessionProvider";
 
 export const metadata: Metadata = {
-  title: "Afterschool LMS",
-  description: "Learning Management System for Afterschool Programs",
+  title: "CreatorsLab — Enrich Youth Innovations",
+  description: "Empower the next generation to dream big, build boldly, and innovate fearlessly.",
 };
 
 export default function RootLayout({
