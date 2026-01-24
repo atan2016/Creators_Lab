@@ -9,50 +9,7 @@ interface ResourceViewProps {
 }
 
 export default function ResourceView({ resource }: ResourceViewProps) {
-  if (resource.type === 'GITHUB_LINK' && resource.githubUrl) {
-    return <GitHubResourceView githubUrl={resource.githubUrl} />
-  }
-
-  if (resource.type === 'GOOGLE_DRIVE_LINK' && resource.googleDriveUrl) {
-    return (
-      <div className="bg-gray-50 rounded-lg p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <svg
-            className="w-8 h-8 text-blue-600"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M7.71 3.5L1.15 20l4.71 1.35L12.86 3.5H7.71zm6.28 0l-6.56 16.5 4.71 1.35L18.14 3.5h-4.15z" />
-          </svg>
-          <h3 className="text-lg font-semibold text-gray-900">Google Drive Resource</h3>
-        </div>
-        <p className="text-sm text-gray-600 mb-4">
-          Click the link below to open this file or folder in Google Drive.
-        </p>
-        <a
-          href={resource.googleDriveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M7.71 3.5L1.15 20l4.71 1.35L12.86 3.5H7.71zm6.28 0l-6.56 16.5 4.71 1.35L18.14 3.5h-4.15z" />
-          </svg>
-          Open in Google Drive
-        </a>
-        <div className="mt-4">
-          <p className="text-xs text-gray-500">URL:</p>
-          <p className="text-xs text-gray-400 break-all mt-1">{resource.googleDriveUrl}</p>
-        </div>
-      </div>
-    )
-  }
-
-  // Parse markdown-style links and URLs
+  // Parse markdown-style links and URLs - must be called before early returns
   const renderContent = useMemo(() => {
     if (!resource.content) return null
 

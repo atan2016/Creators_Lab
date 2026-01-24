@@ -164,7 +164,7 @@ export default function HomePageClient() {
     const donationModal = document.getElementById('donationModal')
     const donateBtn = document.getElementById('donateBtn')
     const closeDonationModal = document.getElementById('closeDonationModal')
-    const proceedDonation = document.getElementById('proceedDonation')
+    const proceedDonation = document.getElementById('proceedDonation') as HTMLButtonElement
     const customAmountInput = document.getElementById('customAmount') as HTMLInputElement
     const donationAmountBtns = document.querySelectorAll('.donation-amount-btn')
 
@@ -203,8 +203,8 @@ export default function HomePageClient() {
     }
 
     donationAmountBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        selectedAmount = parseFloat((this as HTMLElement).dataset.amount || '0')
+      btn.addEventListener('click', function(this: HTMLElement) {
+        selectedAmount = parseFloat(this.dataset.amount || '0')
         if (customAmountInput) customAmountInput.value = ''
         if (proceedDonation) proceedDonation.disabled = false
 
@@ -280,7 +280,7 @@ export default function HomePageClient() {
   }
 
   function setupContactForm() {
-    const contactForm = document.getElementById('contactForm')
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement
     if (!contactForm) return
 
     contactForm.addEventListener('submit', async function(e) {

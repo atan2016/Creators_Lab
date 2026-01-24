@@ -43,7 +43,18 @@ export default async function TeacherResourcePage({
   }
 
   // Get homework submissions if this is homework
-  let submissions = []
+  let submissions: Array<{
+    id: string
+    homeworkId: string
+    githubUrl: string
+    createdAt: Date
+    updatedAt: Date
+    studentId: string
+    student: {
+      name: string
+      email: string
+    }
+  }> = []
   if (resource.type === 'HOMEWORK') {
     submissions = await prisma.homeworkSubmission.findMany({
       where: { homeworkId: params.resourceId },

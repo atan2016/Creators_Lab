@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: '2024-11-20.acacia',
+      apiVersion: '2023-10-16',
     })
 
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 

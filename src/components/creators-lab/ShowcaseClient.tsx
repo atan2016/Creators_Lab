@@ -8,11 +8,11 @@ export default function ShowcaseClient() {
     const projectCards = document.querySelectorAll('.project-card')
 
     filterButtons.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function(this: HTMLElement) {
         filterButtons.forEach(btn => btn.classList.remove('active'))
-        ;(this as HTMLElement).classList.add('active')
+        this.classList.add('active')
 
-        const filter = (this as HTMLElement).getAttribute('data-filter')
+        const filter = this.getAttribute('data-filter')
 
         projectCards.forEach(card => {
           if (filter === 'all' || card.getAttribute('data-category') === filter) {
