@@ -10,26 +10,51 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Get session - in NextAuth v5, auth() reads from request automatically
-  let session
-  try {
-    session = await auth()
-  } catch (error) {
-    // If auth fails, treat as no session
-    session = null
-  }
+  // Define public pages and API routes first (check before auth)
+  const publicPages = [
+    '/',
+    '/about',
+    '/resources',
+    '/events',
+    '/careers',
+    '/showcase',
+    '/what-we-teach',
+    '/login',
+    '/forgot-password',
+    '/reset-password',
+  ]
 
-  // For other API routes, check if they're public
+  const publicApiRoutes = [
+    '/api/create-checkout-session', // Stripe donations
+    '/api/move-past-events', // Cron job
+  ]
+
+  // Allow public API routes immediately
   if (path.startsWith('/api/')) {
-    // Public API routes (don't require authentication)
-    const publicApiRoutes = [
-      '/api/create-checkout-session', // Stripe donations
-      '/api/move-past-events', // Cron job
-    ]
     if (publicApiRoutes.includes(path)) {
       return NextResponse.next()
     }
-    // Protected API routes require authentication
+  }
+
+  // Allow public pages immediately (before auth check)
+  if (publicPages.includes(path)) {
+    return NextResponse.next()
+  }
+
+  // Get session - in NextAuth v5, auth() reads from request automatically
+  // Only check auth for protected routes
+  let session = null
+  try {
+    session = await auth()
+  } catch (error) {
+    // If auth fails (e.g., database connection issue), treat as no session
+    // This allows public pages to still work even if auth is temporarily unavailable
+    console.error('Middleware auth error:', error)
+    session = null
+  }
+
+  // For other API routes, require authentication
+  if (path.startsWith('/api/')) {
     if (!session) {
       return NextResponse.json(
         { error: 'Unauthorized' },
@@ -39,25 +64,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // For page routes, check authentication
+  // For protected page routes, redirect to login if no session
   if (!session) {
-    // Allow public pages (Creators_Lab marketing pages)
-    const publicPages = [
-      '/',
-      '/about',
-      '/resources',
-      '/events',
-      '/careers',
-      '/showcase',
-      '/what-we-teach',
-      '/login',
-      '/forgot-password',
-      '/reset-password',
-    ]
-    if (publicPages.includes(path)) {
-      return NextResponse.next()
-    }
-    // Redirect to login for protected pages
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
