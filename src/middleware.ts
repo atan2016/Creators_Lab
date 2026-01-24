@@ -32,10 +32,23 @@ export async function middleware(request: NextRequest) {
 
   // For page routes, check authentication
   if (!session) {
-    // Allow login and forgot password pages (registration is admin-only now)
-    if (path === '/login' || path === '/forgot-password' || path === '/reset-password') {
+    // Allow public pages (Creators_Lab marketing pages)
+    const publicPages = [
+      '/',
+      '/about',
+      '/resources',
+      '/events',
+      '/careers',
+      '/showcase',
+      '/what-we-teach',
+      '/login',
+      '/forgot-password',
+      '/reset-password',
+    ]
+    if (publicPages.includes(path)) {
       return NextResponse.next()
     }
+    // Redirect to login for protected pages
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
