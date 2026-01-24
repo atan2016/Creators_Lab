@@ -52,59 +52,59 @@ export async function middleware(request: NextRequest) {
       session = null
     }
 
-  // For other API routes, require authentication
-  if (path.startsWith('/api/')) {
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
-    }
-    return NextResponse.next()
-  }
-
-  // For protected page routes, redirect to login if no session
-  if (!session) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
-
-  const role = (session.user as any)?.role
-  const mustResetPassword = (session.user as any)?.mustResetPassword
-
-  if (mustResetPassword) {
+    // For other API routes, require authentication
     if (path.startsWith('/api/')) {
-      if (path.startsWith('/api/auth/reset-password')) {
-        return NextResponse.next()
+      if (!session) {
+        return NextResponse.json(
+          { error: 'Unauthorized' },
+          { status: 401 }
+        )
       }
-      return NextResponse.json(
-        { error: 'Password reset required' },
-        { status: 403 }
-      )
+      return NextResponse.next()
     }
-    if (path !== '/reset-password') {
-      return NextResponse.redirect(new URL('/reset-password', request.url))
+
+    // For protected page routes, redirect to login if no session
+    if (!session) {
+      return NextResponse.redirect(new URL('/login', request.url))
     }
-  }
 
-  // Restrict /register route to admins only
-  if (path === '/register' && role !== 'ADMIN') {
-    return NextResponse.redirect(new URL('/', request.url))
-  }
+    const role = (session.user as any)?.role
+    const mustResetPassword = (session.user as any)?.mustResetPassword
 
-  // Admin routes
-  if (path.startsWith('/admin') && role !== 'ADMIN') {
-    return NextResponse.redirect(new URL('/', request.url))
-  }
+    if (mustResetPassword) {
+      if (path.startsWith('/api/')) {
+        if (path.startsWith('/api/auth/reset-password')) {
+          return NextResponse.next()
+        }
+        return NextResponse.json(
+          { error: 'Password reset required' },
+          { status: 403 }
+        )
+      }
+      if (path !== '/reset-password') {
+        return NextResponse.redirect(new URL('/reset-password', request.url))
+      }
+    }
 
-  // Teacher routes
-  if (path.startsWith('/teacher') && role !== 'TEACHER' && role !== 'ADMIN') {
-    return NextResponse.redirect(new URL('/', request.url))
-  }
+    // Restrict /register route to admins only
+    if (path === '/register' && role !== 'ADMIN') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
 
-  // Student routes
-  if (path.startsWith('/student') && role !== 'STUDENT' && role !== 'ADMIN') {
-    return NextResponse.redirect(new URL('/', request.url))
-  }
+    // Admin routes
+    if (path.startsWith('/admin') && role !== 'ADMIN') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    // Teacher routes
+    if (path.startsWith('/teacher') && role !== 'TEACHER' && role !== 'ADMIN') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    // Student routes
+    if (path.startsWith('/student') && role !== 'STUDENT' && role !== 'ADMIN') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
 
     return NextResponse.next()
   } catch (error) {
