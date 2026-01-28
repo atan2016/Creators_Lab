@@ -98,7 +98,16 @@ export default function SyllabusSection({ classroomId, isTeacher }: SyllabusSect
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="font-semibold text-gray-900">
-                      {format(new Date(entry.date + 'T00:00:00'), 'EEEE, MMMM d, yyyy')}
+                      {(() => {
+                        // Parse date and extract YYYY-MM-DD to avoid timezone issues
+                        const date = new Date(entry.date)
+                        const year = date.getUTCFullYear()
+                        const month = date.getUTCMonth()
+                        const day = date.getUTCDate()
+                        // Create a new date in local timezone with the same year/month/day
+                        const localDate = new Date(year, month, day)
+                        return format(localDate, 'EEEE, MMMM d, yyyy')
+                      })()}
                     </div>
                     <div className="mt-2 text-sm text-gray-700">
                       <div className="font-medium mb-1">Activities:</div>
@@ -170,12 +179,13 @@ interface SyllabusEntryModalProps {
 }
 
 function SyllabusEntryModal({ classroomId, entry, onClose, onSuccess }: SyllabusEntryModalProps) {
-  // Format date for input field - use local date to avoid timezone issues
+  // Format date for input field - extract date components to avoid timezone issues
   const formatDateForInput = (dateString: string) => {
-    const date = new Date(dateString + 'T00:00:00')
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
+    const date = new Date(dateString)
+    // Use UTC methods to get the date components as stored
+    const year = date.getUTCFullYear()
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0')
+    const day = String(date.getUTCDate()).padStart(2, '0')
     return `${year}-${month}-${day}`
   }
 
