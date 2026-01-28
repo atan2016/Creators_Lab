@@ -304,28 +304,31 @@ export default function UserManager() {
                       type={showPassword ? 'text' : 'password'}
                       required
                       minLength={6}
-                      className="mt-1 block w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                      className="mt-1 block w-full px-3 py-2 pr-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       placeholder="At least 6 characters"
                     />
                     <button
                       type="button"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                      className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        setShowPassword((prev) => !prev)
+                      }}
+                      className="absolute inset-y-0 right-0 flex items-center justify-center px-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 z-10"
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      tabIndex={0}
                     >
                       {showPassword ? (
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M3 3l18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M10.6 10.6A3 3 0 0012 15a3 3 0 002.4-4.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M6.1 6.1C4.1 7.5 2.6 9.5 2 12c1.7 4.7 6.5 8 10 8 1.6 0 3.2-.5 4.6-1.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M9.9 4.4C10.6 4.2 11.3 4 12 4c3.5 0 8.3 3.3 10 8-.5 1.4-1.3 2.8-2.3 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                          <line x1="1" y1="1" x2="23" y2="23" />
                         </svg>
                       ) : (
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M2 12c1.7-4.7 6.5-8 10-8s8.3 3.3 10 8c-1.7 4.7-6.5 8-10 8s-8.3-3.3-10-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                          <circle cx="12" cy="12" r="3" />
                         </svg>
                       )}
                     </button>
