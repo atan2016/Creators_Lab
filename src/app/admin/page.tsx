@@ -82,7 +82,13 @@ export default async function AdminDashboard() {
               <p className="mt-2 text-sm text-gray-500">
                 View and manage all classrooms in the system.
               </p>
-              <div className="mt-4">
+              <div className="mt-4 flex gap-3">
+                <Link
+                  href="/teacher/classrooms/new"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+                >
+                  Create New Classroom
+                </Link>
                 <Link
                   href="/teacher"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
