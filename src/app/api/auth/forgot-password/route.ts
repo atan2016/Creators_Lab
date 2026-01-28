@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendEmail({
         to: email,
-        subject: 'Your new password - Afterschool LMS',
+        subject: 'Your new password - Yamas',
         text: `Your password has been reset. Your new temporary password is: ${tempPassword}\n\nPlease log in and change your password as soon as possible.`,
         html: `
           <p>Your password has been reset.</p>

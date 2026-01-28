@@ -6,9 +6,10 @@ interface AddStudentModalProps {
   classroomId: string
   onClose: () => void
   onSuccess: () => void
+  memberType?: 'STUDENT' | 'TEACHER'
 }
 
-export default function AddStudentModal({ classroomId, onClose, onSuccess }: AddStudentModalProps) {
+export default function AddStudentModal({ classroomId, onClose, onSuccess, memberType = 'STUDENT' }: AddStudentModalProps) {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -34,7 +35,7 @@ export default function AddStudentModal({ classroomId, onClose, onSuccess }: Add
       const data = await response.json()
 
       if (!response.ok) {
-        setError(data.error || 'Failed to add student')
+        setError(data.error || `Failed to add ${memberType.toLowerCase()}`)
         return
       }
 
@@ -47,10 +48,19 @@ export default function AddStudentModal({ classroomId, onClose, onSuccess }: Add
     }
   }
 
+  const isTeacher = memberType === 'TEACHER'
+  const title = isTeacher ? 'Add Teacher to Classroom' : 'Add Student to Classroom'
+  const label = isTeacher ? 'Teacher Email *' : 'Student Email *'
+  const placeholder = isTeacher ? 'teacher@gmail.com' : 'student@example.com'
+  const helpText = isTeacher
+    ? 'Enter the email address of the teacher account. The teacher must already be registered in the system and use a Gmail address.'
+    : 'Enter the email address of the student account. The student must already be registered in the system.'
+  const buttonText = isTeacher ? 'Add Teacher' : 'Add Student'
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Add Student to Classroom</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -61,19 +71,19 @@ export default function AddStudentModal({ classroomId, onClose, onSuccess }: Add
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Student Email *
+              {label}
             </label>
             <input
               id="email"
               type="email"
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              placeholder="student@example.com"
+              placeholder={placeholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <p className="mt-1 text-xs text-gray-500">
-              Enter the email address of the student account. The student must already be registered in the system.
+              {helpText}
             </p>
           </div>
 
@@ -88,9 +98,9 @@ export default function AddStudentModal({ classroomId, onClose, onSuccess }: Add
             <button
               type="submit"
               disabled={loading}
-              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`${isTeacher ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white py-2 px-4 rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed`}
             >
-              {loading ? 'Adding...' : 'Add Student'}
+              {loading ? 'Adding...' : buttonText}
             </button>
           </div>
         </form>

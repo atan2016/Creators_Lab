@@ -56,11 +56,20 @@ export async function POST(
       )
     }
 
-    // Verify user is a student
-    if (student.role !== 'STUDENT') {
+    // Allow students and teachers to be added
+    // Admins can add teachers, regular teachers can only add students
+    if (student.role !== 'STUDENT' && student.role !== 'TEACHER') {
       return NextResponse.json(
-        { error: 'Only students can be added to classrooms' },
+        { error: 'Only students and teachers can be added to classrooms' },
         { status: 400 }
+      )
+    }
+
+    // Non-admin teachers can only add students
+    if ((session.user as any).role !== 'ADMIN' && student.role === 'TEACHER') {
+      return NextResponse.json(
+        { error: 'Only admins can add teachers to classrooms' },
+        { status: 403 }
       )
     }
 
