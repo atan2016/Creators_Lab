@@ -95,10 +95,17 @@ export async function POST(
       )
     }
 
+    // Parse date as local date (not UTC) to avoid timezone issues
+    // If date is in YYYY-MM-DD format, append T00:00:00 to treat as local midnight
+    const dateString = typeof date === 'string' && date.match(/^\d{4}-\d{2}-\d{2}$/)
+      ? `${date}T00:00:00`
+      : date
+    const parsedDate = new Date(dateString)
+
     const entry = await prisma.syllabusEntry.create({
       data: {
         classroomId: id,
-        date: new Date(date),
+        date: parsedDate,
         activities,
         prework: prework || null,
         lectureInfo: lectureInfo || null,
