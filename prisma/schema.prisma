@@ -42,6 +42,7 @@ model User {
   forumPosts    ForumPost[]
   homeworkSubmissions HomeworkSubmission[]
   googleDriveLinks GoogleDriveLink[]
+  schedules     Schedule[]
 }
 
 model Classroom {
@@ -60,6 +61,7 @@ model Classroom {
   resources   Resource[]
   forumPosts  ForumPost[]
   syllabusEntries SyllabusEntry[]
+  schedules   Schedule[]
 }
 
 model ClassroomMember {
@@ -177,4 +179,45 @@ model GoogleDriveLink {
   createdBy   User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
 
   @@index([createdById])
+}
+
+model Location {
+  id        String    @id @default(cuid())
+  name      String
+  address   String
+  city      String
+  state     String
+  zipCode   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  schedules Schedule[]
+
+  @@index([name])
+}
+
+model Schedule {
+  id          String    @id @default(cuid())
+  instructorId String
+  classroomId String
+  locationId  String
+  dayOfWeek   Int?      // 0-6, Sunday-Saturday, for recurring schedules
+  startTime   DateTime  // For one-time events or start of recurring period
+  endTime     DateTime  // For one-time events or end of recurring period
+  isRecurring Boolean   @default(false)
+  startDate   DateTime? // When recurring schedule starts
+  endDate     DateTime? // When recurring schedule ends
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  instructor  User      @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+  classroom   Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  location    Location  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@index([instructorId])
+  @@index([locationId])
+  @@index([classroomId])
+  @@index([dayOfWeek, startTime, endTime])
 }
