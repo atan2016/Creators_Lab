@@ -77,16 +77,22 @@ export async function POST(request: NextRequest) {
       })
     } catch (emailError: any) {
       console.error('Failed to send welcome email:', emailError)
+      // Return the password so admin can share it manually
       return NextResponse.json(
         {
           user,
+          password: tempPassword,
           warning: 'User created, but failed to send email. Please share the temporary password manually.',
         },
         { status: 201 }
       )
     }
 
-    return NextResponse.json({ user }, { status: 201 })
+    // Always return the password so admin can view it
+    return NextResponse.json({ 
+      user, 
+      password: tempPassword 
+    }, { status: 201 })
   } catch (error: any) {
     console.error('Registration error:', error)
     return NextResponse.json(

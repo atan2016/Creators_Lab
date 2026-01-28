@@ -17,7 +17,7 @@ interface BulkResult {
   success: number
   errors: number
   results: {
-    success: Array<{ name: string; email: string; role: string }>
+    success: Array<{ name: string; email: string; role: string; password?: string }>
     errors: Array<{ user: { name: string; email: string; role: string }; error: string }>
   }
 }
@@ -88,13 +88,18 @@ export default function UserManager() {
         return
       }
 
-      setSuccess('User created successfully!')
+      // Display the password if it was auto-generated
+      const passwordMessage = data.password 
+        ? `User created successfully! Password: ${data.password}`
+        : 'User created successfully!'
+      
+      setSuccess(passwordMessage)
       setFormData({ name: '', email: '', password: '', role: 'TEACHER' })
       setTimeout(() => {
         setShowModal(false)
         setSuccess('')
         router.refresh()
-      }, 1500)
+      }, data.password ? 5000 : 1500) // Show longer if password is displayed
     } catch (err) {
       setError('An error occurred. Please try again.')
     } finally {
@@ -234,7 +239,12 @@ export default function UserManager() {
                 )}
                 {success && (
                   <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-                    {success}
+                    <div className="whitespace-pre-wrap break-words">{success}</div>
+                    {success.includes('Password:') && (
+                      <div className="mt-2 p-2 bg-white border border-green-300 rounded font-mono text-sm break-all">
+                        {success.split('Password: ')[1]}
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -388,17 +398,38 @@ export default function UserManager() {
                   </p>
                 </div>
 
-                {bulkResult && bulkResult.errors > 0 && (
-                  <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded">
-                    <p className="font-medium mb-2">Errors ({bulkResult.errors}):</p>
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                      {bulkResult.results.errors.map((err, idx) => (
-                        <li key={idx}>
-                          {err.user.name} ({err.user.email}): {err.error}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {bulkResult && (
+                  <>
+                    {bulkResult.success > 0 && (
+                      <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded mb-4">
+                        <p className="font-medium mb-2">Successfully Created ({bulkResult.success}):</p>
+                        <ul className="list-disc list-inside text-sm space-y-2">
+                          {bulkResult.results.success.map((user, idx) => (
+                            <li key={idx} className="break-words">
+                              <strong>{user.name}</strong> ({user.email}) - {user.role}
+                              {user.password && (
+                                <div className="ml-4 mt-1 p-2 bg-white border border-green-300 rounded font-mono text-xs break-all">
+                                  Password: {user.password}
+                                </div>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {bulkResult.errors > 0 && (
+                      <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded">
+                        <p className="font-medium mb-2">Errors ({bulkResult.errors}):</p>
+                        <ul className="list-disc list-inside text-sm space-y-1">
+                          {bulkResult.results.errors.map((err, idx) => (
+                            <li key={idx}>
+                              {err.user.name} ({err.user.email}): {err.error}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </>
                 )}
 
                 <div className="flex justify-end space-x-3 pt-4">

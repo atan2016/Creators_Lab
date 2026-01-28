@@ -127,7 +127,11 @@ export async function POST(request: NextRequest) {
           // Continue - user is created, email failure is logged
         }
 
-        results.success.push(userInput)
+        // Include password in success result so admin can view it
+        results.success.push({
+          ...userInput,
+          password: tempPassword,
+        })
       } catch (error: any) {
         results.errors.push({
           user: userInput,
