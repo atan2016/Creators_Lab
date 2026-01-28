@@ -26,6 +26,11 @@ export async function PUT(
     const userId = (session.user as any).id
     const role = (session.user as any).role
 
+    // Only teachers or admins can update syllabus entries
+    if (role !== 'ADMIN' && role !== 'TEACHER') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+
     // Check if user is creator, admin, or a teacher member
     const isCreator = classroom.creatorId === userId
     const isAdmin = role === 'ADMIN'
@@ -41,7 +46,7 @@ export async function PUT(
         },
       })
       
-      if (!membership || membership.role !== 'TEACHER') {
+      if (!membership) {
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
     }
@@ -115,9 +120,27 @@ export async function DELETE(
     const userId = (session.user as any).id
     const role = (session.user as any).role
 
-    // Only teacher/creator or admin can delete syllabus entries
-    if (classroom.creatorId !== userId && role !== 'ADMIN') {
+    // Only teachers or admins can delete syllabus entries
+    if (role !== 'ADMIN' && role !== 'TEACHER') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+
+    const isCreator = classroom.creatorId === userId
+    const isAdmin = role === 'ADMIN'
+
+    if (!isCreator && !isAdmin) {
+      const membership = await prisma.classroomMember.findUnique({
+        where: {
+          classroomId_userId: {
+            classroomId: id,
+            userId,
+          },
+        },
+      })
+
+      if (!membership) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+      }
     }
 
     const entry = await prisma.syllabusEntry.findUnique({

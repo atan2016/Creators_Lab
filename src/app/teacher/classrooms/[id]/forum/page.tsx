@@ -17,9 +17,6 @@ export default async function TeacherForumPage({ params }: { params: { id: strin
     where: { id: params.id },
     include: {
       members: {
-        where: {
-          role: 'TEACHER',
-        },
         select: {
           userId: true,
         },

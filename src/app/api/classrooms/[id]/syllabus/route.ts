@@ -80,6 +80,11 @@ export async function POST(
     const userId = (session.user as any).id
     const role = (session.user as any).role
 
+    // Only teachers or admins can create syllabus entries
+    if (role !== 'ADMIN' && role !== 'TEACHER') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+
     // Check if user is creator, admin, or a teacher member
     const isCreator = classroom.creatorId === userId
     const isAdmin = role === 'ADMIN'
@@ -95,7 +100,7 @@ export async function POST(
         },
       })
       
-      if (!membership || membership.role !== 'TEACHER') {
+      if (!membership) {
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
     }

@@ -115,7 +115,6 @@ export async function GET(request: NextRequest) {
       const memberClassrooms = await prisma.classroomMember.findMany({
         where: {
           userId,
-          role: 'TEACHER',
         },
         include: {
           classroom: {

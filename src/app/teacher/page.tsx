@@ -59,7 +59,6 @@ export default async function TeacherDashboard() {
     const memberClassrooms = await prisma.classroomMember.findMany({
       where: {
         userId,
-        role: 'TEACHER',
       },
       include: {
         classroom: {

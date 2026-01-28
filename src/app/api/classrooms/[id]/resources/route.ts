@@ -59,7 +59,7 @@ export async function POST(
         },
       })
       
-      if (!membership || membership.role !== 'TEACHER') {
+      if (!membership) {
         return NextResponse.json(
           { error: 'Unauthorized' },
           { status: 403 }

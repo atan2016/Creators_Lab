@@ -59,9 +59,7 @@ export default async function TeacherClassroomPage({ params }: { params: { id: s
   // Check if user is creator, admin, or a teacher member of this classroom
   const isCreator = classroom.creatorId === userId
   const isAdmin = role === 'ADMIN'
-  const isMember = classroom.members.some(
-    (m: any) => m.userId === userId && m.role === 'TEACHER'
-  )
+  const isMember = classroom.members.some((m: any) => m.userId === userId)
 
   if (!isCreator && !isAdmin && !isMember) {
     redirect('/teacher')
