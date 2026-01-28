@@ -20,6 +20,36 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Ensure all input fields have visible text */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+  color: #111827 !important;
+}
+
+input[type="text"]:not(:placeholder-shown),
+input[type="email"]:not(:placeholder-shown),
+input[type="password"]:not(:placeholder-shown),
+input[type="number"]:not(:placeholder-shown),
+input[type="url"]:not(:placeholder-shown),
+input[type="search"]:not(:placeholder-shown),
+input[type="tel"]:not(:placeholder-shown),
+textarea:not(:placeholder-shown) {
+  color: #111827 !important;
+}
+
+/* Override Tailwind's text-gray classes for inputs */
+input.text-gray-900,
+textarea.text-gray-900 {
+  color: #111827 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
