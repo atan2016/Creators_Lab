@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-// POST - Add a student to a classroom
+// POST - Add a student or teacher to a classroom
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -39,17 +39,17 @@ export async function POST(
     const userId = (session.user as any).id
     if (classroom.creatorId !== userId && (session.user as any).role !== 'ADMIN') {
       return NextResponse.json(
-        { error: 'Unauthorized. Only the classroom creator can add students.' },
+        { error: 'Unauthorized. Only the classroom creator or admin can add members.' },
         { status: 403 }
       )
     }
 
     // Find the user by email
-    const student = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { email },
     })
 
-    if (!student) {
+    if (!user) {
       return NextResponse.json(
         { error: 'User with this email not found' },
         { status: 404 }
@@ -58,7 +58,7 @@ export async function POST(
 
     // Allow students and teachers to be added
     // Admins can add teachers, regular teachers can only add students
-    if (student.role !== 'STUDENT' && student.role !== 'TEACHER') {
+    if (user.role !== 'STUDENT' && user.role !== 'TEACHER') {
       return NextResponse.json(
         { error: 'Only students and teachers can be added to classrooms' },
         { status: 400 }
@@ -66,7 +66,7 @@ export async function POST(
     }
 
     // Non-admin teachers can only add students
-    if ((session.user as any).role !== 'ADMIN' && student.role === 'TEACHER') {
+    if ((session.user as any).role !== 'ADMIN' && user.role === 'TEACHER') {
       return NextResponse.json(
         { error: 'Only admins can add teachers to classrooms' },
         { status: 403 }
@@ -78,23 +78,23 @@ export async function POST(
       where: {
         classroomId_userId: {
           classroomId: id,
-          userId: student.id,
+          userId: user.id,
         },
       },
     })
 
     if (existingMember) {
       return NextResponse.json(
-        { error: 'Student is already a member of this classroom' },
+        { error: 'User is already a member of this classroom' },
         { status: 400 }
       )
     }
 
-    // Add student to classroom
+    // Add user to classroom
     await prisma.classroomMember.create({
       data: {
         classroomId: id,
-        userId: student.id,
+        userId: user.id,
       },
     })
 
