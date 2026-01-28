@@ -401,3 +401,32 @@ select:focus {
     height: 80px !important;
   }
 }
+
+/* Search icon styles - ensure proper sizing */
+.search-icon {
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--green-700);
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon:hover {
+  color: var(--green-900);
+}
+
+.search-icon:focus {
+  outline: 2px solid var(--green-700);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.search-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}

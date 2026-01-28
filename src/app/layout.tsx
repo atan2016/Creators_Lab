@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./creators-lab-styles.css";
+import "../public/search.css";
 import SessionProvider from "@/components/providers/SessionProvider";
 
 export const metadata: Metadata = {

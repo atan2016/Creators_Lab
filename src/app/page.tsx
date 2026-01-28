@@ -23,7 +23,6 @@ export default function Home() {
           gtag('config', 'G-85L4ZPPPP0');
         `}
       </Script>
-      <link rel="stylesheet" href="/search.css" />
 
       <header>
         <div className="container nav" style={{ justifyContent: 'space-between' }}>
