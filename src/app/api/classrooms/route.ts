@@ -92,9 +92,16 @@ export async function GET(request: NextRequest) {
         orderBy: { createdAt: 'desc' },
       })
     } else if (role === 'TEACHER') {
-      classrooms = await prisma.classroom.findMany({
+      // Get classrooms where teacher is creator
+      const createdClassrooms = await prisma.classroom.findMany({
         where: { creatorId: userId },
         include: {
+          creator: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
           _count: {
             select: {
               members: true,
@@ -102,8 +109,46 @@ export async function GET(request: NextRequest) {
             },
           },
         },
-        orderBy: { createdAt: 'desc' },
       })
+
+      // Get classrooms where teacher is a member
+      const memberClassrooms = await prisma.classroomMember.findMany({
+        where: {
+          userId,
+          role: 'TEACHER',
+        },
+        include: {
+          classroom: {
+            include: {
+              creator: {
+                select: {
+                  name: true,
+                  email: true,
+                },
+              },
+              _count: {
+                select: {
+                  members: true,
+                  resources: true,
+                },
+              },
+            },
+          },
+        },
+      })
+
+      // Combine and deduplicate (in case teacher is both creator and member)
+      const classroomMap = new Map()
+      createdClassrooms.forEach(c => classroomMap.set(c.id, c))
+      memberClassrooms.forEach(m => {
+        if (!classroomMap.has(m.classroom.id)) {
+          classroomMap.set(m.classroom.id, m.classroom)
+        }
+      })
+
+      classrooms = Array.from(classroomMap.values()).sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      )
     } else {
       const memberships = await prisma.classroomMember.findMany({
         where: { userId },
