@@ -72,12 +72,6 @@ export default function UserManager() {
       return
     }
 
-    // Optional: Validate Gmail for teachers
-    if (formData.role === 'TEACHER' && !formData.email.endsWith('@gmail.com')) {
-      setError('Teachers must use a Gmail address')
-      return
-    }
-
     setLoading(true)
 
     try {
@@ -269,13 +263,8 @@ export default function UserManager() {
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder={formData.role === 'TEACHER' ? 'teacher@gmail.com' : 'student@example.com'}
-                  />
-                  {formData.role === 'TEACHER' && (
-                    <p className="mt-1 text-xs text-gray-500">
-                      Teachers must use a Gmail address for Google Drive access
-                    </p>
-                  )}
+                  placeholder={formData.role === 'TEACHER' ? 'teacher@example.com' : 'student@example.com'}
+                />
                 </div>
 
                 <div>
@@ -390,12 +379,12 @@ export default function UserManager() {
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono text-sm"
                     value={bulkInput}
                     onChange={(e) => setBulkInput(e.target.value)}
-                    placeholder="John Doe,john@gmail.com,TEACHER&#10;Jane Smith,jane@gmail.com,TEACHER&#10;Bob Johnson,bob@example.com,STUDENT&#10;&#10;Or without role (uses default):&#10;Alice Brown,alice@gmail.com"
+                    placeholder="John Doe,john@example.com,TEACHER&#10;Jane Smith,jane@example.com,TEACHER&#10;Bob Johnson,bob@example.com,STUDENT&#10;&#10;Or without role (uses default):&#10;Alice Brown,alice@example.com"
                   />
                   <p className="mt-1 text-xs text-gray-500">
                     Format: name,email,role (one per line). Role is optional - if omitted, uses the default role above.
                     <br />
-                    Example: John Doe,john@gmail.com,TEACHER
+                    Example: John Doe,john@example.com,TEACHER
                   </p>
                 </div>
 

@@ -51,9 +51,9 @@ export default function AddStudentModal({ classroomId, onClose, onSuccess, membe
   const isTeacher = memberType === 'TEACHER'
   const title = isTeacher ? 'Add Teacher to Classroom' : 'Add Student to Classroom'
   const label = isTeacher ? 'Teacher Email *' : 'Student Email *'
-  const placeholder = isTeacher ? 'teacher@gmail.com' : 'student@example.com'
+  const placeholder = isTeacher ? 'teacher@example.com' : 'student@example.com'
   const helpText = isTeacher
-    ? 'Enter the email address of the teacher account. The teacher must already be registered in the system and use a Gmail address.'
+    ? 'Enter the email address of the teacher account. The teacher must already be registered in the system.'
     : 'Enter the email address of the student account. The student must already be registered in the system.'
   const buttonText = isTeacher ? 'Add Teacher' : 'Add Student'
 

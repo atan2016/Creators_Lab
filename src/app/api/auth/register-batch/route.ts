@@ -70,14 +70,6 @@ export async function POST(request: NextRequest) {
         continue
       }
 
-      // Validate Gmail for teachers
-      if (userRole === 'TEACHER' && !email.endsWith('@gmail.com')) {
-        results.errors.push({
-          user: userInput,
-          error: 'Teachers must use a Gmail address',
-        })
-        continue
-      }
 
       // Check if user already exists
       try {
