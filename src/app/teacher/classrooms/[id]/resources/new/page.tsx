@@ -45,7 +45,7 @@ export default function NewResourcePage({ params }: { params: { id: string } }) 
     }
 
     if (formData.type === 'GOOGLE_DRIVE_LINK' && !formData.googleDriveUrl) {
-      setError('Google Drive URL is required for Google Drive link resources')
+      setError('Document Drive URL is required for Document Drive link resources')
       return
     }
 
@@ -130,7 +130,7 @@ export default function NewResourcePage({ params }: { params: { id: string } }) 
                   <option value="LESSON_PLAN">Lesson Plan</option>
                   <option value="HOMEWORK">Homework</option>
                   <option value="GITHUB_LINK">GitHub Link</option>
-                  <option value="GOOGLE_DRIVE_LINK">Google Drive Link</option>
+                  <option value="GOOGLE_DRIVE_LINK">Document Drive Link</option>
                 </select>
               </div>
 
@@ -167,11 +167,11 @@ export default function NewResourcePage({ params }: { params: { id: string } }) 
               ) : formData.type === 'GOOGLE_DRIVE_LINK' ? (
                 <div>
                   <label htmlFor="googleDriveUrl" className="block text-sm font-medium text-gray-700">
-                    Google Drive File/Folder URL *
+                    Document Drive File/Folder URL *
                   </label>
                   {classroomDriveUrl && (
                     <div className="mb-3 p-3 bg-blue-50 rounded border border-blue-200">
-                      <p className="text-sm font-medium text-gray-900 mb-1">Classroom Google Drive Folder:</p>
+                      <p className="text-sm font-medium text-gray-900 mb-1">Classroom Document Drive Folder:</p>
                       <a
                         href={classroomDriveUrl}
                         target="_blank"
@@ -181,14 +181,14 @@ export default function NewResourcePage({ params }: { params: { id: string } }) 
                         {classroomDriveUrl}
                       </a>
                       <p className="mt-2 text-xs text-gray-600">
-                        Copy a file or folder URL from the classroom's Google Drive folder above, or paste any Google Drive URL below.
+                        Copy a file or folder URL from the classroom's Document Drive folder above, or paste any Document Drive URL below.
                       </p>
                     </div>
                   )}
                   {!classroomDriveUrl && (
                     <div className="mb-3 p-3 bg-yellow-50 rounded border border-yellow-200">
                       <p className="text-sm text-yellow-800">
-                        No Google Drive folder is linked to this classroom. Please add a Google Drive folder link in the classroom settings first.
+                        No Document Drive folder is linked to this classroom. Please add a Document Drive folder link in the classroom settings first.
                       </p>
                     </div>
                   )}
@@ -203,7 +203,7 @@ export default function NewResourcePage({ params }: { params: { id: string } }) 
                     onChange={(e) => setFormData({ ...formData, googleDriveUrl: e.target.value })}
                   />
                   <p className="mt-1 text-xs text-gray-500">
-                    Paste a Google Drive file or folder URL. Make sure you have access to the file/folder.
+                    Paste a Document Drive file or folder URL. Make sure you have access to the file/folder.
                   </p>
                 </div>
               ) : (

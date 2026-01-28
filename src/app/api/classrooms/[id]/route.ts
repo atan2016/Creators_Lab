@@ -178,10 +178,10 @@ export async function PUT(
       )
     }
 
-    // Validate Google Drive URL if provided
+    // Validate Document Drive URL if provided
     if (googleDriveUrl !== undefined && googleDriveUrl && !validateGoogleDriveUrl(googleDriveUrl)) {
       return NextResponse.json(
-        { error: 'Invalid Google Drive URL format' },
+        { error: 'Invalid Document Drive URL format' },
         { status: 400 }
       )
     }

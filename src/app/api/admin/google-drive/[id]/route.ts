@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { validateGoogleDriveUrl } from '@/lib/googledrive'
 
-// PUT - Update Google Drive link
+// PUT - Update Document Drive link
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -20,7 +20,7 @@ export async function PUT(
     })
 
     if (!link) {
-      return NextResponse.json({ error: 'Google Drive link not found' }, { status: 404 })
+      return NextResponse.json({ error: 'Document Drive link not found' }, { status: 404 })
     }
 
     const body = await request.json()
@@ -35,7 +35,7 @@ export async function PUT(
 
     if (!validateGoogleDriveUrl(driveUrl)) {
       return NextResponse.json(
-        { error: 'Invalid Google Drive URL format' },
+        { error: 'Invalid Document Drive URL format' },
         { status: 400 }
       )
     }
@@ -59,7 +59,7 @@ export async function PUT(
   }
 }
 
-// DELETE - Delete Google Drive link
+// DELETE - Delete Document Drive link
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -76,7 +76,7 @@ export async function DELETE(
     })
 
     if (!link) {
-      return NextResponse.json({ error: 'Google Drive link not found' }, { status: 404 })
+      return NextResponse.json({ error: 'Document Drive link not found' }, { status: 404 })
     }
 
     await prisma.googleDriveLink.delete({

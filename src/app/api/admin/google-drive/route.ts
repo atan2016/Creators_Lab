@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { validateGoogleDriveUrl } from '@/lib/googledrive'
 
-// GET - List all Google Drive links
+// GET - List all Document Drive links
 export async function GET(request: NextRequest) {
   try {
     const session = await auth()
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST - Create new Google Drive link
+// POST - Create new Document Drive link
 export async function POST(request: NextRequest) {
   try {
     const session = await auth()
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
     if (!validateGoogleDriveUrl(driveUrl)) {
       return NextResponse.json(
-        { error: 'Invalid Google Drive URL format' },
+        { error: 'Invalid Document Drive URL format' },
         { status: 400 }
       )
     }

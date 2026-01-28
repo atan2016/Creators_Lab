@@ -20,7 +20,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
     setError('')
 
     if (driveUrl && !driveUrl.match(/drive\.google\.com/)) {
-      setError('Please enter a valid Google Drive URL')
+      setError('Please enter a valid Document Drive URL')
       return
     }
 
@@ -36,7 +36,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
       const data = await response.json()
 
       if (!response.ok) {
-        setError(data.error || 'Failed to update Google Drive link')
+        setError(data.error || 'Failed to update Document Drive link')
         return
       }
 
@@ -53,7 +53,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
     <>
       <div className="bg-white shadow rounded-lg p-6 mb-6">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-lg font-semibold text-gray-900">Google Drive Folder</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Document Drive Folder</h3>
           <button
             onClick={() => setShowModal(true)}
             className="text-sm text-blue-600 hover:text-blue-700"
@@ -72,12 +72,12 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
               {currentUrl}
             </a>
             <p className="mt-2 text-xs text-gray-500">
-              This is the Google Drive folder for this classroom. Teachers can link resources from this folder.
+              This is the Document Drive folder for this classroom. Teachers can link resources from this folder.
             </p>
           </div>
         ) : (
           <p className="text-sm text-gray-500">
-            No Google Drive folder linked. Click "Add Link" to add one.
+            No Document Drive folder linked. Click "Add Link" to add one.
           </p>
         )}
       </div>
@@ -86,7 +86,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              {currentUrl ? 'Edit Google Drive Link' : 'Add Google Drive Link'}
+              {currentUrl ? 'Edit Document Drive Link' : 'Add Document Drive Link'}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -98,7 +98,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
 
               <div>
                 <label htmlFor="driveUrl" className="block text-sm font-medium text-gray-700">
-                  Google Drive Folder URL
+                  Document Drive Folder URL
                 </label>
                 <input
                   id="driveUrl"
@@ -109,7 +109,7 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
                   onChange={(e) => setDriveUrl(e.target.value)}
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  Enter the Google Drive folder URL for this classroom. Make sure you've shared this folder with the teacher's Gmail account.
+                  Enter the Document Drive folder URL for this classroom. Make sure you've shared this folder with the teacher's email account.
                 </p>
               </div>
 

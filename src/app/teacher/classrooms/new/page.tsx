@@ -86,7 +86,7 @@ export default function NewClassroomPage() {
 
               <div>
                 <label htmlFor="googleDriveUrl" className="block text-sm font-medium text-gray-700">
-                  Google Drive Folder URL (Optional)
+                  Document Drive Folder URL (Optional)
                 </label>
                 <input
                   id="googleDriveUrl"
@@ -98,7 +98,7 @@ export default function NewClassroomPage() {
                   onChange={(e) => setFormData({ ...formData, googleDriveUrl: e.target.value })}
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  Link to the Google Drive folder for this classroom. Make sure you've shared this folder with the teacher's Gmail account.
+                  Link to the Document Drive folder for this classroom. Make sure you've shared this folder with the teacher's email account.
                 </p>
               </div>
             </div>

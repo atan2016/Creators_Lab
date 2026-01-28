@@ -72,7 +72,7 @@ export default async function AdminDashboard() {
           {/* User Management */}
           <UserManager />
 
-          {/* Google Drive Links */}
+          {/* Document Drive Links */}
           <GoogleDriveManager />
 
           {/* Classrooms Link */}

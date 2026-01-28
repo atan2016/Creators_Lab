@@ -84,7 +84,7 @@ export default async function TeacherClassroomPage({ params }: { params: { id: s
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-6">
-              {/* Google Drive Link */}
+              {/* Document Drive Link */}
               <GoogleDriveLinkEditor classroomId={classroom.id} currentUrl={classroom.googleDriveUrl} />
 
               {/* Quick Stats */}

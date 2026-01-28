@@ -68,7 +68,7 @@ export default function GoogleDriveManager() {
       const data = await response.json()
 
       if (!response.ok) {
-        setError(data.error || 'Failed to save Google Drive link')
+        setError(data.error || 'Failed to save Document Drive link')
         return
       }
 
@@ -82,7 +82,7 @@ export default function GoogleDriveManager() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this Google Drive link?')) {
+    if (!confirm('Are you sure you want to delete this Document Drive link?')) {
       return
     }
 
@@ -126,7 +126,7 @@ export default function GoogleDriveManager() {
     <>
       <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">
         <div className="px-4 py-5 sm:px-6 flex justify-between items-center">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">Google Drive Links</h3>
+          <h3 className="text-lg leading-6 font-medium text-gray-900">Document Drive Links</h3>
           <button
             onClick={() => {
               setEditingLink(null)
@@ -135,12 +135,12 @@ export default function GoogleDriveManager() {
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
           >
-            Add Google Drive Link
+            Add Document Drive Link
           </button>
         </div>
         {links.length === 0 ? (
           <div className="px-4 py-5 sm:px-6">
-            <p className="text-gray-500 text-sm">No Google Drive links yet. Add one to get started.</p>
+            <p className="text-gray-500 text-sm">No Document Drive links yet. Add one to get started.</p>
           </div>
         ) : (
           <ul className="divide-y divide-gray-200">
@@ -193,7 +193,7 @@ export default function GoogleDriveManager() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4">
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              {editingLink ? 'Edit Google Drive Link' : 'Add Google Drive Link'}
+              {editingLink ? 'Edit Document Drive Link' : 'Add Document Drive Link'}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -220,7 +220,7 @@ export default function GoogleDriveManager() {
 
               <div>
                 <label htmlFor="driveUrl" className="block text-sm font-medium text-gray-700">
-                  Google Drive URL *
+                  Document Drive URL *
                 </label>
                 <input
                   id="driveUrl"
@@ -232,7 +232,7 @@ export default function GoogleDriveManager() {
                   placeholder="https://drive.google.com/drive/folders/..."
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  Paste the Google Drive folder URL. Make sure you've shared this folder with teachers outside the app.
+                  Paste the Document Drive folder URL. Make sure you've shared this folder with teachers outside the app.
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export default function GoogleDriveManager() {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Optional description for this Google Drive"
+                  placeholder="Optional description for this Document Drive"
                 />
               </div>
 

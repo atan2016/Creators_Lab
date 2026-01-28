@@ -83,17 +83,17 @@ export async function POST(
       }
     }
 
-    // Validate Google Drive URL if provided
+    // Validate Document Drive URL if provided
     if (type === 'GOOGLE_DRIVE_LINK') {
       if (!googleDriveUrl) {
         return NextResponse.json(
-          { error: 'Google Drive URL is required for Google Drive link resources' },
+          { error: 'Document Drive URL is required for Document Drive link resources' },
           { status: 400 }
         )
       }
       if (!validateGoogleDriveUrl(googleDriveUrl)) {
         return NextResponse.json(
-          { error: 'Invalid Google Drive URL format' },
+          { error: 'Invalid Document Drive URL format' },
           { status: 400 }
         )
       }
