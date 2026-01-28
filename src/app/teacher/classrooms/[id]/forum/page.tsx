@@ -15,10 +15,15 @@ export default async function TeacherForumPage({ params }: { params: { id: strin
 
   const classroom = await prisma.classroom.findUnique({
     where: { id: params.id },
-    select: {
-      id: true,
-      name: true,
-      creatorId: true,
+    include: {
+      members: {
+        where: {
+          role: 'TEACHER',
+        },
+        select: {
+          userId: true,
+        },
+      },
     },
   })
 
@@ -27,7 +32,14 @@ export default async function TeacherForumPage({ params }: { params: { id: strin
   }
 
   const userId = (session.user as any).id
-  if (classroom.creatorId !== userId && (session.user as any).role !== 'ADMIN') {
+  const role = (session.user as any).role
+
+  // Check if user is creator, admin, or a teacher member of this classroom
+  const isCreator = classroom.creatorId === userId
+  const isAdmin = role === 'ADMIN'
+  const isMember = classroom.members.some((m: any) => m.userId === userId)
+
+  if (!isCreator && !isAdmin && !isMember) {
     redirect('/teacher')
   }
 

@@ -14,25 +14,86 @@ export default async function TeacherDashboard() {
   const userId = (session.user as any).id
   const role = (session.user as any).role
 
-  // Admins can see all classrooms, teachers only see their own
-  const classrooms = await prisma.classroom.findMany({
-    where: role === 'ADMIN' ? {} : { creatorId: userId },
-    include: {
-      creator: {
-        select: {
-          name: true,
-          email: true,
+  // Admins can see all classrooms
+  // Teachers see classrooms they created OR classrooms they've been added to as members
+  let classrooms
+  if (role === 'ADMIN') {
+    classrooms = await prisma.classroom.findMany({
+      include: {
+        creator: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            members: true,
+            resources: true,
+          },
         },
       },
-      _count: {
-        select: {
-          members: true,
-          resources: true,
+      orderBy: { createdAt: 'desc' },
+    })
+  } else {
+    // Get classrooms where teacher is creator
+    const createdClassrooms = await prisma.classroom.findMany({
+      where: { creatorId: userId },
+      include: {
+        creator: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            members: true,
+            resources: true,
+          },
         },
       },
-    },
-    orderBy: { createdAt: 'desc' },
-  })
+    })
+
+    // Get classrooms where teacher is a member
+    const memberClassrooms = await prisma.classroomMember.findMany({
+      where: {
+        userId,
+        role: 'TEACHER',
+      },
+      include: {
+        classroom: {
+          include: {
+            creator: {
+              select: {
+                name: true,
+                email: true,
+              },
+            },
+            _count: {
+              select: {
+                members: true,
+                resources: true,
+              },
+            },
+          },
+        },
+      },
+    })
+
+    // Combine and deduplicate (in case teacher is both creator and member)
+    const classroomMap = new Map()
+    createdClassrooms.forEach(c => classroomMap.set(c.id, c))
+    memberClassrooms.forEach(m => {
+      if (!classroomMap.has(m.classroom.id)) {
+        classroomMap.set(m.classroom.id, m.classroom)
+      }
+    })
+
+    classrooms = Array.from(classroomMap.values()).sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+  }
 
   return (
     <Layout>

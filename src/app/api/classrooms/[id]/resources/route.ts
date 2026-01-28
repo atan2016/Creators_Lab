@@ -42,11 +42,29 @@ export async function POST(
     }
 
     const userId = (session.user as any).id
-    if (classroom.creatorId !== userId && (session.user as any).role !== 'ADMIN') {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 403 }
-      )
+    const role = (session.user as any).role
+
+    // Check if user is creator, admin, or a teacher member
+    const isCreator = classroom.creatorId === userId
+    const isAdmin = role === 'ADMIN'
+    
+    if (!isCreator && !isAdmin) {
+      // Check if teacher is a member
+      const membership = await prisma.classroomMember.findUnique({
+        where: {
+          classroomId_userId: {
+            classroomId: id,
+            userId,
+          },
+        },
+      })
+      
+      if (!membership || membership.role !== 'TEACHER') {
+        return NextResponse.json(
+          { error: 'Unauthorized' },
+          { status: 403 }
+        )
+      }
     }
 
     // Validate GitHub URL if provided

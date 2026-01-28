@@ -26,9 +26,24 @@ export async function PUT(
     const userId = (session.user as any).id
     const role = (session.user as any).role
 
-    // Only teacher/creator or admin can update syllabus entries
-    if (classroom.creatorId !== userId && role !== 'ADMIN') {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    // Check if user is creator, admin, or a teacher member
+    const isCreator = classroom.creatorId === userId
+    const isAdmin = role === 'ADMIN'
+    
+    if (!isCreator && !isAdmin) {
+      // Check if teacher is a member
+      const membership = await prisma.classroomMember.findUnique({
+        where: {
+          classroomId_userId: {
+            classroomId: id,
+            userId,
+          },
+        },
+      })
+      
+      if (!membership || membership.role !== 'TEACHER') {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+      }
     }
 
     const entry = await prisma.syllabusEntry.findUnique({

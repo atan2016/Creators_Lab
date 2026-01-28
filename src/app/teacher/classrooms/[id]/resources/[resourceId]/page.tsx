@@ -38,7 +38,23 @@ export default async function TeacherResourcePage({
   }
 
   const userId = (session.user as any).id
-  if (resource.classroom.creatorId !== userId && (session.user as any).role !== 'ADMIN') {
+  const role = (session.user as any).role
+
+  // Check if user is creator, admin, or a teacher member of this classroom
+  const isCreator = resource.classroom.creatorId === userId
+  const isAdmin = role === 'ADMIN'
+  
+  // Check if teacher is a member of the classroom
+  const classroomMembers = await prisma.classroomMember.findMany({
+    where: {
+      classroomId: resource.classroom.id,
+      userId,
+      role: 'TEACHER',
+    },
+  })
+  const isMember = classroomMembers.length > 0
+
+  if (!isCreator && !isAdmin && !isMember) {
     redirect('/teacher')
   }
 
