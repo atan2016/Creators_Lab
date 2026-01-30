@@ -60,6 +60,7 @@ export default function ScheduleManager() {
     classroomId: '',
     locationId: '',
     isRecurring: false,
+    recurrenceType: 'weekly', // 'daily' or 'weekly'
     dayOfWeek: '',
     startTime: '',
     endTime: '',
@@ -114,9 +115,15 @@ export default function ScheduleManager() {
       return
     }
 
-    if (formData.isRecurring && !formData.dayOfWeek) {
-      setError('Day of week is required for recurring schedules')
-      return
+    if (formData.isRecurring) {
+      if (!formData.startDate || !formData.endDate) {
+        setError('Start date and end date are required for recurring schedules')
+        return
+      }
+      if (formData.recurrenceType === 'weekly' && !formData.dayOfWeek) {
+        setError('Day of week is required for weekly recurring schedules')
+        return
+      }
     }
 
     // For recurring schedules, combine date and time
@@ -153,7 +160,7 @@ export default function ScheduleManager() {
           instructorId: formData.instructorId,
           classroomId: formData.classroomId,
           locationId: formData.locationId,
-          dayOfWeek: formData.isRecurring ? parseInt(formData.dayOfWeek) : null,
+          dayOfWeek: formData.isRecurring && formData.recurrenceType === 'weekly' ? parseInt(formData.dayOfWeek) : null,
           startTime,
           endTime,
           isRecurring: formData.isRecurring,
@@ -184,6 +191,7 @@ export default function ScheduleManager() {
       classroomId: '',
       locationId: '',
       isRecurring: false,
+      recurrenceType: 'weekly',
       dayOfWeek: '',
       startTime: '',
       endTime: '',
@@ -228,6 +236,7 @@ export default function ScheduleManager() {
       classroomId: schedule.classroomId,
       locationId: schedule.locationId,
       isRecurring: schedule.isRecurring,
+      recurrenceType: schedule.dayOfWeek === null ? 'daily' : 'weekly',
       dayOfWeek: schedule.dayOfWeek?.toString() || '',
       startTime: startTimeStr,
       endTime: endTimeStr,
@@ -239,11 +248,19 @@ export default function ScheduleManager() {
 
   const formatScheduleTime = (schedule: Schedule) => {
     if (schedule.isRecurring) {
-      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
       const start = new Date(schedule.startTime)
       const end = new Date(schedule.endTime)
-      const dayName = schedule.dayOfWeek !== null ? days[schedule.dayOfWeek] : 'Unknown'
-      return `${dayName} ${start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} - ${end.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+      const timeStr = `${start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} - ${end.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+      
+      if (schedule.dayOfWeek === null) {
+        // Daily recurring
+        return `Daily ${timeStr}`
+      } else {
+        // Weekly recurring
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        const dayName = days[schedule.dayOfWeek]
+        return `${dayName} ${timeStr}`
+      }
     } else {
       const start = new Date(schedule.startTime)
       const end = new Date(schedule.endTime)
@@ -402,43 +419,75 @@ export default function ScheduleManager() {
                     type="checkbox"
                     className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                     checked={formData.isRecurring}
-                    onChange={(e) => setFormData({ ...formData, isRecurring: e.target.checked, dayOfWeek: '' })}
+                    onChange={(e) => setFormData({ ...formData, isRecurring: e.target.checked, dayOfWeek: '', recurrenceType: 'weekly' })}
                   />
-                  <span className="ml-2 text-sm text-gray-700">Recurring schedule (weekly)</span>
+                  <span className="ml-2 text-sm text-gray-700">Recurring schedule</span>
                 </label>
               </div>
 
               {formData.isRecurring ? (
                 <>
                   <div>
-                    <label htmlFor="dayOfWeek" className="block text-sm font-medium text-gray-700">
-                      Day of Week *
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Recurrence Type *
                     </label>
-                    <select
-                      id="dayOfWeek"
-                      required
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                      value={formData.dayOfWeek}
-                      onChange={(e) => setFormData({ ...formData, dayOfWeek: e.target.value })}
-                    >
-                      <option value="">Select day</option>
-                      <option value="0">Sunday</option>
-                      <option value="1">Monday</option>
-                      <option value="2">Tuesday</option>
-                      <option value="3">Wednesday</option>
-                      <option value="4">Thursday</option>
-                      <option value="5">Friday</option>
-                      <option value="6">Saturday</option>
-                    </select>
+                    <div className="flex gap-6">
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          name="recurrenceType"
+                          value="daily"
+                          checked={formData.recurrenceType === 'daily'}
+                          onChange={(e) => setFormData({ ...formData, recurrenceType: e.target.value, dayOfWeek: '' })}
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        />
+                        <span className="ml-2 text-sm text-gray-700">Daily</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          name="recurrenceType"
+                          value="weekly"
+                          checked={formData.recurrenceType === 'weekly'}
+                          onChange={(e) => setFormData({ ...formData, recurrenceType: e.target.value })}
+                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        />
+                        <span className="ml-2 text-sm text-gray-700">Weekly</span>
+                      </label>
+                    </div>
                   </div>
+                  {formData.recurrenceType === 'weekly' && (
+                    <div>
+                      <label htmlFor="dayOfWeek" className="block text-sm font-medium text-gray-700">
+                        Day of Week *
+                      </label>
+                      <select
+                        id="dayOfWeek"
+                        required={formData.recurrenceType === 'weekly'}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        value={formData.dayOfWeek}
+                        onChange={(e) => setFormData({ ...formData, dayOfWeek: e.target.value })}
+                      >
+                        <option value="">Select day</option>
+                        <option value="0">Sunday</option>
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                      </select>
+                    </div>
+                  )}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">
-                        Start Date
+                        Start Date *
                       </label>
                       <input
                         id="startDate"
                         type="date"
+                        required
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         value={formData.startDate}
                         onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
@@ -446,11 +495,12 @@ export default function ScheduleManager() {
                     </div>
                     <div>
                       <label htmlFor="endDate" className="block text-sm font-medium text-gray-700">
-                        End Date
+                        End Date *
                       </label>
                       <input
                         id="endDate"
                         type="date"
+                        required
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         value={formData.endDate}
                         onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}

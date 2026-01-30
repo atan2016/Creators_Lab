@@ -54,31 +54,77 @@ function recurringSchedulesOverlap(
   schedule1: Schedule,
   schedule2: Schedule
 ): boolean {
-  // Must be same day of week
-  if (schedule1.dayOfWeek !== schedule2.dayOfWeek) {
+  // Check if date ranges overlap (required for both daily and weekly)
+  if (!schedule1.startDate || !schedule1.endDate || !schedule2.startDate || !schedule2.endDate) {
     return false
   }
 
-  // Check if date ranges overlap
-  if (schedule1.startDate && schedule1.endDate && schedule2.startDate && schedule2.endDate) {
-    const s1Start = new Date(schedule1.startDate).getTime()
-    const s1End = new Date(schedule1.endDate).getTime()
-    const s2Start = new Date(schedule2.startDate).getTime()
-    const s2End = new Date(schedule2.endDate).getTime()
+  const s1Start = new Date(schedule1.startDate).getTime()
+  const s1End = new Date(schedule1.endDate).getTime()
+  const s2Start = new Date(schedule2.startDate).getTime()
+  const s2End = new Date(schedule2.endDate).getTime()
 
-    // Date ranges don't overlap
-    if (s1End < s2Start || s2End < s1Start) {
-      return false
-    }
+  // Date ranges don't overlap
+  if (s1End < s2Start || s2End < s1Start) {
+    return false
   }
 
-  // Check if time ranges overlap (using startTime/endTime as time-of-day)
-  return timeSlotsOverlap(
+  // For daily schedules (dayOfWeek === null), they overlap if date ranges overlap and times overlap
+  if (schedule1.dayOfWeek === null && schedule2.dayOfWeek === null) {
+    return timeSlotsOverlap(
+      schedule1.startTime,
+      schedule1.endTime,
+      schedule2.startTime,
+      schedule2.endTime
+    )
+  }
+
+  // For weekly schedules, must be same day of week
+  if (schedule1.dayOfWeek !== null && schedule2.dayOfWeek !== null) {
+    if (schedule1.dayOfWeek !== schedule2.dayOfWeek) {
+      return false
+    }
+    // Same day of week, check if times overlap
+    return timeSlotsOverlap(
+      schedule1.startTime,
+      schedule1.endTime,
+      schedule2.startTime,
+      schedule2.endTime
+    )
+  }
+
+  // Mixed: one daily, one weekly - check if any day in the date range matches the weekly day
+  const dailySchedule = schedule1.dayOfWeek === null ? schedule1 : schedule2
+  const weeklySchedule = schedule1.dayOfWeek === null ? schedule2 : schedule1
+
+  // For daily vs weekly, they conflict if:
+  // 1. Date ranges overlap
+  // 2. Times overlap
+  // 3. At least one day in the overlapping date range matches the weekly day
+  if (!timeSlotsOverlap(
     schedule1.startTime,
     schedule1.endTime,
     schedule2.startTime,
     schedule2.endTime
-  )
+  )) {
+    return false
+  }
+
+  // Check if any day in the overlapping date range matches the weekly day
+  const overlapStart = Math.max(s1Start, s2Start)
+  const overlapEnd = Math.min(s1End, s2End)
+  const overlapStartDate = new Date(overlapStart)
+  const overlapEndDate = new Date(overlapEnd)
+  
+  let current = new Date(overlapStartDate)
+  while (current <= overlapEndDate) {
+    if (current.getDay() === weeklySchedule.dayOfWeek) {
+      return true
+    }
+    current.setDate(current.getDate() + 1)
+  }
+
+  return false
 }
 
 /**
@@ -88,24 +134,43 @@ function oneTimeScheduleOverlaps(
   schedule1: Schedule,
   schedule2: Schedule
 ): boolean {
-  // If schedule2 is recurring, check if schedule1's date falls on schedule2's day
-  if (schedule2.isRecurring && schedule2.dayOfWeek !== null) {
+  // If schedule2 is recurring
+  if (schedule2.isRecurring) {
     const schedule1Date = new Date(schedule1.startTime)
-    const schedule1DayOfWeek = schedule1Date.getDay()
-
-    if (schedule1DayOfWeek !== schedule2.dayOfWeek) {
+    
+    // Check if schedule1's date is within schedule2's date range
+    if (!schedule2.startDate || !schedule2.endDate) {
       return false
     }
 
-    // Check if schedule1's date is within schedule2's date range
-    if (schedule2.startDate && schedule2.endDate) {
-      const s1Date = schedule1Date.getTime()
-      const s2Start = new Date(schedule2.startDate).getTime()
-      const s2End = new Date(schedule2.endDate).getTime()
+    const s1Date = schedule1Date.getTime()
+    const s2Start = new Date(schedule2.startDate).getTime()
+    const s2End = new Date(schedule2.endDate).getTime()
 
-      if (s1Date < s2Start || s1Date > s2End) {
-        return false
-      }
+    if (s1Date < s2Start || s1Date > s2End) {
+      return false
+    }
+
+    // For daily recurring (dayOfWeek === null), any day in the range conflicts if times overlap
+    if (schedule2.dayOfWeek === null) {
+      const s1Time = new Date(schedule1.startTime)
+      const s1EndTime = new Date(schedule1.endTime)
+      const s2Time = new Date(schedule2.startTime)
+      const s2EndTime = new Date(schedule2.endTime)
+
+      // Set same date for comparison
+      const baseDate = new Date(s1Time)
+      baseDate.setHours(0, 0, 0, 0)
+      s2Time.setFullYear(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate())
+      s2EndTime.setFullYear(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate())
+
+      return timeSlotsOverlap(s1Time, s1EndTime, s2Time, s2EndTime)
+    }
+
+    // For weekly recurring, check if schedule1's date falls on schedule2's day
+    const schedule1DayOfWeek = schedule1Date.getDay()
+    if (schedule1DayOfWeek !== schedule2.dayOfWeek) {
+      return false
     }
 
     // Extract time from schedule1 and compare with schedule2's time

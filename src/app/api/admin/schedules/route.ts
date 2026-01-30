@@ -34,29 +34,44 @@ export async function GET(request: NextRequest) {
       where.locationId = locationId
     }
 
-    // Date filtering for one-time schedules
+    // Date filtering - only apply if dates are provided
+    // If no date filters, return all schedules (filtered by instructor/location only)
     if (startDate || endDate) {
+      const dateFilterStart = startDate ? new Date(startDate) : null
+      const dateFilterEnd = endDate ? new Date(endDate + 'T23:59:59.999Z') : null
+      
       where.OR = [
-        // One-time schedules within date range
+        // One-time schedules: must fall within the date range
         {
           isRecurring: false,
-          ...(startDate && { startTime: { gte: new Date(startDate) } }),
-          ...(endDate && { endTime: { lte: new Date(endDate) } }),
+          ...(dateFilterStart && { startTime: { gte: dateFilterStart } }),
+          ...(dateFilterEnd && { endTime: { lte: dateFilterEnd } }),
         },
-        // Recurring schedules that overlap with date range
+        // Recurring schedules: check if schedule's date range overlaps with filter date range
         {
           isRecurring: true,
-          OR: [
-            { startDate: null }, // No end date restriction
+          AND: [
+            // Schedule starts before or on the filter end date (or has no start date)
             {
-              startDate: { lte: endDate || new Date() },
-              endDate: { gte: startDate || new Date(0) },
+              OR: [
+                { startDate: null },
+                ...(dateFilterEnd ? [{ startDate: { lte: dateFilterEnd } }] : [{}]),
+              ],
+            },
+            // Schedule ends after or on the filter start date (or has no end date)
+            {
+              OR: [
+                { endDate: null },
+                ...(dateFilterStart ? [{ endDate: { gte: dateFilterStart } }] : [{}]),
+              ],
             },
           ],
         },
       ]
     }
 
+    console.log('Fetching schedules with filters:', { where, startDate, endDate, instructorId, locationId })
+    
     const schedules = await prisma.schedule.findMany({
       where,
       include: {
@@ -89,6 +104,7 @@ export async function GET(request: NextRequest) {
       ],
     })
 
+    console.log(`Found ${schedules.length} schedules`)
     return NextResponse.json({ schedules })
   } catch (error: any) {
     console.error('Error fetching schedules:', error)
@@ -163,13 +179,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate recurring schedule has dayOfWeek
-    if (isRecurring && (dayOfWeek === null || dayOfWeek === undefined)) {
+    // Validate recurring schedule has startDate and endDate
+    if (isRecurring && (!startDate || !endDate)) {
       return NextResponse.json(
-        { error: 'Recurring schedules must have a dayOfWeek (0-6)' },
+        { error: 'Recurring schedules must have a start date and end date' },
         { status: 400 }
       )
     }
+    
+    // For weekly recurring schedules, dayOfWeek is required
+    // For daily recurring schedules, dayOfWeek should be null
+    // If dayOfWeek is provided, it's weekly; if null/undefined, it's daily
 
     const schedule = await prisma.schedule.create({
       data: {

@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import Layout from '@/components/ui/Layout'
 import GoogleDriveManager from '@/components/admin/GoogleDriveManager'
 import UserManager from '@/components/admin/UserManager'
+import LocationManager from '@/components/admin/LocationManager'
+import ScheduleManager from '@/components/admin/ScheduleManager'
 import Link from 'next/link'
 
 export default async function AdminDashboard() {
@@ -74,6 +76,30 @@ export default async function AdminDashboard() {
 
           {/* Document Drive Links */}
           <GoogleDriveManager />
+
+          {/* Locations Management */}
+          <LocationManager />
+
+          {/* Schedules Management */}
+          <ScheduleManager />
+
+          {/* Calendar View */}
+          <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">
+            <div className="px-4 py-5 sm:px-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Instructor Calendar</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                View instructor schedules in a calendar format with conflict detection.
+              </p>
+              <div className="mt-4">
+                <Link
+                  href="/admin/calendar"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                >
+                  View Calendar
+                </Link>
+              </div>
+            </div>
+          </div>
 
           {/* Classrooms Link */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">

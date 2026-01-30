@@ -102,12 +102,20 @@ export default async function TeacherDashboard() {
             <h1 className="text-3xl font-bold text-gray-900">
               {role === 'ADMIN' ? 'All Classrooms' : 'My Classrooms'}
             </h1>
-            <Link
-              href="/teacher/classrooms/new"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-            >
-              Create Classroom
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                href="/teacher/calendar"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                My Calendar
+              </Link>
+              <Link
+                href="/teacher/classrooms/new"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Create Classroom
+              </Link>
+            </div>
           </div>
 
           {classrooms.length === 0 ? (
