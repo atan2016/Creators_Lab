@@ -101,9 +101,9 @@ export default function InstructorCalendar({ isAdmin, instructorId }: Instructor
 
       const [schedulesRes, conflictsRes, locationsRes, teachersRes] = await Promise.all([
         fetch(`/api/admin/schedules?${params.toString()}`),
-        isAdmin ? fetch(`/api/admin/schedules/conflicts?${params.toString()}`) : Promise.resolve({ ok: false }),
+        isAdmin ? fetch(`/api/admin/schedules/conflicts?${params.toString()}`) : Promise.resolve(null),
         fetch('/api/admin/locations'),
-        isAdmin ? fetch('/api/admin/users?role=TEACHER') : Promise.resolve({ ok: false }),
+        isAdmin ? fetch('/api/admin/users?role=TEACHER') : Promise.resolve(null),
       ])
 
       const schedulesData = await schedulesRes.json()
@@ -114,17 +114,17 @@ export default function InstructorCalendar({ isAdmin, instructorId }: Instructor
         console.error('Failed to fetch schedules:', schedulesData)
       }
 
-      if (isAdmin && conflictsRes.ok) {
+      if (isAdmin && conflictsRes && conflictsRes.ok) {
         const conflictsData = await conflictsRes.json()
         setConflicts(conflictsData.conflicts || [])
       }
 
-      if (locationsRes.ok) {
+      if (locationsRes && locationsRes.ok) {
         const locationsData = await locationsRes.json()
         setLocations(locationsData.locations || [])
       }
 
-      if (isAdmin && teachersRes.ok) {
+      if (isAdmin && teachersRes && teachersRes.ok) {
         const teachersData = await teachersRes.json()
         setTeachers(teachersData.users || [])
       }
