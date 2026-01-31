@@ -1,5 +1,35 @@
 [
   {
+    "title": "Unity Game Design and Intro to Coding with C# (Level 1)",
+    "subtitle": "Spring 2026 Program",
+    "date": "2026-04-11",
+    "type": "program",
+    "image": "/assets/images/Events/Unity.png",
+    "action": "Register Now",
+    "actionUrl": "https://bit.ly/milrec",
+    "group": "spring2026"
+  },
+  {
+    "title": "Product Design with Figma & Prototyping with AI tools",
+    "subtitle": "Spring 2026 Program",
+    "date": "2026-04-11",
+    "type": "program",
+    "image": "/assets/images/Events/ProductDesign_2026.png",
+    "action": "Register Now",
+    "actionUrl": "https://bit.ly/milrec",
+    "group": "spring2026"
+  },
+  {
+    "title": "Fundamentals of 3D Modeling with Blender (Level 1)",
+    "subtitle": "Spring 2026 Program",
+    "date": "2026-04-08",
+    "type": "program",
+    "image": "/assets/images/Events/Blender_Spring_2026.png",
+    "action": "Register Now",
+    "actionUrl": "https://bit.ly/milrec",
+    "group": "spring2026"
+  },
+  {
     "title": "🎉 NEW FAMILY WORKSHOP AT CREATORS LAB!",
     "subtitle": "💡 Design Thinking with Your Teens!",
     "tagline": "Create. Collaborate. Connect.",

@@ -132,26 +132,55 @@ export default function HomePageClient() {
           return
         }
 
-        announcementsContainer.style.display = 'block'
-        announcementsContainer.innerHTML = upcomingEvents.map((item: any) => `
-          <div style="padding:1.5rem;background:#fff;border-radius:12px;border:2px solid var(--yellow-400);margin-bottom:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
-            <div style="text-align:center;margin-bottom:1rem">
-              <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
-              ${item.subtitle ? `<h3 style="margin:0 0 0.5rem;color:var(--green-900);font-size:1.2rem;font-weight:600">${item.subtitle}</h3>` : ''}
-              ${item.tagline ? `<p style="margin:0 0 1rem;color:var(--green-700);font-size:1rem;font-weight:500;font-style:italic">${item.tagline}</p>` : ''}
-            </div>
-            <div style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem">${item.description}</div>
-            <div style="text-align:center">
-              <a href="${item.actionUrl}" style="display:inline-block;padding:0.875rem 2rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease">${item.action}</a>
-            </div>
-          </div>
-        `).join('')
+        // Group Spring 2026 programs together
+        const spring2026Programs = upcomingEvents.filter((event: any) => event.group === 'spring2026')
+        const otherUpcoming = upcomingEvents.filter((event: any) => event.group !== 'spring2026')
 
-        announcementsContainer.innerHTML += `
+        announcementsContainer.style.display = 'block'
+        let html = ''
+
+        // Display shared message for Spring 2026 programs
+        if (spring2026Programs.length > 0) {
+          html += '<div style="background:#fefce8;border:2px solid var(--yellow-400);border-radius:12px;padding:1.5rem;margin-bottom:2rem">'
+          html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">🎉✨ We're excited to announce that these programs have been officially approved by the Millbrae Rec Center—and we're going live! ✨🎉</p>`
+          html += '<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">📅 Mark your calendar: Space is limited, and registration opens March 6.<br>👉 Register at: <a href="https://bit.ly/milrec" style="color:var(--green-700);text-decoration:underline;font-weight:600">bit.ly/milrec</a></p>'
+          html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">Can't make this session? No worries—similar programs will be offered in June as part of our half-day Summer Camps, with more advanced Level II options available as well.</p>`
+          html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0;font-weight:500;text-align:center">We can't wait to get started! 🚀</p>`
+          html += '</div>'
+          
+          html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem">'
+          html += spring2026Programs.map((item: any) => `
+            <div style="padding:0;background:#fff;border-radius:12px;border:2px solid var(--yellow-400);box-shadow:0 4px 12px rgba(0,0,0,0.08);overflow:hidden">
+              ${item.image ? `<div style="width:100%;display:flex;align-items:center;justify-content:center;background:#f9fafb;padding:0"><img src="${item.image}" alt="${item.title}" style="width:100%;height:auto;object-fit:cover;display:block;cursor:pointer" title="Click to view details" /></div>` : ''}
+            </div>
+          `).join('')
+          html += '</div>'
+        }
+
+        // Display other upcoming events
+        if (otherUpcoming.length > 0) {
+          html += otherUpcoming.map((item: any) => `
+            <div style="padding:1.5rem;background:#fff;border-radius:12px;border:2px solid var(--yellow-400);margin-bottom:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+              <div style="text-align:center;margin-bottom:1rem">
+                <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
+                ${item.subtitle ? `<h3 style="margin:0 0 0.5rem;color:var(--green-900);font-size:1.2rem;font-weight:600">${item.subtitle}</h3>` : ''}
+                ${item.tagline ? `<p style="margin:0 0 1rem;color:var(--green-700);font-size:1rem;font-weight:500;font-style:italic">${item.tagline}</p>` : ''}
+              </div>
+              ${item.description ? `<div style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem">${item.description}</div>` : ''}
+              ${item.actionUrl ? `<div style="text-align:center">
+                <a href="${item.actionUrl}" style="display:inline-block;padding:0.875rem 2rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease">${item.action || 'Learn More'}</a>
+              </div>` : ''}
+            </div>
+          `).join('')
+        }
+
+        html += `
           <div style="text-align:center;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(4,120,87,0.1)">
             <a href="/events" style="color:var(--green-700);text-decoration:underline;font-weight:500">View All Events →</a>
           </div>
         `
+
+        announcementsContainer.innerHTML = html
       })
       .catch(error => {
         console.error('Error loading announcements:', error)
