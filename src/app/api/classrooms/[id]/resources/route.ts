@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { validateGitHubUrl } from '@/lib/github'
 import { validateGoogleDriveUrl } from '@/lib/googledrive'
+import { logResourceActivity, ActivityAction } from '@/lib/activity-log'
 
 export async function POST(
   request: NextRequest,
@@ -111,6 +112,11 @@ export async function POST(
         createdById: userId,
       },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      await logResourceActivity(userId, ActivityAction.CREATE, resource.id, resource.title, resource.type)
+    }
 
     return NextResponse.json({ resource }, { status: 201 })
   } catch (error) {

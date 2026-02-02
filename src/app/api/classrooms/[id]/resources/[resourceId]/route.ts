@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { logResourceActivity, ActivityAction } from '@/lib/activity-log'
 
 export async function GET(
   request: NextRequest,
@@ -113,16 +114,25 @@ export async function DELETE(
     }
 
     const userId = (session.user as any).id
-    if (resource.createdById !== userId && resource.classroom.creatorId !== userId && (session.user as any).role !== 'ADMIN') {
+    const role = (session.user as any).role
+    if (resource.createdById !== userId && resource.classroom.creatorId !== userId && role !== 'ADMIN') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 403 }
       )
     }
 
+    const resourceTitle = resource.title
+    const resourceType = resource.type
+
     await prisma.resource.delete({
       where: { id: resourceId },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      await logResourceActivity(userId, ActivityAction.DELETE, resourceId, resourceTitle, resourceType)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {

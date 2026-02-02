@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import Layout from '@/components/ui/Layout'
 import Link from 'next/link'
+import ActivityTracking from '@/components/admin/ActivityTracking'
 
 export default async function TeacherDashboard() {
   const session = await auth()
@@ -117,6 +118,9 @@ export default async function TeacherDashboard() {
               </Link>
             </div>
           </div>
+
+          {/* Activity Tracking - Admin Only */}
+          {role === 'ADMIN' && <ActivityTracking />}
 
           {classrooms.length === 0 ? (
             <div className="bg-white shadow rounded-lg p-8 text-center">

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { logScheduleActivity, ActivityAction } from '@/lib/activity-log'
 
 // PUT - Update schedule
 export async function PUT(
@@ -116,6 +117,21 @@ export async function PUT(
       },
     })
 
+    // Log activity for the instructor (schedule is updated by admin but for instructor)
+    const finalInstructorId = instructorId || schedule.instructorId
+    const finalClassroomName = updatedSchedule.classroom.name
+    const finalLocationName = updatedSchedule.location.name
+    const finalStartTime = startTime ? new Date(startTime) : schedule.startTime
+    const timeStr = finalStartTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+    await logScheduleActivity(
+      finalInstructorId,
+      ActivityAction.UPDATE,
+      id,
+      finalClassroomName,
+      finalLocationName,
+      timeStr
+    )
+
     return NextResponse.json({ schedule: updatedSchedule })
   } catch (error: any) {
     console.error('Error updating schedule:', error)
@@ -141,15 +157,44 @@ export async function DELETE(
 
     const schedule = await prisma.schedule.findUnique({
       where: { id },
+      include: {
+        instructor: {
+          select: {
+            id: true,
+          },
+        },
+        classroom: {
+          select: {
+            name: true,
+          },
+        },
+        location: {
+          select: {
+            name: true,
+          },
+        },
+      },
     })
 
     if (!schedule) {
       return NextResponse.json({ error: 'Schedule not found' }, { status: 404 })
     }
 
+    const timeStr = schedule.startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+
     await prisma.schedule.delete({
       where: { id },
     })
+
+    // Log activity for the instructor (schedule is deleted by admin but was for instructor)
+    await logScheduleActivity(
+      schedule.instructorId,
+      ActivityAction.DELETE,
+      id,
+      schedule.classroom.name,
+      schedule.location.name,
+      timeStr
+    )
 
     return NextResponse.json({ success: true })
   } catch (error: any) {

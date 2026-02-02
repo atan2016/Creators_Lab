@@ -40,6 +40,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             return null
           }
 
+          // Update last login time
+          try {
+            const loginTime = new Date()
+            console.log('Attempting to update lastLoginAt for user:', user.id, 'at', loginTime.toISOString())
+            const updatedUser = await prisma.user.update({
+              where: { id: user.id },
+              data: { lastLoginAt: loginTime },
+            })
+            console.log('Last login time updated successfully for:', user.email, 'to', updatedUser.lastLoginAt)
+          } catch (updateError: any) {
+            // Log error but don't fail authentication
+            console.error('Error updating last login time:', updateError)
+            console.error('Error details:', {
+              message: updateError?.message,
+              code: updateError?.code,
+              meta: updateError?.meta,
+            })
+            // Continue with authentication even if update fails
+          }
+
           console.log('Authentication successful for:', user.email)
           return {
             id: user.id,

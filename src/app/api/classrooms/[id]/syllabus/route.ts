@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { logSyllabusActivity, ActivityAction } from '@/lib/activity-log'
 
 // GET - Fetch all syllabus entries for a classroom
 export async function GET(
@@ -70,7 +71,7 @@ export async function POST(
     const { id } = await params
     const classroom = await prisma.classroom.findUnique({
       where: { id },
-      select: { creatorId: true },
+      select: { creatorId: true, name: true },
     })
 
     if (!classroom) {
@@ -131,6 +132,12 @@ export async function POST(
         lectureInfo: lectureInfo || null,
       },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      const dateStr = parsedDate.toISOString().split('T')[0]
+      await logSyllabusActivity(userId, ActivityAction.CREATE, entry.id, classroom.name, dateStr)
+    }
 
     return NextResponse.json({ entry }, { status: 201 })
   } catch (error: any) {

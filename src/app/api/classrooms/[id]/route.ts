@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { validateGoogleDriveUrl } from '@/lib/googledrive'
+import { logClassroomActivity, ActivityAction } from '@/lib/activity-log'
 
 export async function GET(
   request: NextRequest,
@@ -117,9 +118,16 @@ export async function DELETE(
       )
     }
 
+    const classroomName = classroom.name
+
     await prisma.classroom.delete({
       where: { id },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      await logClassroomActivity(userId, ActivityAction.DELETE, id, classroomName)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
@@ -194,6 +202,11 @@ export async function PUT(
         ...(googleDriveUrl !== undefined && { googleDriveUrl: googleDriveUrl || null }),
       },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      await logClassroomActivity(userId, ActivityAction.UPDATE, id, updatedClassroom.name)
+    }
 
     return NextResponse.json({ classroom: updatedClassroom })
   } catch (error: any) {

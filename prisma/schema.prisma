@@ -31,6 +31,7 @@ model User {
   name          String
   role          UserRole
   mustResetPassword Boolean @default(false)
+  lastLoginAt   DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -43,6 +44,7 @@ model User {
   homeworkSubmissions HomeworkSubmission[]
   googleDriveLinks GoogleDriveLink[]
   schedules     Schedule[]
+  activityLogs ActivityLog[]
 }
 
 model Classroom {
@@ -220,4 +222,35 @@ model Schedule {
   @@index([locationId])
   @@index([classroomId])
   @@index([dayOfWeek, startTime, endTime])
+}
+
+enum ActivityAction {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum ActivityEntityType {
+  CLASSROOM
+  RESOURCE
+  SYLLABUS
+  SCHEDULE
+}
+
+model ActivityLog {
+  id          String            @id @default(cuid())
+  userId      String
+  action      ActivityAction
+  entityType  ActivityEntityType
+  entityId    String
+  entityName  String
+  description String?
+  createdAt   DateTime          @default(now())
+
+  // Relations
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([entityType])
 }

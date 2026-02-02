@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { logScheduleActivity, ActivityAction } from '@/lib/activity-log'
 
 // GET - List schedules with optional filters
 export async function GET(request: NextRequest) {
@@ -228,6 +229,17 @@ export async function POST(request: NextRequest) {
         },
       },
     })
+
+    // Log activity for the instructor (schedule is created by admin but for instructor)
+    const timeStr = new Date(startTime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+    await logScheduleActivity(
+      instructorId,
+      ActivityAction.CREATE,
+      schedule.id,
+      classroom.name,
+      location.name,
+      timeStr
+    )
 
     return NextResponse.json({ schedule }, { status: 201 })
   } catch (error: any) {

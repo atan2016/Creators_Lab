@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { logSyllabusActivity, ActivityAction } from '@/lib/activity-log'
 
 // PUT - Update a syllabus entry
 export async function PUT(
@@ -16,7 +17,7 @@ export async function PUT(
     const { id, entryId } = await params
     const classroom = await prisma.classroom.findUnique({
       where: { id },
-      select: { creatorId: true },
+      select: { creatorId: true, name: true },
     })
 
     if (!classroom) {
@@ -86,6 +87,12 @@ export async function PUT(
       },
     })
 
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      const dateStr = parsedDate.toISOString().split('T')[0]
+      await logSyllabusActivity(userId, ActivityAction.UPDATE, entryId, classroom.name, dateStr)
+    }
+
     return NextResponse.json({ entry: updatedEntry })
   } catch (error: any) {
     console.error('Error updating syllabus entry:', error)
@@ -110,7 +117,7 @@ export async function DELETE(
     const { id, entryId } = await params
     const classroom = await prisma.classroom.findUnique({
       where: { id },
-      select: { creatorId: true },
+      select: { creatorId: true, name: true },
     })
 
     if (!classroom) {
@@ -151,9 +158,16 @@ export async function DELETE(
       return NextResponse.json({ error: 'Syllabus entry not found' }, { status: 404 })
     }
 
+    const dateStr = entry.date.toISOString().split('T')[0]
+
     await prisma.syllabusEntry.delete({
       where: { id: entryId },
     })
+
+    // Log activity if user is a teacher (not admin)
+    if (role === 'TEACHER') {
+      await logSyllabusActivity(userId, ActivityAction.DELETE, entryId, classroom.name, dateStr)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error: any) {
