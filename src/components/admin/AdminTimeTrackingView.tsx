@@ -11,7 +11,7 @@ interface TimeEntry {
   category: string
   description: string | null
   isOld?: boolean
-  instructor: {
+  instructor?: {
     id: string
     name: string
     email: string

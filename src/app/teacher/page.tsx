@@ -103,7 +103,7 @@ export default async function TeacherDashboard() {
           {role === 'TEACHER' && (
             <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6 mb-6">
               <blockquote className="border-l-4 border-green-500 pl-4 italic text-gray-800">
-                <p className="text-base">📚 "If you want to master something, teach it. The more you teach, the better you learn. Teaching is a powerful tool to learning." — Richard Feynman ✨</p>
+                <p className="text-base">📚 &quot;If you want to master something, teach it. The more you teach, the better you learn. Teaching is a powerful tool to learning.&quot; — Richard Feynman ✨</p>
               </blockquote>
             </div>
           )}
