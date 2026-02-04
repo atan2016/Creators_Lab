@@ -19,10 +19,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         try {
-          console.log('Looking up user:', credentials.email)
-          const user = await prisma.user.findUnique({
-            where: { email: credentials.email as string }
-          })
+          // Normalize email to lowercase for case-insensitive lookup
+          const emailLower = (credentials.email as string).toLowerCase().trim()
+          console.log('Looking up user (case-insensitive):', emailLower)
+          
+          // Use raw query for case-insensitive email lookup
+          const users = await prisma.$queryRaw<Array<{
+            id: string
+            email: string
+            password: string
+            name: string
+            role: string
+            mustResetPassword: boolean
+            lastLoginAt: Date | null
+          }>>`
+            SELECT * FROM "User" WHERE LOWER(email) = LOWER(${emailLower}) LIMIT 1
+          `
+          
+          const user = users[0] || null
 
           if (!user) {
             console.log('User not found:', credentials.email)

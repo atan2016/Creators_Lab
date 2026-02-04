@@ -99,7 +99,7 @@ export default function EventsClient() {
               html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem">'
               html += spring2026Programs.map(item => `
                 <div class="event-card" style="display:flex;flex-direction:column;height:100%;padding:0">
-                  ${item.image ? `<div style="text-align:center;margin:0;flex-shrink:0;width:100%;display:flex;align-items:center;justify-content:center;background:#f9fafb;border-radius:8px;overflow:hidden;padding:0"><img class="event-image" src="${item.image}" alt="${item.title}" style="width:100%;height:auto;object-fit:cover;border-radius:8px;display:block;cursor:pointer;transition:transform 0.2s ease" title="Click to zoom" /></div>` : ''}
+                  ${item.image ? `<div style="text-align:center;margin:0;flex-shrink:0;width:100%;height:500px;display:flex;align-items:center;justify-content:center;background:#f9fafb;border-radius:8px;overflow:hidden;padding:0"><img class="event-image" src="${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:contain;border-radius:8px;display:block;cursor:pointer;transition:transform 0.2s ease" title="Click to zoom" /></div>` : ''}
                 </div>
               `).join('')
               html += '</div>'

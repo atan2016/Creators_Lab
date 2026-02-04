@@ -45,6 +45,7 @@ model User {
   googleDriveLinks GoogleDriveLink[]
   schedules     Schedule[]
   activityLogs ActivityLog[]
+  timeEntries  TimeEntry[]
 }
 
 model Classroom {
@@ -237,6 +238,13 @@ enum ActivityEntityType {
   SCHEDULE
 }
 
+enum TimeEntryCategory {
+  IN_CLASS_TEACHING
+  LESSON_PLANNING
+  MEETINGS
+  OTHER
+}
+
 model ActivityLog {
   id          String            @id @default(cuid())
   userId      String
@@ -253,4 +261,23 @@ model ActivityLog {
   @@index([userId])
   @@index([createdAt])
   @@index([entityType])
+}
+
+model TimeEntry {
+  id          String           @id @default(cuid())
+  instructorId String
+  date        DateTime
+  hours       Decimal          @db.Decimal(5, 2) // Supports up to 999.99 hours
+  category    TimeEntryCategory
+  description String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  // Relations
+  instructor  User             @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+
+  @@index([instructorId])
+  @@index([date])
+  @@index([createdAt])
+  @@index([category])
 }

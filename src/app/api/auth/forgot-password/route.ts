@@ -20,9 +20,18 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const user = await prisma.user.findUnique({
-      where: { email },
-    })
+    // Normalize email to lowercase for case-insensitive lookup
+    const emailLower = email.toLowerCase().trim()
+
+    // Use raw query for case-insensitive email lookup
+    const users = await prisma.$queryRaw<Array<{
+      id: string
+      email: string
+    }>>`
+      SELECT id, email FROM "User" WHERE LOWER(email) = LOWER(${emailLower}) LIMIT 1
+    `
+    
+    const user = users[0] || null
 
     // Always return success to avoid user enumeration
     if (!user) {
@@ -33,14 +42,14 @@ export async function POST(request: NextRequest) {
     const hashedPassword = await bcrypt.hash(tempPassword, 10)
 
     await prisma.user.update({
-      where: { email },
+      where: { id: user.id },
       data: { password: hashedPassword, mustResetPassword: true },
     })
 
     try {
       await sendEmail({
         to: email,
-        subject: 'Your new password - Yamas',
+        subject: 'Your new password - CreatorsLab LMS (Yamas)',
         text: `Your password has been reset. Your new temporary password is: ${tempPassword}\n\nPlease log in and change your password as soon as possible.`,
         html: `
           <p>Your password has been reset.</p>

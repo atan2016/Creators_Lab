@@ -46,7 +46,7 @@ function LoginForm() {
       console.log('Attempting to sign in with:', { email })
       
       const result = await signIn('credentials', {
-        email: email.trim(),
+        email: email.trim().toLowerCase(),
         password,
         redirect: false,
       })

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-// GET - List users, optionally filtered by role
 export async function GET(request: NextRequest) {
   try {
     const session = await auth()
@@ -25,7 +24,6 @@ export async function GET(request: NextRequest) {
         name: true,
         email: true,
         role: true,
-        createdAt: true,
       },
       orderBy: { name: 'asc' },
     })

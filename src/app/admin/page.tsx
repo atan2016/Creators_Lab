@@ -101,6 +101,24 @@ export default async function AdminDashboard() {
             </div>
           </div>
 
+          {/* Time Tracking */}
+          <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">
+            <div className="px-4 py-5 sm:px-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Time Tracking</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                View and manage all instructor time entries with filtering, summaries, and statistics.
+              </p>
+              <div className="mt-4">
+                <Link
+                  href="/admin/time-tracking"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+                >
+                  View Time Tracking
+                </Link>
+              </div>
+            </div>
+          </div>
+
           {/* Classrooms Link */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">
             <div className="px-4 py-5 sm:px-6">
