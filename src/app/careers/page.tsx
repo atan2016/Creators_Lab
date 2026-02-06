@@ -77,7 +77,7 @@ export default function CareersPage() {
             </div>
 
             <div className="apply-box">
-              <strong>👉 To Apply:</strong> Send your resume, a brief statement of interest, and relevant experience to <a href="mailto:board@creators-lab.org?subject=Founding Board Member - Grant & Nonprofit Strategy">board@creators-lab.org</a> with subject line: <strong>Founding Board Member - Grant & Nonprofit Strategy</strong>.
+              <strong>👉 To Apply:</strong> Send your resume, a brief statement of interest, and relevant experience to <a href="mailto:info@creators-lab.org?subject=Founding Board Member - Grant & Nonprofit Strategy">info@creators-lab.org</a> with subject line: <strong>Founding Board Member - Grant & Nonprofit Strategy</strong>.
             </div>
           </div>
 
@@ -139,7 +139,7 @@ export default function CareersPage() {
             </div>
 
             <div className="apply-box">
-              <strong>👉 To Apply:</strong> Send your resume, a brief statement of interest, and relevant experience to <a href="mailto:board@creators-lab.org?subject=Founding Board Member - Corporate Partnerships & Fundraising">board@creators-lab.org</a> with subject line: <strong>Founding Board Member - Corporate Partnerships & Fundraising</strong>.
+              <strong>👉 To Apply:</strong> Send your resume, a brief statement of interest, and relevant experience to <a href="mailto:info@creators-lab.org?subject=Founding Board Member - Corporate Partnerships & Fundraising">info@creators-lab.org</a> with subject line: <strong>Founding Board Member - Corporate Partnerships & Fundraising</strong>.
             </div>
           </div>
 
