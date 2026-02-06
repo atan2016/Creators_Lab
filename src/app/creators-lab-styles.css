@@ -99,7 +99,7 @@ header {
 .card {
   background: #fff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid rgba(4, 120, 87, 0.08);
   box-shadow: 0 6px 18px rgba(6, 78, 59, 0.04);
 }
@@ -294,6 +294,154 @@ select:focus {
 
   .hero {
     padding: 1.5rem 0;
+  }
+}
+
+/* Job Posting Styles */
+.job-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(4, 120, 87, 0.1);
+}
+
+.job-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.job-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--green-900);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.job-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.job-meta > div {
+  margin-bottom: 0.4rem;
+}
+
+.job-meta > div:last-child {
+  margin-bottom: 0;
+}
+
+.job-meta strong {
+  color: var(--green-700);
+  font-weight: 600;
+}
+
+.job-section {
+  margin-bottom: 2rem;
+}
+
+.job-section:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.job-section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--green-900);
+  margin: 0 0 0.75rem 0;
+}
+
+.job-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #374151;
+  margin: 0 0 1rem 0;
+}
+
+.job-section ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.job-section li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.job-section li:last-child {
+  margin-bottom: 0;
+}
+
+.apply-box {
+  background: linear-gradient(135deg, rgba(4, 120, 87, 0.05) 0%, rgba(6, 78, 59, 0.05) 100%);
+  border: 2px solid rgba(4, 120, 87, 0.15);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.apply-box strong {
+  color: var(--green-900);
+  font-weight: 600;
+}
+
+.apply-box a {
+  color: var(--green-700);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.apply-box a:hover {
+  color: var(--green-900);
+}
+
+/* Card spacing for job postings */
+.card {
+  margin-bottom: 2rem;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .job-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .job-icon {
+    font-size: 2rem;
+  }
+
+  .job-title {
+    font-size: 1.5rem;
+  }
+
+  .job-meta {
+    font-size: 0.9rem;
+  }
+
+  .job-section h3 {
+    font-size: 1.15rem;
+  }
+
+  .apply-box {
+    padding: 1rem;
+    font-size: 0.95rem;
   }
 
   .cards {
