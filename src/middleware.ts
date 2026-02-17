@@ -30,6 +30,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Allow static assets from public folder (data, assets, scripts, styles)
+  // These are used by homepage events, events page, search, and other public content
+  if (
+    path.startsWith('/data/') ||
+    path.startsWith('/assets/') ||
+    path === '/search.js' ||
+    path === '/search.css'
+  ) {
+    return NextResponse.next()
+  }
+
   // Allow public API routes
   if (path.startsWith('/api/auth/') || publicApiRoutes.includes(path)) {
     return NextResponse.next()

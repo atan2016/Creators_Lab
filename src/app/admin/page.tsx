@@ -6,6 +6,7 @@ import GoogleDriveManager from '@/components/admin/GoogleDriveManager'
 import UserManager from '@/components/admin/UserManager'
 import LocationManager from '@/components/admin/LocationManager'
 import ScheduleManager from '@/components/admin/ScheduleManager'
+import DeleteUserButton from '@/components/admin/DeleteUserButton'
 import Link from 'next/link'
 
 export default async function AdminDashboard() {
@@ -159,7 +160,7 @@ export default async function AdminDashboard() {
                           <div className="text-sm text-gray-500">{user.email}</div>
                         </div>
                       </div>
-                      <div className="flex items-center">
+                      <div className="flex items-center gap-3">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                           user.role === 'ADMIN' ? 'bg-purple-100 text-purple-800' :
                           user.role === 'TEACHER' ? 'bg-blue-100 text-blue-800' :
@@ -167,6 +168,13 @@ export default async function AdminDashboard() {
                         }`}>
                           {user.role}
                         </span>
+                        <DeleteUserButton 
+                          userId={user.id} 
+                          userName={user.name}
+                          userRole={user.role}
+                          currentUserId={(session.user as any).id}
+                          currentUserRole={(session.user as any).role}
+                        />
                       </div>
                     </div>
                   </div>
