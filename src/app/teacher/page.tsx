@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import Layout from '@/components/ui/Layout'
 import Link from 'next/link'
 import ActivityTracking from '@/components/admin/ActivityTracking'
+import TeacherPageTabs from '@/components/teacher/TeacherPageTabs'
 
 export default async function TeacherDashboard() {
   const session = await auth()
@@ -99,8 +100,9 @@ export default async function TeacherDashboard() {
     <Layout>
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
-          {/* Inspirational Quote - Teacher Only */}
-          {role === 'TEACHER' && (
+          <TeacherPageTabs>
+            {/* Inspirational Quote - Teacher Only */}
+            {role === 'TEACHER' && (
             <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6 mb-6">
               <blockquote className="border-l-4 border-green-500 pl-4 italic text-gray-800">
                 <p className="text-base">📚 &quot;If you want to master something, teach it. The more you teach, the better you learn. Teaching is a powerful tool to learning.&quot; — Richard Feynman ✨</p>
@@ -202,6 +204,7 @@ export default async function TeacherDashboard() {
               ))}
             </div>
           )}
+          </TeacherPageTabs>
         </div>
       </div>
     </Layout>
