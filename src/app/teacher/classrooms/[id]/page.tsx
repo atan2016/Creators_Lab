@@ -6,6 +6,7 @@ import Link from 'next/link'
 import ClassroomActions from '@/components/classroom/ClassroomActions'
 import SyllabusSection from '@/components/syllabus/SyllabusSection'
 import AddStudentButton from '@/components/classroom/AddStudentButton'
+import RemoveMemberButton from '@/components/classroom/RemoveMemberButton'
 import GoogleDriveLinkEditor from '@/components/classroom/GoogleDriveLinkEditor'
 
 export default async function TeacherClassroomPage({ params }: { params: { id: string } }) {
@@ -161,15 +162,24 @@ export default async function TeacherClassroomPage({ params }: { params: { id: s
               </div>
               <ul className="space-y-2">
                 {classroom.members.map((member) => (
-                  <li key={member.id} className="text-sm">
-                    <div className="font-medium text-gray-900">{member.user.name}</div>
-                    <div className="text-gray-500">{member.user.email}</div>
-                    <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded ${
-                      member.user.role === 'TEACHER' ? 'bg-blue-100 text-blue-800' :
-                      'bg-green-100 text-green-800'
-                    }`}>
-                      {member.user.role}
-                    </span>
+                  <li key={member.id} className="text-sm flex items-start justify-between gap-2">
+                    <div>
+                      <div className="font-medium text-gray-900">{member.user.name}</div>
+                      <div className="text-gray-500">{member.user.email}</div>
+                      <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded ${
+                        member.user.role === 'TEACHER' ? 'bg-blue-100 text-blue-800' :
+                        'bg-green-100 text-green-800'
+                      }`}>
+                        {member.user.role}
+                      </span>
+                    </div>
+                    <RemoveMemberButton
+                      classroomId={classroom.id}
+                      memberId={member.id}
+                      memberName={member.user.name}
+                      memberRole={member.user.role}
+                      isAdmin={isAdmin}
+                    />
                   </li>
                 ))}
               </ul>

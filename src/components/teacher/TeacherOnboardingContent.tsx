@@ -48,6 +48,36 @@ export default function TeacherOnboardingContent() {
           </p>
         </section>
 
+        {/* Form W-9 */}
+        <section>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            Form W-9 (Request for Taxpayer Identification Number and Certification)
+          </h3>
+          <p className="text-gray-600 mb-4">
+            As an independent contractor, you must complete and submit Form W-9 so we can report
+            payments correctly for tax purposes.
+          </p>
+          <p className="text-gray-600 mb-2">
+            <a
+              href="https://www.irs.gov/pub/irs-pdf/fw9.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Form W-9 (PDF)
+            </a>
+            {' · '}
+            <a
+              href="https://www.irs.gov/instructions/iw9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              Instructions for how to complete and submit Form W-9
+            </a>
+          </p>
+        </section>
+
         {/* Mandated Reporter Training */}
         <section>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
