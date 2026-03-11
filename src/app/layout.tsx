@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./creators-lab-styles.css";
 import SessionProvider from "@/components/providers/SessionProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "CreatorsLab — Enrich Youth Innovations",
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SessionProvider>{children}</SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
