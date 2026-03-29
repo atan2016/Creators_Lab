@@ -1,7 +1,7 @@
 export default function TeacherOnboardingContent() {
   return (
     <div className="bg-white shadow rounded-lg p-6 sm:p-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Creators-Lab!</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Creators Lab!</h2>
       <p className="text-gray-600 mb-6">
         We&apos;re excited to have you joining the team and looking forward to our partnership.
       </p>
@@ -44,7 +44,7 @@ export default function TeacherOnboardingContent() {
             <a href="mailto:info@creators-lab.com" className="text-blue-600 hover:underline">
               info@creators-lab.com
             </a>
-            .
+            . A screenshot that showing the ressults, date of the test and the name of the doctor works too.
           </p>
         </section>
 

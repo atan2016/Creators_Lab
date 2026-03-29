@@ -1,12 +1,29 @@
 import PageLayout from '@/components/creators-lab/PageLayout'
 import ShowcaseClient from '@/components/creators-lab/ShowcaseClient'
+import ecoConnectImage from '../../../student-showcase/src/assets/eco-connect.webp'
+import studyBuddyImage from '../../../student-showcase/src/assets/study-buddy.webp'
+import galacticGuardianImage from '../../../student-showcase/src/assets/galactic-guardian.webp'
+import petPalImage from '../../../student-showcase/src/assets/pet-pal.webp'
+import taskMasterImage from '../../../student-showcase/src/assets/task_master.png'
+import restaurantFinderImage from '../../../student-showcase/src/assets/restaurant_finder_1.PNG'
+import codeQuestImage from '../../../student-showcase/src/assets/code_quest.png'
+import photoRestorationImage from '../../../student-showcase/src/assets/photorestoration_icon.png'
 
 export const metadata = {
-  title: 'Student Showcase - CreatorsLab',
+  title: 'Student Showcase - Creators Lab',
   description: 'Discover the incredible projects created by our students.',
 }
 
 export default function ShowcasePage() {
+  const showcaseImageStyle = (imageUrl: string) => ({
+    backgroundColor: '#e6f4ea',
+    backgroundImage: `url(${imageUrl})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    position: 'relative' as const,
+  })
+
   return (
     <PageLayout>
       <main>
@@ -32,7 +49,7 @@ export default function ShowcasePage() {
 
             <div className="projects-grid" id="projectsGrid">
               <div className="project-card" data-category="websites">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/eco-connect.webp) center/cover', position: 'relative' }} role="img" aria-label="Eco-Connect: Community Recycling Platform project screenshot">
+                <div className="project-image" style={showcaseImageStyle(ecoConnectImage.src)} role="img" aria-label="Eco-Connect: Community Recycling Platform project screenshot">
                   <div className="project-type-label website">Website</div>
                 </div>
                 <div className="project-content">
@@ -43,7 +60,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="apps">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/study-buddy.webp) center/cover', position: 'relative' }} role="img" aria-label="Study Buddy: AI-Powered Learning Assistant project screenshot">
+                <div className="project-image" style={showcaseImageStyle(studyBuddyImage.src)} role="img" aria-label="Study Buddy: AI-Powered Learning Assistant project screenshot">
                   <div className="project-type-label mobile-app">Mobile App</div>
                 </div>
                 <div className="project-content">
@@ -54,7 +71,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="games">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/galactic-guardian.webp) center/cover', position: 'relative' }} role="img" aria-label="Galactic Guardian: A Space Adventure game screenshot">
+                <div className="project-image" style={showcaseImageStyle(galacticGuardianImage.src)} role="img" aria-label="Galactic Guardian: A Space Adventure game screenshot">
                   <div className="project-type-label game">Game</div>
                 </div>
                 <div className="project-content">
@@ -65,7 +82,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="websites">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/pet-pal.webp) center/cover', position: 'relative' }} role="img" aria-label="Pet Pal: Adoptable Animal Finder project screenshot">
+                <div className="project-image" style={showcaseImageStyle(petPalImage.src)} role="img" aria-label="Pet Pal: Adoptable Animal Finder project screenshot">
                   <div className="project-type-label website">Website</div>
                 </div>
                 <div className="project-content">
@@ -76,7 +93,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="apps">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/task_master.png) center/cover', position: 'relative' }} role="img" aria-label="Task Master: AI-Powered Productivity app screenshot">
+                <div className="project-image" style={showcaseImageStyle(taskMasterImage.src)} role="img" aria-label="Task Master: AI-Powered Productivity app screenshot">
                   <div className="project-type-label mobile-app">Mobile App</div>
                 </div>
                 <div className="project-content">
@@ -87,7 +104,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="apps">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/restaurant_finder_1.PNG) center/cover', position: 'relative' }} role="img" aria-label="Restaurant Finder: Travel Dining Companion app screenshot">
+                <div className="project-image" style={showcaseImageStyle(restaurantFinderImage.src)} role="img" aria-label="Restaurant Finder: Travel Dining Companion app screenshot">
                   <div className="project-type-label mobile-app">Mobile App</div>
                 </div>
                 <div className="project-content">
@@ -98,7 +115,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="games">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/code_quest.png) center/cover', position: 'relative' }} role="img" aria-label="Code Quest: Programming Adventure game screenshot">
+                <div className="project-image" style={showcaseImageStyle(codeQuestImage.src)} role="img" aria-label="Code Quest: Programming Adventure game screenshot">
                   <div className="project-type-label game">Game</div>
                 </div>
                 <div className="project-content">
@@ -109,7 +126,7 @@ export default function ShowcasePage() {
               </div>
 
               <div className="project-card" data-category="web-apps">
-                <div className="project-image" style={{ background: 'url(/student-showcase/src/assets/photorestoration_icon.png) center/cover', position: 'relative' }} role="img" aria-label="Image Enhancer web application screenshot">
+                <div className="project-image" style={showcaseImageStyle(photoRestorationImage.src)} role="img" aria-label="Image Enhancer web application screenshot">
                   <div className="project-type-label web-app">Web App</div>
                 </div>
                 <div className="project-content">

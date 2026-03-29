@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendEmail({
         to: email,
-        subject: 'Your temporary password - CreatorsLab LMS (Yamas)',
+        subject: 'Your temporary password - Creators Lab LMS (Yamas)',
         text: `Your account has been created. Your temporary password is: ${tempPassword}\n\nPlease log in and change your password immediately at ${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/reset-password.`,
         html: `
           <p>Your account has been created.</p>

@@ -147,7 +147,7 @@ export default async function TeacherDashboard() {
                 </div>
                 <div className="ml-3 flex-1">
                   <h2 className="text-lg font-semibold text-blue-900 mb-3">
-                    Welcome Teachers to Yamas (The Learning Management Systems for Creators-Lab.)
+                    Welcome Teachers to Yamas (The Learning Management Systems for Creators Lab.)
                   </h2>
                   <p className="text-sm text-blue-800 mb-3">
                     This portal allows you to perform the following functions:

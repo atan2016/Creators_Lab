@@ -165,19 +165,41 @@ export async function PUT(
       )
     }
 
-    // Only creator or admin can update
     const userId = (session.user as any).id
     const role = (session.user as any).role
 
-    if (classroom.creatorId !== userId && role !== 'ADMIN') {
+    const isCreator = classroom.creatorId === userId
+    const isAdmin = role === 'ADMIN'
+    const membership =
+      !isCreator && !isAdmin && role === 'TEACHER'
+        ? await prisma.classroomMember.findUnique({
+            where: {
+              classroomId_userId: { classroomId: id, userId },
+            },
+          })
+        : null
+    const isTeacherMember = Boolean(membership)
+
+    // Creator, admin, or teacher member of this class can update name/description.
+    // Only creator or admin can change Document Drive URL.
+    if (!isCreator && !isAdmin && !isTeacherMember) {
       return NextResponse.json(
-        { error: 'Only the classroom creator can update it' },
+        { error: 'You do not have permission to update this classroom' },
         { status: 403 }
       )
     }
 
+    const canEditDrive = isCreator || isAdmin
+
     const body = await request.json()
     const { name, description, googleDriveUrl } = body
+
+    if (googleDriveUrl !== undefined && !canEditDrive) {
+      return NextResponse.json(
+        { error: 'Only the classroom creator or an admin can update the Document Drive link' },
+        { status: 403 }
+      )
+    }
 
     if (name !== undefined && !name) {
       return NextResponse.json(
@@ -199,7 +221,7 @@ export async function PUT(
       data: {
         ...(name !== undefined && { name }),
         ...(description !== undefined && { description: description || null }),
-        ...(googleDriveUrl !== undefined && { googleDriveUrl: googleDriveUrl || null }),
+        ...(googleDriveUrl !== undefined && canEditDrive && { googleDriveUrl: googleDriveUrl || null }),
       },
     })
 

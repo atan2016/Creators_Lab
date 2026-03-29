@@ -10,7 +10,7 @@ The home page (`index.html`) has been successfully converted to Next.js (`src/ap
 - ✅ Header with navigation (logo, menu items, search)
 - ✅ Hero section with call-to-action buttons
 - ✅ Announcements section (dynamically loaded)
-- ✅ "Why CreatorsLab?" section with 4 feature cards
+- ✅ "Why Creators Lab?" section with 4 feature cards
 - ✅ Programs section with all 9 program cards:
   - 3D Product Design with Blender (Level 1 & 2)
   - Unity Game Design (Level 1 & 2)

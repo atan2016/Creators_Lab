@@ -1,4 +1,4 @@
-/* CreatorsLab Search Styles */
+/* Creators Lab Search Styles */
 .search-container{position:relative;display:flex;align-items:center;gap:0.5rem}
 .search-icon{cursor:pointer;padding:0.5rem;color:var(--green-700);transition:color 0.3s ease;background:none;border:none}
 .search-icon:hover{color:var(--green-900)}

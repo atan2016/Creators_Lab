@@ -6,7 +6,7 @@ export default function NotFound() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
       <Image
         src="/assets/images/creatorslab_logo.png"
-        alt="CreatorsLab"
+        alt="Creators Lab"
         width={200}
         height={79}
         style={{ marginBottom: '2rem' }}

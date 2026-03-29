@@ -1,76 +1,89 @@
-import Script from 'next/script'
 import Link from 'next/link'
 import Image from 'next/image'
+import PageLayout from '@/components/creators-lab/PageLayout'
 import HomePageClient from '@/components/creators-lab/HomePageClient'
+import ProgramExpandButton from '@/components/creators-lab/ProgramExpandButton'
 
 export const metadata = {
-  title: 'CreatorsLab — Enrich Youth Innovations',
+  title: 'Creators Lab — Enrich Youth Innovations',
   description: 'Empower the next generation to dream big, build boldly, and innovate fearlessly.',
 }
 
 export default function Home() {
   return (
-    <>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-85L4ZPPPP0"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-85L4ZPPPP0');
-        `}
-      </Script>
-
-      <header>
-        <div className="container nav" style={{ justifyContent: 'space-between' }}>
-          <Link className="brand" href="#home" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Image
-              src="/assets/images/creatorslab_logo.png"
-              alt="CreatorsLab"
-              width={150}
-              height={59}
-              style={{ height: '3.69140625em', display: 'inline-block', verticalAlign: 'middle', marginRight: '12px' }}
-            />
-          </Link>
-          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            <Link href="/" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Home</Link>
-            <Link href="/what-we-teach" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>What We Teach</Link>
-            <Link href="#programs" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Explore Programs</Link>
-            <Link href="/showcase" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Showcase</Link>
-            <Link href="/resources" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Resources</Link>
-            <Link href="/events" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Events</Link>
-            <Link href="#contact" style={{ textDecoration: 'none', color: 'var(--green-900)', fontSize: '1rem', fontWeight: 500 }}>Contact Us</Link>
-            <div className="search-container">
-              <div className="search-icon" id="searchIcon" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <div className="search-input-wrapper" id="searchInputWrapper">
-                <input type="text" className="search-input" id="searchInput" placeholder="Search..." aria-label="Search input" />
-                <div className="search-results" id="searchResults"></div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div id="home" className="hero">
+    <PageLayout>
+      <div
+        id="home"
+        className="hero"
+        style={{
+          /* Hex — not var(): if variables are unset during HMR/FOUC, var() invalidates the whole declaration and white text disappears on a white page */
+          background: '#047857',
+          color: '#fff',
+          padding: '2rem 0',
+        }}
+      >
         <section>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
-              <div>
-                <h1>Empower Youth Innovations</h1>
-                <p className="muted">At CreatorsLab, we empower the next generation to dream big, build boldly, and innovate fearlessly. Our mission is to equip teens with the creativity, confidence, and entrepreneurial mindset to thrive in a world shaped by AI and innovation — one community, one project, one young creator at a time.</p>
+          <div
+            className="container"
+            style={{
+              maxWidth: '80rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: '1rem 1.5rem',
+            }}
+          >
+            <div className="home-hero-grid">
+              <div style={{ minWidth: 0 }}>
+                <h1
+                  style={{
+                    color: '#fff',
+                    fontSize: 'clamp(2rem, 5vw, 3rem)',
+                    margin: '0 0 0.8rem',
+                    lineHeight: 1.05,
+                    fontWeight: 700,
+                  }}
+                >
+                  Empower Youth Innovations
+                </h1>
+                <p className="muted" style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
+                  At Creators Lab, we empower the next generation to dream big, build boldly, and innovate fearlessly. Our mission is to equip teens with the creativity, confidence, and entrepreneurial mindset to thrive in a world shaped by AI and innovation — one community, one project, one young creator at a time.
+                </p>
                 <div style={{ marginTop: '1rem', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <Link className="btn" href="#programs">Explore Programs</Link>
-                  <button className="btn" id="donateBtn" style={{ cursor: 'pointer' }}>Donate</button>
+                  <Link
+                    className="btn"
+                    href="#programs"
+                    style={{
+                      background: '#fff',
+                      color: '#047857',
+                      padding: '0.75rem 1rem',
+                      borderRadius: '999px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-block',
+                      border: 'none',
+                    }}
+                  >
+                    Explore Programs
+                  </Link>
+                  <button
+                    className="btn"
+                    id="donateBtn"
+                    type="button"
+                    style={{
+                      cursor: 'pointer',
+                      background: '#fff',
+                      color: '#047857',
+                      padding: '0.75rem 1rem',
+                      borderRadius: '999px',
+                      fontWeight: 600,
+                      border: 'none',
+                    }}
+                  >
+                    Donate
+                  </button>
                 </div>
               </div>
-              <div>
+              <div style={{ minWidth: 0 }}>
                 <Image
                   className="img-hero"
                   src="/assets/images/hero_image_teens.png"
@@ -85,61 +98,73 @@ export default function Home() {
         </section>
       </div>
 
-      <div id="announcements" style={{ background: '#fefce8', borderTop: '1px solid var(--yellow-400)', borderBottom: '1px solid var(--yellow-400)', padding: '1.5rem 0' }}>
-        <div className="container">
-          <div id="announcements-container" style={{ display: 'none' }} />
-        </div>
-      </div>
-
-      <div id="why" style={{ background: '#fff', color: 'var(--green-900)', padding: '2rem 0' }}>
+      <div id="why" style={{ background: '#fff', color: '#064e3b', padding: '2rem 0' }}>
         <section>
           <div className="container">
             <div style={{ textAlign: 'center', maxWidth: '56ch', margin: '0 auto 2rem' }}>
-              <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Why CreatorsLab?</h2>
-              <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--muted)' }}>We provide the tools, community, and guidance young innovators need to succeed in the AI era.</p>
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#064e3b' }}>Why Creators Lab?</h2>
+              <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'rgba(6, 78, 59, 0.7)' }}>
+                We provide the tools, community, and guidance young innovators need to succeed in the AI era.
+              </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', maxWidth: '80rem', margin: '0 auto' }}>
-              <div style={{ textAlign: 'center' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                gap: '2rem',
+                maxWidth: '80rem',
+                margin: '0 auto',
+              }}
+            >
+              <div style={{ textAlign: 'center', minWidth: 0 }}>
                 <div style={{ width: '80px', height: '80px', margin: '0 auto 1rem', background: 'rgba(4,120,87,0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green-700)" strokeWidth="2">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#047857" strokeWidth="2">
                     <path d="M12 2a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.389 5.389 0 0 1-3.14-9.8A9 9 0 0 0 12 2z"/>
                     <circle cx="12" cy="10" r="3"/>
                     <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
                   </svg>
                 </div>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--muted)' }}>Use cutting-edge AI tools to code faster and more creatively than ever before.</p>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(6, 78, 59, 0.7)' }}>
+                  Use cutting-edge AI tools to code faster and more creatively than ever before.
+                </p>
               </div>
 
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', minWidth: 0 }}>
                 <div style={{ width: '80px', height: '80px', margin: '0 auto 1rem', background: 'rgba(4,120,87,0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green-700)" strokeWidth="2">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#047857" strokeWidth="2">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                     <circle cx="9" cy="7" r="4"/>
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
                   </svg>
                 </div>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--muted)' }}>Work in teams, learn git workflows, and build real products together.</p>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(6, 78, 59, 0.7)' }}>
+                  Work in teams, learn git workflows, and build real products together.
+                </p>
               </div>
 
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', minWidth: 0 }}>
                 <div style={{ width: '80px', height: '80px', margin: '0 auto 1rem', background: 'rgba(4,120,87,0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green-700)" strokeWidth="2">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#047857" strokeWidth="2">
                     <circle cx="12" cy="12" r="10"/>
                     <circle cx="12" cy="12" r="6"/>
                     <circle cx="12" cy="12" r="2"/>
                   </svg>
                 </div>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--muted)' }}>Focus on practical entrepreneurship, problem-solving, and presentation skills.</p>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(6, 78, 59, 0.7)' }}>
+                  Focus on practical entrepreneurship, problem-solving, and presentation skills.
+                </p>
               </div>
 
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', minWidth: 0 }}>
                 <div style={{ width: '80px', height: '80px', margin: '0 auto 1rem', background: 'rgba(4,120,87,0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green-700)" strokeWidth="2">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#047857" strokeWidth="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                   </svg>
                 </div>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--muted)' }}>Develop creativity, adaptability, and the confidence to think differently.</p>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(6, 78, 59, 0.7)' }}>
+                  Develop creativity, adaptability, and the confidence to think differently.
+                </p>
               </div>
             </div>
           </div>
@@ -152,37 +177,37 @@ export default function Home() {
             <div style={{ textAlign: 'center', maxWidth: '56ch', margin: '0 auto' }}>
               <h2 style={{ fontSize: '1.75rem' }}>Programs</h2>
               <p className="muted">Hands-on programs that turn ideas into impact.</p>
+              <p className="muted" style={{ marginTop: '0.5rem', color: 'var(--yellow-400)', fontWeight: 500 }}>
+                Register for Millbrae Recreation Programs click on{' '}
+                <a
+                  href="https://secure.rec1.com/CA/millbrae-ca/catalog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--yellow-400)', fontWeight: 500, textDecoration: 'underline' }}
+                >
+                  here
+                </a>
+                .
+                <br />
+                Register for JEI Learning Center programs click on{' '}
+                <Link href="/JEI" style={{ color: 'var(--yellow-400)', fontWeight: 500, textDecoration: 'underline' }}>
+                  here
+                </Link>
+                .
+              </p>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', margin: '2rem 0', flexWrap: 'wrap' }}>
-              <div style={{ textAlign: 'center' }}>
-                <h4 style={{ color: 'var(--green-700)', marginBottom: '0.5rem' }}>Required Equipment</h4>
-                <p className="muted" style={{ margin: 0 }}>Mac or Windows PC</p>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <h4 style={{ color: 'var(--green-700)', marginBottom: '0.5rem' }}>In-Person Classes</h4>
-                <p className="muted" style={{ margin: 0 }}>477 Lincoln Circle</p>
-                <p className="muted" style={{ margin: 0 }}>Millbrae, CA 94030</p>
-                <a href="https://maps.google.com/?q=477+Lincoln+Circle+Millbrae+CA+94030" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--yellow-400)', textDecoration: 'none', fontSize: '0.9rem' }}>View Map</a>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <h4 style={{ color: 'var(--green-700)', marginBottom: '0.5rem' }}>Register for Classes</h4>
-                <a href="https://secure.rec1.com/CA/millbrae-ca/catalog" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--yellow-400)', textDecoration: 'none', fontSize: '0.9rem' }}>Millbrae Recreation Portal</a>
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginTop: '1.5rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
               {/* Program Card 1: Blender Level 1 */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 1)</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 8 weeks • 90-minute sessions</strong></p>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}>Discover the art of bringing your imagination to life! In this beginner-friendly Blender class, you'll learn how 3D characters, buildings, and entire worlds are created for animated films and video games. We'll cover the essential tools of 3D modeling and how to navigate the 3D space using Blender, a powerful free software used by creators worldwide.</p>
+                <div id="blender-l1-preview" className="program-card-desc-preview muted">
+                  <p>Discover the art of bringing your imagination to life! In this beginner-friendly Blender class, you&apos;ll learn how 3D characters, buildings, and entire worlds are created for animated films and video games. We&apos;ll cover the essential tools of 3D modeling and how to navigate the 3D space using Blender, a powerful free software used by creators worldwide.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="description" data-target="blender-l1-desc" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Details ↓
-                  </button>
+                  <ProgramExpandButton mode="description" panelId="blender-l1-desc" previewId="blender-l1-preview" />
                   <div id="blender-l1-desc" style={{ display: 'none', marginTop: '0.5rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-                    Over eight weeks, you'll use your new skills to design and build your own castle, and get it printed on a 3D printer! No grades—just creativity, exploration, and the chance to share your final creation with the class.
+                    You&apos;ll use your new skills to design and build your own castle, and get it printed on a 3D printer! No grades—just creativity, exploration, and the chance to share your final creation with the class.
                   </div>
                 </div>
                 <Link href="/what-we-teach" style={{ color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500 }}>Learn more about What We Teach →</Link>
@@ -190,13 +215,13 @@ export default function Home() {
 
               {/* Program Card 2: Blender Level 2 */}
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>🏰 3D Product Design with Blender: Create Your Own 3D Castle! (Level 2)</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 5 days • 3 hours each • Prerequisite: 3D Product Design with Blender (Level 1)</strong></p>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}>Take your 3D skills to the next level in this immersive Level 2 Blender camp! Over five days (3 hours each), students dive deeper into modeling, sculpting, materials, and lighting while learning advanced tools like modifiers, rigging basics, particle effects, and scene optimization.</p>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 2)</h3>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Prerequisite: 3D Product Design with Blender (Level 1)</strong></p>
+                <div id="blender-l2-preview" className="program-card-desc-preview muted">
+                  <p>Take your 3D skills to the next level in this immersive Level 2 Blender camp! Students dive deeper into modeling, sculpting, materials, and lighting while learning advanced tools like modifiers, rigging basics, particle effects, and scene optimization.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="description" data-target="blender-l2-desc" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Details ↓
-                  </button>
+                  <ProgramExpandButton mode="description" panelId="blender-l2-desc" previewId="blender-l2-preview" />
                   <div id="blender-l2-desc" style={{ display: 'none', marginTop: '0.5rem', color: 'var(--muted)', lineHeight: 1.6 }}>
                     Campers work on a more complex hero project—from characters to environments—and bring their designs to life with animation essentials. Perfect for students who completed Level 1, this camp boosts creativity, technical skills, and confidence in professional 3D design workflows.
                   </div>
@@ -207,12 +232,11 @@ export default function Home() {
               {/* Program Card 3: Unity Level 1 */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Unity Game Design and Intro to coding with C# (Level 1)</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 8 weeks • 90-minute sessions</strong></p>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}>Jump into the world of game creation with this beginner-friendly Unity course! Over 8 fun weeks, students learn the basics of 2D game design, coding, and animation while building their very own playable platformer. Using Unity and C#, students create characters, obstacles, collectibles, and a complete level—learning real coding concepts through hands-on creativity.</p>
+                <div id="unity-l1-preview" className="program-card-desc-preview muted">
+                  <p>Jump into the world of game creation with this beginner-friendly Unity course! Students learn the basics of 2D game design, coding, and animation while building their very own playable platformer. Using Unity and C#, students create characters, obstacles, collectibles, and a complete level—learning real coding concepts through hands-on creativity.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="description" data-target="unity-l1-desc" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Details ↓
-                  </button>
+                  <ProgramExpandButton mode="description" panelId="unity-l1-desc" previewId="unity-l1-preview" />
                   <div id="unity-l1-desc" style={{ display: 'none', marginTop: '0.5rem', color: 'var(--muted)', lineHeight: 1.6 }}>
                     Perfect for beginners who want to bring their ideas to life and start their journey into game development while learning how to code!
                   </div>
@@ -223,12 +247,12 @@ export default function Home() {
               {/* Program Card 4: Unity Level 2 */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Unity Game Design and Intro to coding with C# (Level 2)</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 5 days • 3 hours each • Prerequisite: Unity Game Design Level 1</strong></p>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}>Level up your game-building skills in this advanced Unity camp! Over five days (3 hours each), students expand on their Level 1 foundation by creating a more complex 2D or 3D game with enhanced mechanics, polished visuals, and smarter C# scripts. They'll learn enemy AI, animations, UI menus, sound effects, and game-ready interactions while building a full playable level.</p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Prerequisite: Unity Game Design Level 1</strong></p>
+                <div id="unity-l2-preview" className="program-card-desc-preview muted">
+                  <p>Level up your game-building skills in this advanced Unity camp! Students expand on their Level 1 foundation by creating a more complex 2D or 3D game with enhanced mechanics, polished visuals, and smarter C# scripts. They&apos;ll learn enemy AI, animations, UI menus, sound effects, and game-ready interactions while building a full playable level.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="description" data-target="unity-l2-desc" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Details ↓
-                  </button>
+                  <ProgramExpandButton mode="description" panelId="unity-l2-desc" previewId="unity-l2-preview" />
                   <div id="unity-l2-desc" style={{ display: 'none', marginTop: '0.5rem', color: 'var(--muted)', lineHeight: 1.6 }}>
                     Perfect for students who completed Level 1 and are ready for deeper coding, creative design challenges, and real game-development techniques. Students leave with a more advanced project they can proudly showcase and continue improving!
                   </div>
@@ -239,12 +263,11 @@ export default function Home() {
               {/* Program Card 5: Figma */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Product Design with Figma and Prototyping with AI Tools</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 8 weeks • 90-minute sessions</strong></p>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}>In this hands-on class, students will learn the core skills of digital product design using Figma and bring their ideas to life with the AI-powered IDE, Cursor. Over the 8-week program, they'll work both individually and collaboratively—brainstorming, designing screens, planning user flows, and building features together as a team.</p>
+                <div id="figma-preview" className="program-card-desc-preview muted">
+                  <p>In this hands-on class, students will learn the core skills of digital product design using Figma and bring their ideas to life with the AI-powered IDE, Cursor. They&apos;ll work both individually and collaboratively—brainstorming, designing screens, planning user flows, and building features together as a team.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="description" data-target="figma-desc" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Details ↓
-                  </button>
+                  <ProgramExpandButton mode="description" panelId="figma-desc" previewId="figma-preview" />
                   <div id="figma-desc" style={{ display: 'none', marginTop: '0.5rem', color: 'var(--muted)', lineHeight: 1.6 }}>
                     By the end of the course, each student will have created their own functional Study Buddy app that helps users stay organized and study more effectively—a portfolio-ready project that showcases creativity, collaboration, and technical skill for college applications.
                   </div>
@@ -255,14 +278,13 @@ export default function Home() {
               {/* Program Card 6: Design Thinking with AI */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Design Thinking with AI</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 8 weeks • 90-minute sessions</strong></p>
-                <p className="muted" style={{ marginBottom: '0.75rem' }}>Perfect for beginners! Learn to code using AI as your creative partner. You'll describe what you want to build in plain English, and AI tools like Cursor IDE (Interactive Development Environment) will help generate the code.</p>
+                <div id="vibe101-preview" className="program-card-desc-preview muted" style={{ marginBottom: '0.75rem' }}>
+                  <p>Perfect for beginners! Learn to code using AI as your creative partner. You&apos;ll describe what you want to build in plain English, and AI tools like Cursor IDE (Interactive Development Environment) will help generate the code.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="details" data-target="vibe101-details" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Detailed Curriculum ↓
-                  </button>
+                  <ProgramExpandButton mode="details" panelId="vibe101-details" previewId="vibe101-preview" />
                   <div id="vibe101-details" style={{ display: 'none', marginTop: '1rem', padding: '1rem', background: '#f9fafb', borderRadius: '8px', borderLeft: '4px solid var(--green-700)' }}>
-                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>8-Week Curriculum:</h5>
+                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>Curriculum:</h5>
                     <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                       <li><strong>Week 1:</strong> Intro to AI in Daily Life - Scavenger hunt, AI demos, intro to IDE (Interactive Development Environment)</li>
                       <li><strong>Week 2:</strong> Setup IDE (Interactive Development Environment) & brainstorm project ideas</li>
@@ -281,12 +303,12 @@ export default function Home() {
               {/* Program Card 7: Advanced Vibe Coding */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Advanced Vibe Coding</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 14-17 • 8 weeks • Prerequisite: AI Vibe Coding 101</strong></p>
-                <p className="muted" style={{ marginBottom: '0.75rem' }}>Take your coding skills to the next level! Dive deeper into AI-powered development, advanced frameworks, and complex project architecture.</p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Prerequisite: AI Vibe Coding 101</strong></p>
+                <div id="advanced-preview" className="program-card-desc-preview muted" style={{ marginBottom: '0.75rem' }}>
+                  <p>Take your coding skills to the next level! Dive deeper into AI-powered development, advanced frameworks, and complex project architecture.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="details" data-target="advanced-details" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Detailed Curriculum ↓
-                  </button>
+                  <ProgramExpandButton mode="details" panelId="advanced-details" previewId="advanced-preview" />
                   <div id="advanced-details" style={{ display: 'none', marginTop: '1rem', padding: '1rem', background: '#f9fafb', borderRadius: '8px', borderLeft: '4px solid var(--green-700)' }}>
                     <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>Advanced Project Focus:</h5>
                     <p style={{ margin: '0 0 0.75rem', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>In this program, you'll:</p>
@@ -306,19 +328,18 @@ export default function Home() {
               {/* Program Card 8: Teen Venture Studio */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Teen Venture Studio</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 14-17 • 8 weeks • Application Required</strong></p>
-                <p className="muted" style={{ marginBottom: '0.75rem' }}>Transform from coder to entrepreneur! Build a real startup with a team, create a business plan, and pitch to industry experts at Demo Day.</p>
+                <div id="venture-preview" className="program-card-desc-preview muted" style={{ marginBottom: '0.75rem' }}>
+                  <p>Transform from coder to entrepreneur! Build a real startup with a team, create a business plan, and pitch to industry experts at Demo Day.</p>
+                </div>
                 <div style={{ background: '#fefce8', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', border: '1px solid var(--yellow-400)' }}>
                   <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--green-700)', fontWeight: 500 }}>
                     📝 <strong>Application Required:</strong> This program requires an application. <a href="https://forms.gle/nu6qJjX9hNWPE2E76" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green-700)', textDecoration: 'underline', fontWeight: 600 }}>Apply here →</a>
                   </p>
                 </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="details" data-target="venture-details" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Detailed Curriculum ↓
-                  </button>
+                  <ProgramExpandButton mode="details" panelId="venture-details" previewId="venture-preview" />
                   <div id="venture-details" style={{ display: 'none', marginTop: '1rem', padding: '1rem', background: '#f9fafb', borderRadius: '8px', borderLeft: '4px solid var(--green-700)' }}>
-                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>8-Week Entrepreneurship Journey:</h5>
+                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>Entrepreneurship journey:</h5>
                     <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                       <li><strong>Week 1:</strong> Kickoff & Team Formation - Icebreakers, team formation, intro to Lean Startup & Design Thinking</li>
                       <li><strong>Week 2:</strong> Brainstorming & Ideation - Generate ideas, define problem statements, user interviews</li>
@@ -340,20 +361,19 @@ export default function Home() {
               {/* Program Card 9: Vibe Coding Summer Camp */}
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Vibe Coding Summer Camp</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Ages 12-17 • 1 Week • Half-Day Program (9:00 AM – 12:30 PM)</strong></p>
-                <p className="muted" style={{ marginBottom: '0.75rem' }}>Perfect introduction to AI-powered coding! Students are grouped by skill and age. Build a complete project from idea to deployment in just one week.</p>
+                <div id="summer-preview" className="program-card-desc-preview muted" style={{ marginBottom: '0.75rem' }}>
+                  <p>Perfect introduction to AI-powered coding! Students are grouped by skill level. Build a complete project from idea to deployment.</p>
+                </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <button data-toggle="details" data-target="summer-details" style={{ background: 'none', border: 'none', color: 'var(--yellow-400)', textDecoration: 'underline', fontWeight: 500, cursor: 'pointer', padding: 0, fontSize: '0.9rem' }}>
-                    Show Detailed Curriculum ↓
-                  </button>
+                  <ProgramExpandButton mode="details" panelId="summer-details" previewId="summer-preview" />
                   <div id="summer-details" style={{ display: 'none', marginTop: '1rem', padding: '1rem', background: '#f9fafb', borderRadius: '8px', borderLeft: '4px solid var(--green-700)' }}>
                     <div style={{ marginBottom: '1rem' }}>
-                      <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.5rem', fontSize: '1rem' }}>Daily Schedule Format:</h5>
+                      <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.5rem', fontSize: '1rem' }}>Daily rhythm:</h5>
                       <p style={{ margin: '0 0 0.75rem', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                        <strong>Warm-up (15m) → Mini-lesson (30m) → Guided lab (60m) → Break (15m) → Project work (75m) → Share-out (15m)</strong>
+                        Each day balances warm-ups, mini-lessons, guided labs, project work, and share-outs.
                       </p>
                     </div>
-                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>5-Day Intensive Program:</h5>
+                    <h5 style={{ color: 'var(--green-700)', margin: '0 0 0.75rem', fontSize: '1rem' }}>Program sessions:</h5>
                     <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                       <li><strong>Day 1:</strong> Welcome to Vibe Coding + AI Basics - Icebreaker, intro to natural language programming, create first Git repo</li>
                       <li><strong>Day 2:</strong> Collaboration with Git + Idea Brainstorm - Git basics (clone, commit, push, pull), intro to MVP, brainstorm product ideas in teams</li>
@@ -408,37 +428,11 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <section>
-          <div className="container">
-            <div className="footer-row">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-                <Link href="/about" style={{ color: '#fff', textDecoration: 'none' }}>About Us</Link>
-                <Link href="/careers" style={{ color: '#fff', textDecoration: 'none' }}>Careers</Link>
-                <Link href="/login" style={{ color: '#fff', textDecoration: 'none' }}>Member Login</Link>
-                <a href="https://www.facebook.com/profile.php?id=61582517454567" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }} aria-label="Follow us on Facebook">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-                <a href="https://www.instagram.com/creatorslab2025/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }} aria-label="Follow us on Instagram">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-              </div>
-              <div className="center">© {new Date().getFullYear()} Creators Lab (a Rokk Research LLC company) • All rights reserved. • EIN: 83-4291515</div>
-              <div style={{ display: 'flex', gap: '12px' }}><Link href="#home" style={{ color: '#fff' }}>Back to top</Link></div>
-            </div>
-          </div>
-        </section>
-      </footer>
-
       {/* Donation Modal */}
       <div id="donationModal" style={{ display: 'none', position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.5)', zIndex: 1000, alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ background: '#fff', borderRadius: '12px', padding: '2rem', maxWidth: '500px', width: '90%', margin: '2rem auto', boxShadow: '0 10px 40px rgba(0,0,0,0.2)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <h3 style={{ margin: 0, color: 'var(--green-700)', fontSize: '1.5rem' }}>Support CreatorsLab</h3>
+            <h3 style={{ margin: 0, color: 'var(--green-700)', fontSize: '1.5rem' }}>Support Creators Lab</h3>
             <button id="closeDonationModal" style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--muted)', padding: 0, width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Close">&times;</button>
           </div>
           <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', lineHeight: 1.6 }}>Your donation helps us empower the next generation of innovators. Every contribution makes a difference!</p>
@@ -469,11 +463,11 @@ export default function Home() {
           </div>
           
           <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', lineHeight: 1.7, fontSize: '1.1rem' }}>
-            Thank you for making a donation to CreatorsLab! Your generous gift helps us empower the next generation of innovators and entrepreneurs.
+            Thank you for making a donation to Creators Lab! Your generous gift helps us empower the next generation of innovators and entrepreneurs.
           </p>
           
           <p style={{ color: 'var(--muted)', marginBottom: '2rem', lineHeight: 1.7, fontSize: '0.95rem' }}>
-            You will receive a receipt via email that you can use for tax purposes. Your transaction will appear on your card statement as &quot;CreatorsLab&quot;.
+            You will receive a receipt via email that you can use for tax purposes. Your transaction will appear on your card statement as &quot;Creators Lab&quot;.
           </p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
@@ -488,6 +482,6 @@ export default function Home() {
       </div>
 
       <HomePageClient />
-    </>
+    </PageLayout>
   )
 }

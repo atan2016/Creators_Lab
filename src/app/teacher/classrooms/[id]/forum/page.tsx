@@ -58,7 +58,7 @@ export default async function TeacherForumPage({ params }: { params: { id: strin
             <CreatePostButton classroomId={params.id} isTeacher={true} />
           </div>
 
-          <ForumList classroomId={params.id} />
+          <ForumList classroomId={params.id} isAdmin={isAdmin} />
         </div>
       </div>
     </Layout>

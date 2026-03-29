@@ -101,7 +101,7 @@ export default function CreatorsLabSite() {
           <p className="text-green-800/70 mt-2">Hands-on programs that turn ideas into impact.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6 mt-10">
-          {[{title:"Vibe Coding 101 (12–14)",desc:"Natural-language coding, git basics, and MVP design. Weekly 90‑min sessions.",image:"https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop"},{title:"Vibe Coding 101 (14–16)",desc:"Problem definition, prototyping, databases primer, and mini‑showcases.",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop"},{title:"Teen Venture Studio (14–18)",desc:"Teamwork, negotiation, lean canvas, prototyping, and pitch day.",image:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=>(
+          {[{title:"Vibe Coding 101 — foundations",desc:"Natural-language coding, git basics, and MVP design.",image:"https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop"},{title:"Vibe Coding 101 — projects",desc:"Problem definition, prototyping, databases primer, and mini‑showcases.",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop"},{title:"Teen Venture Studio",desc:"Teamwork, negotiation, lean canvas, prototyping, and pitch day.",image:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=>(
             <Card key={i} className="rounded-xl border border-green-200 overflow-hidden bg-white hover:shadow-lg">
               <img src={p.image} alt={p.title} className="w-full h-56 object-cover" />
               <CardHeader><CardTitle className="text-green-900">{p.title}</CardTitle></CardHeader>
@@ -110,7 +110,7 @@ export default function CreatorsLabSite() {
           ))}
         </div>
         <div className="grid md:grid-cols-2 gap-6 mt-6">
-          {[{title:"Advanced Vibe Coding",desc:"Go deeper: build with LLMs and services; explore MCP servers. (Prereq: Vibe Coding 101)",image:"https://images.unsplash.com/photo-1554891074-8c0c9c51e85e?q=80&w=1600&auto=format&fit=crop"},{title:"Summer Camp — 1 Week (Half Day)",desc:"Daily builds, git collaboration, and MVP showcase. 9:00–12:30.",image:"https://images.unsplash.com/photo-1485815457792-d1a966f9ef3f?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=>(
+          {[{title:"Advanced Vibe Coding",desc:"Go deeper: build with LLMs and services; explore MCP servers. (Prereq: Vibe Coding 101)",image:"https://images.unsplash.com/photo-1554891074-8c0c9c51e85e?q=80&w=1600&auto=format&fit=crop"},{title:"Summer Camp",desc:"Daily builds, git collaboration, and MVP showcase.",image:"https://images.unsplash.com/photo-1485815457792-d1a966f9ef3f?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=>(
             <Card key={i} className="rounded-xl border border-green-200 overflow-hidden bg-white hover:shadow-lg">
               <img src={p.image} alt={p.title} className="w-full h-56 object-cover" />
               <CardHeader><CardTitle className="text-green-900">{p.title}</CardTitle></CardHeader>
@@ -124,13 +124,13 @@ export default function CreatorsLabSite() {
       <div id="about" className="bg-green-50 border-y border-green-100">
         <Section className="py-16 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h3 className="text-3xl font-bold text-green-900">About CreatorsLab</h3>
+            <h3 className="text-3xl font-bold text-green-900">About Creators Lab</h3>
             <p className="text-green-800/80 mt-2">We’re seasoned entrepreneurs bringing real-world experience into community spaces where teens can create and grow. AI is a creative partner — and we teach young minds to use it responsibly and imaginatively.</p>
             <p className="text-green-800/80 mt-4">Our mission is to equip young people with the mindset and tools to create, lead, and thrive in a world shaped by innovation.</p>
           </div>
           <div>
             <h3 className="text-2xl font-bold text-green-900 mb-3">About Ashley</h3>
-            <p className="text-green-800/80 mb-2">Ashley Tan is a technologist and entrepreneur with 20+ years building products and teams. She holds a BS in Computer Engineering (RPI) and an MS in Information Management & Systems (UC Berkeley). Inspired by her teens’ curiosity, she started CreatorsLab to help young people use AI as a tool for creativity, not just consumption.</p>
+            <p className="text-green-800/80 mb-2">Ashley Tan is a technologist and entrepreneur with 20+ years building products and teams. She holds a BS in Computer Engineering (RPI) and an MS in Information Management & Systems (UC Berkeley). Inspired by her teens’ curiosity, she started Creators Lab to help young people use AI as a tool for creativity, not just consumption.</p>
           </div>
         </Section>
       </div>
@@ -155,7 +155,7 @@ export default function CreatorsLabSite() {
                 <p className="text-green-800/70 text-sm">{m.role}</p>
                 {m.name === "Mike Voytovich" && (
                   <p className="text-green-800/70 text-sm mt-3 text-left">
-                    Mike is a hands‑on engineer and mentor. Now a <strong>Member of Technical Staff at OpenAI</strong>, he has 15+ years building embedded systems, IoT products, and AI‑driven solutions. Previously, he founded <strong>Rokk Research</strong> and held key roles at <strong>Currant, PayPal,</strong> and <strong>Duff Research</strong>. At CreatorsLab, he helps teens unlock the maker mindset and apply technology to real community needs.
+                    Mike is a hands‑on engineer and mentor. Now a <strong>Member of Technical Staff at OpenAI</strong>, he has 15+ years building embedded systems, IoT products, and AI‑driven solutions. Previously, he founded <strong>Rokk Research</strong> and held key roles at <strong>Currant, PayPal,</strong> and <strong>Duff Research</strong>. At Creators Lab, he helps teens unlock the maker mindset and apply technology to real community needs.
                   </p>
                 )}
               </CardContent>
@@ -236,7 +236,7 @@ export default function CreatorsLabSite() {
       {/* FOOTER */}
       <footer className="bg-green-700 text-white py-8">
         <Section className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 font-semibold"><Sparkles className="text-yellow-400 size-5" /> CreatorsLab</div>
+          <div className="flex items-center gap-2 font-semibold"><Sparkles className="text-yellow-400 size-5" /> Creators Lab</div>
           <div className="text-sm">© {new Date().getFullYear()} Rokk Research LLC • All rights reserved.</div>
           <div className="flex items-center gap-4 text-sm">
             <a href="#home" className="hover:text-yellow-400">Back to top</a>

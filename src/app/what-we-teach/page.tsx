@@ -62,7 +62,7 @@ export default function WhatWeTeachPage() {
 
             <div className="concept-section">
               <h3>What is Entrepreneurship?</h3>
-              <p>Entrepreneurship at CreatorsLab isn't just about starting a business—it's about developing an innovative mindset. Students learn to identify opportunities, take calculated risks, iterate on ideas, and present their work confidently.</p>
+              <p>Entrepreneurship at Creators Lab isn't just about starting a business—it's about developing an innovative mindset. Students learn to identify opportunities, take calculated risks, iterate on ideas, and present their work confidently.</p>
             </div>
           </div>
 

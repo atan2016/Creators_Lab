@@ -77,25 +77,38 @@ export default function EventsClient() {
           const upcoming = sortedEvents.filter(event => isUpcoming(event.date))
           const past = sortedEvents.filter(event => !isUpcoming(event.date))
 
-          // Group Spring 2026 programs together
+          // Group Spring 2026 and JEI summer programs together
           const spring2026Programs = upcoming.filter(event => event.group === 'spring2026')
-          const otherUpcoming = upcoming.filter(event => event.group !== 'spring2026')
+
+          const ctaButtonStyle =
+            'flex:1;min-width:min(100%,11rem);text-align:center;box-sizing:border-box;padding:0.875rem 1rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease'
+          function renderActionRow(item: any) {
+            if (item.secondaryActionUrl && item.secondaryAction) {
+              return `<div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:stretch;width:100%;max-width:36rem;margin:0 auto">
+                    <a href="${item.actionUrl}" style="${ctaButtonStyle}">${item.action}</a>
+                    <a href="${item.secondaryActionUrl}" style="${ctaButtonStyle}">${item.secondaryAction}</a>
+                  </div>`
+            }
+            return `<div style="text-align:center;flex-shrink:0">
+                    <a href="${item.actionUrl}" style="display:inline-block;padding:0.875rem 2rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease">${item.action}</a>
+                  </div>`
+          }
 
           let html = ''
 
           if (upcoming.length > 0) {
             html += '<div style="margin-bottom:3rem">'
-            html += '<h2 style="font-size:1.75rem;color:var(--green-700);margin-bottom:1.5rem;border-bottom:2px solid var(--green-700);padding-bottom:0.5rem">Upcoming Events</h2>'
-            
+            html += '<h2 style="font-size:1.75rem;color:var(--green-700);margin-bottom:1.5rem;border-bottom:2px solid var(--green-700);padding-bottom:0.5rem">Current Events</h2>'
+
             // Display shared message for Spring 2026 programs
             if (spring2026Programs.length > 0) {
               html += '<div style="background:#fefce8;border:2px solid var(--yellow-400);border-radius:12px;padding:1.5rem;margin-bottom:2rem">'
               html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">🎉✨ We're excited to announce that these programs have been officially approved by the Millbrae Rec Center—and we're going live! ✨🎉</p>`
               html += '<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">📅 Mark your calendar: Space is limited, and registration opens March 6.<br>👉 Register at: <a href="https://bit.ly/milrec" style="color:var(--green-700);text-decoration:underline;font-weight:600">bit.ly/milrec</a></p>'
-              html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">Can't make this session? No worries—similar programs will be offered in June as part of our half-day Summer Camps, with more advanced Level II options available as well.</p>`
+              html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0 0 1rem;font-weight:500;text-align:center">Can't make this session? More programs will be announced soon.</p>`
               html += `<p style="color:var(--green-900);font-size:1.1rem;line-height:1.8;margin:0;font-weight:500;text-align:center">We can't wait to get started! 🚀</p>`
               html += '</div>'
-              
+
               html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem">'
               html += spring2026Programs.map(item => `
                 <div class="event-card" style="display:flex;flex-direction:column;height:100%;padding:0">
@@ -104,26 +117,7 @@ export default function EventsClient() {
               `).join('')
               html += '</div>'
             }
-            
-            // Display other upcoming events
-            if (otherUpcoming.length > 0) {
-              html += otherUpcoming.map(item => `
-                <div class="event-card" style="display:flex;flex-direction:column;height:100%">
-                  <span class="event-badge badge-upcoming">Upcoming</span>
-                  ${item.image ? `<div style="text-align:center;margin-bottom:1.5rem;flex-shrink:0;width:100%;height:300px;display:flex;align-items:center;justify-content:center;background:#f9fafb;border-radius:8px;overflow:hidden;padding:0.5rem"><img class="event-image" src="${item.image}" alt="${item.title}" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);cursor:pointer;transition:transform 0.2s ease" title="Click to zoom" /></div>` : ''}
-                  <div style="text-align:center;margin-bottom:1rem;flex-shrink:0">
-                    <h2 style="margin:0 0 0.5rem;color:var(--green-700);font-size:1.5rem;font-weight:700">${item.title}</h2>
-                    ${item.subtitle ? `<h3 style="margin:0 0 0.5rem;color:var(--green-900);font-size:1.2rem;font-weight:600">${item.subtitle}</h3>` : ''}
-                    ${item.tagline ? `<p style="margin:0 0 1rem;color:var(--green-700);font-size:1rem;font-weight:500;font-style:italic">${item.tagline}</p>` : ''}
-                  </div>
-                  ${item.description ? `<div style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;flex-grow:1">${item.description}</div>` : ''}
-                  <div style="text-align:center;flex-shrink:0">
-                    <a href="${item.actionUrl}" style="display:inline-block;padding:0.875rem 2rem;background:var(--green-700);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:1rem;transition:background 0.3s ease">${item.action}</a>
-                  </div>
-                </div>
-              `).join('')
-            }
-            
+
             html += '</div>'
           }
 

@@ -1,11 +1,19 @@
 import Link from 'next/link'
+import DeletePostButton from './DeletePostButton'
 
 interface ForumPostCardProps {
   post: any
   classroomId: string
+  isAdmin?: boolean
+  onDeleted?: () => void
 }
 
-export default function ForumPostCard({ post, classroomId }: ForumPostCardProps) {
+export default function ForumPostCard({
+  post,
+  classroomId,
+  isAdmin = false,
+  onDeleted,
+}: ForumPostCardProps) {
   const isTeacher = post.author.role === 'TEACHER' || post.author.role === 'ADMIN'
 
   return (
@@ -38,6 +46,12 @@ export default function ForumPostCard({ post, classroomId }: ForumPostCardProps)
             {post._count.replies > 0 && (
               <span>{post._count.replies} repl{post._count.replies !== 1 ? 'ies' : 'y'}</span>
             )}
+            <DeletePostButton
+              postId={post.id}
+              classroomId={classroomId}
+              isAdmin={isAdmin}
+              onDeleted={onDeleted}
+            />
           </div>
         </div>
       </div>

@@ -37,10 +37,10 @@ export default function Navbar() {
               >
                 Dashboard
               </Link>
-              {/* CreatorsLab Navigation Links */}
+              {/* Creators Lab Navigation Links */}
               <div className="relative group">
                 <button className="text-gray-700 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium hover:border-gray-300">
-                  CreatorsLab
+                  Creators Lab
                   <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -99,7 +99,7 @@ export default function Navbar() {
                 onClick={() => setShowMenu(!showMenu)}
                 className="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex items-center justify-between"
               >
-                CreatorsLab
+                Creators Lab
                 <svg className={`h-4 w-4 transition-transform ${showMenu ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>

@@ -4,10 +4,18 @@ import type { NextRequest } from 'next/server'
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
 
+  // Never intercept Next.js assets (CSS/JS/fonts/chunks). If these hit auth logic, the site renders unstyled.
+  if (path.startsWith('/_next/')) {
+    return NextResponse.next()
+  }
+
   // CRITICAL: Allow all public pages immediately - no auth check at all
   // This MUST happen before any imports or async operations
   const publicPages = [
     '/',
+    '/JEI',
+    '/jei',
+    '/privacy-policy',
     '/about',
     '/resources',
     '/events',

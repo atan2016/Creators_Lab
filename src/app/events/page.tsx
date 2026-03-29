@@ -2,7 +2,7 @@ import PageLayout from '@/components/creators-lab/PageLayout'
 import EventsClient from '@/components/creators-lab/EventsClient'
 
 export const metadata = {
-  title: 'Events — CreatorsLab',
+  title: 'Events — Creators Lab',
   description: 'Stay up to date with our upcoming workshops, events, and community gatherings.',
 }
 

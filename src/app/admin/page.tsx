@@ -7,6 +7,7 @@ import UserManager from '@/components/admin/UserManager'
 import LocationManager from '@/components/admin/LocationManager'
 import ScheduleManager from '@/components/admin/ScheduleManager'
 import DeleteUserButton from '@/components/admin/DeleteUserButton'
+import DuplicateClassroomPanel from '@/components/admin/DuplicateClassroomPanel'
 import Link from 'next/link'
 
 export default async function AdminDashboard() {
@@ -119,6 +120,8 @@ export default async function AdminDashboard() {
               </div>
             </div>
           </div>
+
+          <DuplicateClassroomPanel />
 
           {/* Classrooms Link */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">

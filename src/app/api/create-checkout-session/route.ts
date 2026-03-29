@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: currency.toLowerCase(),
             product_data: {
-              name: 'Donation to CreatorsLab',
+              name: 'Donation to Creators Lab',
               description: 'Support youth innovation and entrepreneurship programs',
             },
             unit_amount: Math.round(amount * 100),

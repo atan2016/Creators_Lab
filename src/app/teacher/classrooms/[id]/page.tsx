@@ -8,6 +8,7 @@ import SyllabusSection from '@/components/syllabus/SyllabusSection'
 import AddStudentButton from '@/components/classroom/AddStudentButton'
 import RemoveMemberButton from '@/components/classroom/RemoveMemberButton'
 import GoogleDriveLinkEditor from '@/components/classroom/GoogleDriveLinkEditor'
+import ClassroomDescriptionEditor from '@/components/classroom/ClassroomDescriptionEditor'
 
 export default async function TeacherClassroomPage({ params }: { params: { id: string } }) {
   const session = await auth()
@@ -66,15 +67,26 @@ export default async function TeacherClassroomPage({ params }: { params: { id: s
     redirect('/teacher')
   }
 
+  const canEditProgramDetails =
+    isCreator || isAdmin || (role === 'TEACHER' && isMember)
+  const canEditDocumentDrive = isCreator || isAdmin
+
   return (
     <Layout>
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{classroom.name}</h1>
-              {classroom.description && (
-                <p className="mt-2 text-gray-600">{classroom.description}</p>
+              <h1 className="text-3xl font-bold text-gray-900 break-words">{classroom.name}</h1>
+              {canEditProgramDetails && (
+                <p className="mt-1">
+                  <a
+                    href="#program-name-description"
+                    className="text-sm text-blue-600 hover:text-blue-700"
+                  >
+                    Edit name or description
+                  </a>
+                </p>
               )}
               <p className="mt-2 text-sm text-gray-500">
                 Invite Code: <span className="font-mono">{classroom.inviteCode}</span>
@@ -85,8 +97,18 @@ export default async function TeacherClassroomPage({ params }: { params: { id: s
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-6">
+              <ClassroomDescriptionEditor
+                classroomId={classroom.id}
+                initialName={classroom.name}
+                initialDescription={classroom.description}
+                canEdit={canEditProgramDetails}
+              />
               {/* Document Drive Link */}
-              <GoogleDriveLinkEditor classroomId={classroom.id} currentUrl={classroom.googleDriveUrl} />
+              <GoogleDriveLinkEditor
+                classroomId={classroom.id}
+                currentUrl={classroom.googleDriveUrl}
+                canEdit={canEditDocumentDrive}
+              />
 
               {/* Quick Stats */}
               <div className="bg-white shadow rounded-lg p-6">

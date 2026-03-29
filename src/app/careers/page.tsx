@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PageLayout from '@/components/creators-lab/PageLayout'
 
 export const metadata = {
-  title: 'Careers — CreatorsLab',
+  title: 'Careers — Creators Lab',
   description: 'Join our team and help us empower the next generation of creators, innovators, and entrepreneurs.',
 }
 
@@ -34,7 +34,7 @@ export default function CareersPage() {
 
             <div className="job-section">
               <h3>About Creators Lab</h3>
-              <p>Creators Lab is a youth-focused nonprofit dedicated to empowering students (ages 11–18) through hands-on STEAM education, creative technology, AI literacy, and design thinking. Our mission is to make emerging technologies accessible, ethical, and empowering—preparing young people to become confident creators and problem-solvers in an AI-driven world.</p>
+              <p>Creators Lab is a youth-focused nonprofit dedicated to empowering students through hands-on STEAM education, creative technology, AI literacy, and design thinking. Our mission is to make emerging technologies accessible, ethical, and empowering—preparing young people to become confident creators and problem-solvers in an AI-driven world.</p>
             </div>
 
             <div className="job-section">
@@ -163,7 +163,7 @@ export default function CareersPage() {
 
             <div className="job-section">
               <h3>About the Role</h3>
-              <p>We're looking for a Product Design & Development Instructor with hands-on experience in Figma, UI/UX design, and digital prototyping to teach and mentor students (ages 12–17). You'll guide them through the full design process — from brainstorming and wireframing to creating interactive app prototypes.</p>
+              <p>We&apos;re looking for a Product Design & Development Instructor with hands-on experience in Figma, UI/UX design, and digital prototyping to teach and mentor students. You&apos;ll guide them through the full design process — from brainstorming and wireframing to creating interactive app prototypes.</p>
             </div>
 
             <div className="job-section">

@@ -105,9 +105,9 @@ export default function CreatorsLabSite() {
       <div id="about" className="bg-green-50 border-y border-green-100">
         <Section className="py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h3 className="text-3xl font-bold text-green-900">About CreatorsLab</h3>
+            <h3 className="text-3xl font-bold text-green-900">About Creators Lab</h3>
             <p className="text-green-800/80 mt-2">
-              CreatorsLab is an enrichment program for teens designed by seasoned entrepreneurs and engineers. We merge creativity, coding, and entrepreneurial thinking so students can explore how AI and STEM shape the world around them.
+              Creators Lab is an enrichment program for teens designed by seasoned entrepreneurs and engineers. We merge creativity, coding, and entrepreneurial thinking so students can explore how AI and STEM shape the world around them.
             </p>
             <p className="text-green-800/80 mt-4">
               Our mission is to inspire lifelong learners who are ready to build, innovate, and lead with purpose.
@@ -181,7 +181,7 @@ export default function CreatorsLabSite() {
       {/* FOOTER */}
       <footer className="bg-green-700 text-white py-8">
         <Section className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 font-semibold"><Sparkles className="text-yellow-400 size-5" /> CreatorsLab</div>
+          <div className="flex items-center gap-2 font-semibold"><Sparkles className="text-yellow-400 size-5" /> Creators Lab</div>
           <div className="text-sm">© {new Date().getFullYear()} Rokk Research LLC • All rights reserved.</div>
           <div className="flex items-center gap-4 text-sm">
             <a href="#privacy" className="hover:text-yellow-400">Privacy</a>

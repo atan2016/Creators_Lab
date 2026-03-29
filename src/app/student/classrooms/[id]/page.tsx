@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import Layout from '@/components/ui/Layout'
 import Link from 'next/link'
 import SyllabusSection from '@/components/syllabus/SyllabusSection'
+import ClassroomDescriptionEditor from '@/components/classroom/ClassroomDescriptionEditor'
 
 export default async function StudentClassroomPage({ params }: { params: { id: string } }) {
   const session = await auth()
@@ -67,9 +68,6 @@ export default async function StudentClassroomPage({ params }: { params: { id: s
         <div className="px-4 py-6 sm:px-0">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">{classroom.name}</h1>
-            {classroom.description && (
-              <p className="mt-2 text-gray-600">{classroom.description}</p>
-            )}
             <p className="mt-2 text-sm text-gray-500">
               Teacher: {classroom.creator.name}
             </p>
@@ -77,6 +75,11 @@ export default async function StudentClassroomPage({ params }: { params: { id: s
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-6">
+              <ClassroomDescriptionEditor
+                classroomId={classroom.id}
+                initialDescription={classroom.description}
+                canEdit={false}
+              />
               {/* Resources */}
               <div className="bg-white shadow rounded-lg p-6">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Resources ({classroom._count.resources})</h2>

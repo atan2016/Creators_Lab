@@ -6,9 +6,15 @@ import { useRouter } from 'next/navigation'
 interface GoogleDriveLinkEditorProps {
   classroomId: string
   currentUrl: string | null
+  /** Creator and admin only; co-teachers see the link read-only */
+  canEdit?: boolean
 }
 
-export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: GoogleDriveLinkEditorProps) {
+export default function GoogleDriveLinkEditor({
+  classroomId,
+  currentUrl,
+  canEdit = true,
+}: GoogleDriveLinkEditorProps) {
   const router = useRouter()
   const [showModal, setShowModal] = useState(false)
   const [driveUrl, setDriveUrl] = useState(currentUrl || '')
@@ -54,12 +60,15 @@ export default function GoogleDriveLinkEditor({ classroomId, currentUrl }: Googl
       <div className="bg-white shadow rounded-lg p-6 mb-6">
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-lg font-semibold text-gray-900">Document Drive Folder</h3>
-          <button
-            onClick={() => setShowModal(true)}
-            className="text-sm text-blue-600 hover:text-blue-700"
-          >
-            {currentUrl ? 'Edit' : 'Add Link'}
-          </button>
+          {canEdit && (
+            <button
+              type="button"
+              onClick={() => setShowModal(true)}
+              className="text-sm text-blue-600 hover:text-blue-700"
+            >
+              {currentUrl ? 'Edit' : 'Add Link'}
+            </button>
+          )}
         </div>
         {currentUrl ? (
           <div>

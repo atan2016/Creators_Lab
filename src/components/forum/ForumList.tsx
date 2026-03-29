@@ -6,9 +6,10 @@ import ForumPostCard from './ForumPostCard'
 
 interface ForumListProps {
   classroomId: string
+  isAdmin?: boolean
 }
 
-export default function ForumList({ classroomId }: ForumListProps) {
+export default function ForumList({ classroomId, isAdmin = false }: ForumListProps) {
   const [posts, setPosts] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -66,7 +67,13 @@ export default function ForumList({ classroomId }: ForumListProps) {
   return (
     <div className="space-y-4">
       {posts.map((post) => (
-        <ForumPostCard key={post.id} post={post} classroomId={classroomId} />
+        <ForumPostCard
+          key={post.id}
+          post={post}
+          classroomId={classroomId}
+          isAdmin={isAdmin}
+          onDeleted={fetchPosts}
+        />
       ))}
     </div>
   )

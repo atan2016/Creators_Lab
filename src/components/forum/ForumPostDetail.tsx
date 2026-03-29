@@ -2,14 +2,21 @@
 
 import { useEffect, useState } from 'react'
 import ReplyForm from './ReplyForm'
+import DeletePostButton from './DeletePostButton'
 
 interface ForumPostDetailProps {
   postId: string
   classroomId: string
   isTeacher: boolean
+  isAdmin?: boolean
 }
 
-export default function ForumPostDetail({ postId, classroomId, isTeacher }: ForumPostDetailProps) {
+export default function ForumPostDetail({
+  postId,
+  classroomId,
+  isTeacher,
+  isAdmin = false,
+}: ForumPostDetailProps) {
   const [post, setPost] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -98,7 +105,15 @@ export default function ForumPostDetail({ postId, classroomId, isTeacher }: Foru
             ANNOUNCEMENT
           </span>
         )}
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">{post.title}</h1>
+        <div className="flex items-start justify-between gap-4">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">{post.title}</h1>
+          <DeletePostButton
+            postId={postId}
+            classroomId={classroomId}
+            isAdmin={isAdmin}
+            redirectAfterDelete
+          />
+        </div>
         <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
           <span>by <span className="font-medium">{post.author.name}</span></span>
           <span>•</span>

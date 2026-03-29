@@ -1,13 +1,13 @@
 [
   {
-    "title": "Home - CreatorsLab",
+    "title": "Home - Creators Lab",
     "url": "/index.html",
     "section": "Home",
     "content": "Empower Youth Innovations. We're on a mission to empower the next generation of innovators by teaching them how to harness AI and modern development tools to build real-world solutions.",
     "keywords": ["youth", "innovation", "AI", "coding", "development", "empower", "students", "technology"]
   },
   {
-    "title": "Programs - CreatorsLab",
+    "title": "Programs - Creators Lab",
     "url": "/index.html#programs",
     "section": "Programs",
     "content": "Our Programs. Discover our comprehensive learning paths designed to take students from beginners to confident creators. Each program combines hands-on projects with mentorship.",
@@ -17,11 +17,11 @@
     "title": "Program Location - Millbrae",
     "url": "/index.html#programs",
     "section": "Programs",
-    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. We also provide online learning options to accommodate students who prefer remote learning or live outside the Millbrae area. Interested in bringing CreatorsLab to your local community center? Contact us to discuss partnership opportunities.",
+    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. We also provide online learning options to accommodate students who prefer remote learning or live outside the Millbrae area. Interested in bringing Creators Lab to your local community center? Contact us to discuss partnership opportunities.",
     "keywords": ["location", "locations", "where", "near me", "in-person", "online", "virtual", "classroom", "center", "facility", "address", "city", "area", "region", "millbrae", "millbrae location", "community center", "partnership", "bring to my area"]
   },
   {
-    "title": "Contact Us - CreatorsLab",
+    "title": "Contact Us - Creators Lab",
     "url": "/index.html#contact",
     "section": "Contact",
     "content": "Contact Us. Get in touch with us to learn more about our programs or ask any questions.",
@@ -31,14 +31,14 @@
     "title": "Program Location - Millbrae",
     "url": "/index.html#contact",
     "section": "Contact",
-    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. Contact us to learn more about our programs and scheduling options. We also offer online learning for students outside the Millbrae area. Want to bring CreatorsLab to your local community center? Contact us to discuss partnership opportunities.",
+    "content": "Program Location - Millbrae. Our programs are currently offered at our Millbrae location. Contact us to learn more about our programs and scheduling options. We also offer online learning for students outside the Millbrae area. Want to bring Creators Lab to your local community center? Contact us to discuss partnership opportunities.",
     "keywords": ["near me", "find", "local", "area", "nearby", "close", "distance", "find programs", "where are you", "my area", "my city", "millbrae", "millbrae location", "community center", "partnership", "bring to my area"]
   },
   {
-    "title": "Community Center Programs - Bring CreatorsLab to Your Area",
+    "title": "Community Center Programs - Bring Creators Lab to Your Area",
     "url": "/index.html#contact",
     "section": "Contact",
-    "content": "Community Center Programs. Interested in having CreatorsLab programs at your local community center? We're always looking to expand our reach and bring innovative coding education to more communities. Contact us to discuss partnership opportunities and how we can bring our programs to your area.",
+    "content": "Community Center Programs. Interested in having Creators Lab programs at your local community center? We're always looking to expand our reach and bring innovative coding education to more communities. Contact us to discuss partnership opportunities and how we can bring our programs to your area.",
     "keywords": ["community center", "community", "partnership", "bring to my area", "local programs", "expand", "partnership opportunities", "community programs", "local community", "bring programs", "my community", "community partnership", "local center", "area programs"]
   },
   {
@@ -59,7 +59,7 @@
     "title": "Online Programs - Virtual Learning",
     "url": "/index.html#programs",
     "section": "Programs",
-    "content": "Online Programs. We offer comprehensive virtual learning programs that bring the CreatorsLab experience directly to your home. Perfect for students who prefer remote learning or live in areas without physical locations.",
+    "content": "Online Programs. We offer comprehensive virtual learning programs that bring the Creators Lab experience directly to your home. Perfect for students who prefer remote learning or live in areas without physical locations.",
     "keywords": ["online", "virtual", "remote", "distance learning", "at home", "digital", "web-based", "zoom", "video", "internet"]
   },
   {
@@ -175,17 +175,17 @@
     "keywords": ["learning", "videos", "Simon Sinek", "Lean Startup", "entrepreneurship", "resources"]
   },
   {
-    "title": "About Us - CreatorsLab",
+    "title": "About Us - Creators Lab",
     "url": "/about.html",
     "section": "About",
-    "content": "About CreatorsLab. Learn more about our mission, vision, and the team behind CreatorsLab.",
+    "content": "About Creators Lab. Learn more about our mission, vision, and the team behind Creators Lab.",
     "keywords": ["about", "mission", "vision", "team", "company", "who we are"]
   },
   {
     "title": "Careers - Join Our Team",
     "url": "/careers.html",
     "section": "Careers",
-    "content": "Careers at CreatorsLab. Join our team and help empower the next generation of innovators. We're looking for passionate educators and developers.",
+    "content": "Careers at Creators Lab. Join our team and help empower the next generation of innovators. We're looking for passionate educators and developers.",
     "keywords": ["careers", "jobs", "hiring", "employment", "opportunities", "join team"]
   }
 ]

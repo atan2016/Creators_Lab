@@ -28,12 +28,12 @@ export async function POST(request: NextRequest) {
     try {
       await sendEmail({
         to: email,
-        subject: 'Test Email - CreatorsLab LMS (Yamas)',
-        text: `This is a test email from the CreatorsLab LMS (Yamas) system.\n\nYour test temporary password is: ${testPassword}\n\nThis is just a test - you can ignore this email.\n\nTest sent at: ${new Date().toISOString()}`,
+        subject: 'Test Email - Creators Lab LMS (Yamas)',
+        text: `This is a test email from the Creators Lab LMS (Yamas) system.\n\nYour test temporary password is: ${testPassword}\n\nThis is just a test - you can ignore this email.\n\nTest sent at: ${new Date().toISOString()}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #065f46;">Test Email - CreatorsLab LMS (Yamas)</h2>
-            <p>This is a test email from the CreatorsLab LMS (Yamas) system.</p>
+            <h2 style="color: #065f46;">Test Email - Creators Lab LMS (Yamas)</h2>
+            <p>This is a test email from the Creators Lab LMS (Yamas) system.</p>
             <p><strong>Your test temporary password is:</strong> <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">${testPassword}</code></p>
             <p style="color: #6b7280; font-size: 0.9em;">This is just a test - you can ignore this email.</p>
             <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">

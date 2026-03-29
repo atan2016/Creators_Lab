@@ -3,8 +3,8 @@ import Link from 'next/link'
 import PageLayout from '@/components/creators-lab/PageLayout'
 
 export const metadata = {
-  title: 'About Us — CreatorsLab',
-  description: 'Learn about CreatorsLab and our mission to empower the next generation of innovators.',
+  title: 'About Us — Creators Lab',
+  description: 'Learn about Creators Lab and our mission to empower the next generation of innovators.',
 }
 
 export default function AboutPage() {
@@ -42,10 +42,10 @@ export default function AboutPage() {
                   <p style={{ color: 'var(--green-700)', fontWeight: 600, margin: 0 }}>Founder & Program Lead</p>
                 </div>
               </div>
-              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>Ashley Tan is a lifelong learner, technologist, and entrepreneur passionate about empowering the next generation to create boldly and think differently. With over 20 years of experience building products, teams, and companies across the tech industry, Ashley brings a unique blend of engineering expertise and human-centered design to CreatorsLab.</p>
+              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>Ashley Tan is a lifelong learner, technologist, and entrepreneur passionate about empowering the next generation to create boldly and think differently. With over 20 years of experience building products, teams, and companies across the tech industry, Ashley brings a unique blend of engineering expertise and human-centered design to Creators Lab.</p>
               <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>She holds a BS in Computer Engineering from Rensselaer Polytechnic Institute and an MS in Information Management and Systems from UC Berkeley, where she collaborated across disciplines to explore how technology can drive innovation and positive change.</p>
-              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>As a mother of two teenage boys, Ashley saw firsthand the potential of AI to transform how teens learn, create, and express themselves. She founded CreatorsLab to help young people shift from being consumers of technology to creators of it — building confidence, community, and entrepreneurial skills along the way.</p>
-              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6 }}>At CreatorsLab, Ashley leads the design and delivery of programs that blend AI, STEM, and entrepreneurship, inspiring teens to dream big, build boldly, and innovate fearlessly — one community, one project, one young creator at a time.</p>
+              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>As a mother of two teenage boys, Ashley saw firsthand the potential of AI to transform how teens learn, create, and express themselves. She founded Creators Lab to help young people shift from being consumers of technology to creators of it — building confidence, community, and entrepreneurial skills along the way.</p>
+              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6 }}>At Creators Lab, Ashley leads the design and delivery of programs that blend AI, STEM, and entrepreneurship, inspiring teens to dream big, build boldly, and innovate fearlessly — one community, one project, one young creator at a time.</p>
             </div>
           </div>
         </section>
@@ -68,7 +68,7 @@ export default function AboutPage() {
               </div>
               <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>Mike Voytovich is a hands-on engineer, innovator, and mentor passionate about bridging technology and real-world impact. Currently a Member of Technical Staff at OpenAI, Mike brings over 15 years of experience designing and building embedded systems, IoT products, and AI-driven solutions.</p>
               <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>Before joining OpenAI, Mike founded Rokk Research, where he led prototyping and firmware development for cutting-edge IoT and AI applications. His earlier career includes key technical roles at Currant, PayPal, and Duff Research, where he helped create connected devices and intelligent platforms that combined software, hardware, and data science.</p>
-              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6 }}>At CreatorsLab, Mike helps teens unlock their curiosity and creativity through hands-on learning. He mentors students to see technology not just as a tool, but as a way to build meaningful solutions for their communities — embodying the lab's mission to inspire the next generation of makers and innovators.</p>
+              <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6 }}>At Creators Lab, Mike helps teens unlock their curiosity and creativity through hands-on learning. He mentors students to see technology not just as a tool, but as a way to build meaningful solutions for their communities — embodying the lab's mission to inspire the next generation of makers and innovators.</p>
             </div>
           </div>
         </section>

@@ -119,7 +119,7 @@ function LoginForm() {
           <Link className="brand" href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Image
               src="/assets/images/creatorslab_logo.png"
-              alt="CreatorsLab"
+              alt="Creators Lab"
               width={150}
               height={59}
               style={{ height: '3.69140625em', display: 'inline-block', verticalAlign: 'middle', marginRight: '12px' }}

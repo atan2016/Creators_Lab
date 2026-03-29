@@ -1,7 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+
+interface ClassroomUser {
+  id: string
+  name: string | null
+  email: string
+  role: string
+}
 
 interface CreatePostModalProps {
   classroomId: string
@@ -15,9 +22,26 @@ export default function CreatePostModal({ classroomId, isTeacher, onClose }: Cre
     title: '',
     content: '',
     isAnnouncement: false,
+    visibleToUserIds: [] as string[],
   })
+  const [classroomUsers, setClassroomUsers] = useState<ClassroomUser[]>([])
+  const [usersLoading, setUsersLoading] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!isTeacher) return
+    let cancelled = false
+    setUsersLoading(true)
+    fetch(`/api/classrooms/${classroomId}/members`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled && data.users) setClassroomUsers(data.users)
+      })
+      .catch(() => {})
+      .finally(() => { if (!cancelled) setUsersLoading(false) })
+    return () => { cancelled = true }
+  }, [classroomId, isTeacher])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,10 +49,18 @@ export default function CreatePostModal({ classroomId, isTeacher, onClose }: Cre
     setLoading(true)
 
     try {
+      const body: Record<string, unknown> = {
+        title: formData.title,
+        content: formData.content,
+        isAnnouncement: formData.isAnnouncement,
+      }
+      if (!formData.isAnnouncement && formData.visibleToUserIds.length > 0) {
+        body.visibleToUserIds = formData.visibleToUserIds
+      }
       const response = await fetch(`/api/classrooms/${classroomId}/forum`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(body),
       })
 
       const data = await response.json()
@@ -47,9 +79,29 @@ export default function CreatePostModal({ classroomId, isTeacher, onClose }: Cre
     }
   }
 
+  const toggleViewer = (userId: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      visibleToUserIds: prev.visibleToUserIds.includes(userId)
+        ? prev.visibleToUserIds.filter((id) => id !== userId)
+        : [...prev.visibleToUserIds, userId],
+    }))
+  }
+
+  const selectAllViewers = () => {
+    setFormData((prev) => ({
+      ...prev,
+      visibleToUserIds: classroomUsers.map((u) => u.id),
+    }))
+  }
+
+  const clearViewers = () => {
+    setFormData((prev) => ({ ...prev, visibleToUserIds: [] }))
+  }
+
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div className="relative top-20 mx-auto p-5 border w-full max-w-lg shadow-lg rounded-md bg-white">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold text-gray-900">
             {isTeacher ? 'Create Post or Announcement' : 'Create Post'}
@@ -110,8 +162,62 @@ export default function CreatePostModal({ classroomId, isTeacher, onClose }: Cre
                 onChange={(e) => setFormData({ ...formData, isAnnouncement: e.target.checked })}
               />
               <label htmlFor="isAnnouncement" className="ml-2 block text-sm text-gray-900">
-                Post as announcement (visible to all students)
+                Post as announcement (visible to everyone in the classroom)
               </label>
+            </div>
+          )}
+
+          {isTeacher && !formData.isAnnouncement && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Who can see this post?
+              </label>
+              {usersLoading ? (
+                <p className="text-sm text-gray-500">Loading classroom members...</p>
+              ) : classroomUsers.length === 0 ? (
+                <p className="text-sm text-gray-500">No other members in this classroom.</p>
+              ) : (
+                <div className="border border-gray-200 rounded-md p-3 max-h-40 overflow-y-auto bg-gray-50 space-y-2">
+                  <div className="flex gap-2 mb-2">
+                    <button
+                      type="button"
+                      onClick={selectAllViewers}
+                      className="text-xs text-blue-600 hover:text-blue-700"
+                    >
+                      Select all
+                    </button>
+                    <button
+                      type="button"
+                      onClick={clearViewers}
+                      className="text-xs text-gray-600 hover:text-gray-700"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                  {classroomUsers.map((user) => (
+                    <label key={user.id} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.visibleToUserIds.includes(user.id)}
+                        onChange={() => toggleViewer(user.id)}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <span className="text-sm text-gray-900">
+                        {user.name || user.email}
+                        {user.name && (
+                          <span className="text-gray-500 font-normal"> ({user.email})</span>
+                        )}
+                      </span>
+                      {user.role === 'TEACHER' || user.role === 'ADMIN' ? (
+                        <span className="text-xs text-blue-600">Teacher</span>
+                      ) : null}
+                    </label>
+                  ))}
+                </div>
+              )}
+              <p className="text-xs text-gray-500 mt-1">
+                Only selected users will see this post. You will always see your own posts.
+              </p>
             </div>
           )}
 

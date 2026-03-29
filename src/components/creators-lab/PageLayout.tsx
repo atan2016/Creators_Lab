@@ -24,7 +24,6 @@ export default function PageLayout({ children, title, description, includeSearch
           gtag('config', 'G-85L4ZPPPP0');
         `}
       </Script>
-      {includeSearch && <link rel="stylesheet" href="/search.css" />}
       <Header />
       {children}
       <Footer />

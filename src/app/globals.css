@@ -5,6 +5,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Brand tokens: also used by inline styles site-wide; keep in sync with creators-lab-styles.css */
+  --green-900: #064e3b;
+  --green-700: #047857;
+  --yellow-400: #facc15;
+  --muted: rgba(6, 78, 59, 0.7);
 }
 
 @media (prefers-color-scheme: dark) {

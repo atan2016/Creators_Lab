@@ -10,7 +10,7 @@ The contact form now uses Google reCAPTCHA v2 (checkbox) instead of the simple m
 1. Go to [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin)
 2. Click **"+"** to create a new site
 3. Fill in the form:
-   - **Label**: CreatorsLab Contact Form
+   - **Label**: Creators Lab Contact Form
    - **reCAPTCHA type**: Select **"reCAPTCHA v2"** → **"I'm not a robot" Checkbox**
    - **Domains**: 
      - `localhost` (for development)

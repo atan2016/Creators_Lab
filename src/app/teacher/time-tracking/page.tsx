@@ -5,7 +5,7 @@ import TimeTrackingView from '@/components/teacher/TimeTrackingView'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Time Tracking — CreatorsLab LMS (Yamas)',
+  title: 'Time Tracking — Creators Lab LMS (Yamas)',
   description: 'Track your work hours and time spent.',
 }
 

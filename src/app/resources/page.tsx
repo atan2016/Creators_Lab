@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import PageLayout from '@/components/creators-lab/PageLayout'
-import ResourcesClient from '@/components/creators-lab/ResourcesClient'
 
 export const metadata = {
   title: 'Resources — For Parents',
@@ -17,15 +16,6 @@ export default function ResourcesPage() {
             <p className="muted" style={{ fontSize: '1.125rem', lineHeight: 1.6 }}>
               Essential information, tools, and insights for parents and students. Stay updated with the latest trends in AI education and access the resources you need to support your child's learning journey.
             </p>
-          </div>
-
-          <div className="card">
-            <h2 style={{ color: 'var(--green-700)', marginTop: 0, marginBottom: '1.5rem' }}>Industry News & Insights</h2>
-            <p className="muted" style={{ marginBottom: '2rem' }}>Stay updated with the latest trends in AI education, vibe coding, and tech innovation.</p>
-            
-            <div id="news-container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--muted)' }}>Loading news feed...</div>
-            </div>
           </div>
 
           <div className="card" style={{ background: '#f0fdf4', padding: '2rem' }}>
@@ -76,7 +66,7 @@ export default function ResourcesPage() {
           <div className="card">
             <h2 style={{ color: 'var(--green-700)', marginTop: 0, marginBottom: '1.5rem' }}>👨‍👩‍👧 Parent FAQ</h2>
             <p className="muted" style={{ marginBottom: '2rem', fontSize: '1rem', lineHeight: 1.6 }}>
-              At Creators-Lab, we know that choosing the right enrichment program for your child is an important decision. Below are answers to common questions from parents and guardians about how we keep learning engaging, safe, and meaningful.
+              At Creators Lab, we know that choosing the right enrichment program for your child is an important decision. Below are answers to common questions from parents and guardians about how we keep learning engaging, safe, and meaningful.
             </p>
             
             <div style={{ fontSize: '1rem', lineHeight: 1.8 }}>
@@ -88,8 +78,8 @@ export default function ResourcesPage() {
               <div style={{ marginBottom: '2rem' }}>
                 <h3 style={{ color: 'var(--green-700)', marginBottom: '0.75rem' }}>🧒 What age groups are the programs designed for?</h3>
                 <ul style={{ paddingLeft: '1.5rem', marginBottom: '0.75rem' }}>
-                  <li style={{ marginBottom: '0.5rem' }}><strong>Vibe Coding:</strong> Ages 12–17 (Separate sessions for 12–14 and 15–17 based on experience level)</li>
-                  <li style={{ marginBottom: '0.5rem' }}><strong>Teen Venture Studio:</strong> Ages 14–17 (High School)</li>
+                  <li style={{ marginBottom: '0.5rem' }}><strong>Vibe Coding:</strong> Separate sessions based on experience level.</li>
+                  <li style={{ marginBottom: '0.5rem' }}><strong>Teen Venture Studio:</strong> For high school students.</li>
                 </ul>
                 <p style={{ margin: 0 }}>Each class is age-appropriate, project-based, and emphasizes teamwork and creativity.</p>
               </div>
@@ -112,7 +102,7 @@ export default function ResourcesPage() {
 
               <div style={{ marginBottom: '2rem' }}>
                 <h3 style={{ color: 'var(--green-700)', marginBottom: '0.75rem' }}>💡 How is this different from other coding programs?</h3>
-                <p style={{ margin: 0 }}>Most coding camps focus only on syntax or pre-scripted projects. Creators-Lab teaches AI-powered creation and entrepreneurship — students learn how to think like innovators, not just coders.<br /><br />We blend design, technology, and teamwork to prepare students for a world where creativity and problem-solving matter as much as technical skill.</p>
+                <p style={{ margin: 0 }}>Most coding camps focus only on syntax or pre-scripted projects. Creators Lab teaches AI-powered creation and entrepreneurship — students learn how to think like innovators, not just coders.<br /><br />We blend design, technology, and teamwork to prepare students for a world where creativity and problem-solving matter as much as technical skill.</p>
               </div>
 
               <div style={{ marginBottom: '2rem' }}>
@@ -138,7 +128,6 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
-      <ResourcesClient />
     </PageLayout>
   )
 }

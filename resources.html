@@ -56,7 +56,7 @@
     <header>
         <div class="container nav" style="justify-content:space-between">
             <a class="brand" href="/index.html" style="display:flex;align-items:center;gap:8px">
-                <img src="/assets/images/creatorslab_logo.png" alt="CreatorsLab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
+                <img src="/assets/images/creatorslab_logo.png" alt="Creators Lab" style="height:3.69140625em;display:inline-block;vertical-align:middle;margin-right:12px" />
             </a>
             <nav style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
                 <a href="/index.html" style="text-decoration:none;color:var(--green-900);font-size:1rem;font-weight:500">Home</a>
@@ -88,16 +88,6 @@
                 <p class="muted" style="font-size:1.125rem;line-height:1.6">
                     Essential information, tools, and insights for parents and students. Stay updated with the latest trends in AI education and access the resources you need to support your child's learning journey.
                 </p>
-            </div>
-
-            <!-- Industry News Section - Moved to top -->
-            <div class="card">
-                <h2 style="color:var(--green-700);margin-top:0;margin-bottom:1.5rem">Industry News & Insights</h2>
-                <p class="muted" style="margin-bottom:2rem">Stay updated with the latest trends in AI education, vibe coding, and tech innovation.</p>
-                
-                <div id="news-container" style="display:flex;flex-direction:column;gap:1.5rem">
-                    <div style="text-align:center;padding:2rem;color:var(--muted)">Loading news feed...</div>
-                </div>
             </div>
 
             <!-- Why it's important for your kids Section -->
@@ -153,7 +143,7 @@
             <div class="card">
                 <h2 style="color:var(--green-700);margin-top:0;margin-bottom:1.5rem">👨‍👩‍👧 Parent FAQ</h2>
                 <p class="muted" style="margin-bottom:2rem;font-size:1rem;line-height:1.6">
-                    At Creators-Lab, we know that choosing the right enrichment program for your child is an important decision. Below are answers to common questions from parents and guardians about how we keep learning engaging, safe, and meaningful.
+                    At Creators Lab, we know that choosing the right enrichment program for your child is an important decision. Below are answers to common questions from parents and guardians about how we keep learning engaging, safe, and meaningful.
                 </p>
                 
                 <div style="font-size:1rem;line-height:1.8">
@@ -165,8 +155,8 @@
                     <div style="margin-bottom:2rem">
                         <h3 style="color:var(--green-700);margin-bottom:0.75rem">🧒 What age groups are the programs designed for?</h3>
                         <ul style="padding-left:1.5rem;margin-bottom:0.75rem">
-                            <li style="margin-bottom:0.5rem"><strong>Vibe Coding:</strong> Ages 12–17 (Separate sessions for 12–14 and 15–17 based on experience level)</li>
-                            <li style="margin-bottom:0.5rem"><strong>Teen Venture Studio:</strong> Ages 14–17 (High School)</li>
+                            <li style="margin-bottom:0.5rem"><strong>Vibe Coding:</strong> Separate sessions based on experience level.</li>
+                            <li style="margin-bottom:0.5rem"><strong>Teen Venture Studio:</strong> For high school students.</li>
                         </ul>
                         <p style="margin:0">Each class is age-appropriate, project-based, and emphasizes teamwork and creativity.</p>
                     </div>
@@ -190,7 +180,7 @@
 
                     <div style="margin-bottom:2rem">
                         <h3 style="color:var(--green-700);margin-bottom:0.75rem">💡 How is this different from other coding programs?</h3>
-                        <p style="margin:0">Most coding camps focus only on syntax or pre-scripted projects. Creators-Lab teaches AI-powered creation and entrepreneurship — students learn how to think like innovators, not just coders.<br><br>We blend design, technology, and teamwork to prepare students for a world where creativity and problem-solving matter as much as technical skill.</p>
+                        <p style="margin:0">Most coding camps focus only on syntax or pre-scripted projects. Creators Lab teaches AI-powered creation and entrepreneurship — students learn how to think like innovators, not just coders.<br><br>We blend design, technology, and teamwork to prepare students for a world where creativity and problem-solving matter as much as technical skill.</p>
                     </div>
 
                     <div style="margin-bottom:2rem">
@@ -222,7 +212,7 @@
         <div class="container">
             <div class="footer-row">
                 <div>
-                    <p style="margin:0;font-size:0.9rem">&copy; 2024 CreatorsLab. All rights reserved.</p>
+                    <p style="margin:0;font-size:0.9rem">&copy; 2024 Creators Lab. All rights reserved.</p>
                 </div>
                 <div style="display:flex;gap:1rem;align-items:center">
                     <a href="/about.html" style="color:#fff;text-decoration:none;font-size:0.9rem">About Us</a>
@@ -232,68 +222,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-      // Load news feed function
-      function loadNewsFeed() {
-        const newsContainer = document.getElementById('news-container');
-        
-        if (!newsContainer) {
-          console.error('News container not found');
-          return;
-        }
-
-        fetch('/news-feed.json?' + Date.now())
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.text();
-          })
-          .then(data => {
-            try {
-              // Check if the file is commented out or empty
-              const trimmedData = data.trim();
-              if (!trimmedData || trimmedData.startsWith('//') || trimmedData.startsWith('/*')) {
-                newsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">No news updates available at this time.</div>';
-                return;
-              }
-
-              const newsData = JSON.parse(data);
-              
-              if (!newsData || !Array.isArray(newsData) || newsData.length === 0) {
-                newsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">No news updates available at this time.</div>';
-                return;
-              }
-
-              newsContainer.innerHTML = newsData.map(item => `
-                <div style="border:1px solid rgba(4,120,87,.1);border-radius:8px;padding:1.5rem;background:#fff">
-                  <h3 style="margin:0 0 0.75rem;color:var(--green-700);font-size:1.1rem">
-                    <a href="${item.url}" target="_blank" style="color:var(--green-700);text-decoration:none">${item.title}</a>
-                  </h3>
-                  <p style="margin:0 0 0.75rem;color:var(--muted);line-height:1.6">${item.description}</p>
-                  <div style="display:flex;justify-content:space-between;align-items:center">
-                    <span style="color:var(--muted);font-size:0.9rem">Source: ${item.source}</span>
-                    <a href="${item.url}" target="_blank" style="color:var(--yellow-400);text-decoration:none;font-weight:500">Read More →</a>
-                  </div>
-                </div>
-              `).join('');
-            } catch (error) {
-              console.error('Error parsing news data:', error);
-              newsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">Unable to load news feed at this time.</div>';
-            }
-          })
-          .catch(error => {
-            console.error('Error loading news feed:', error);
-            newsContainer.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">Unable to load news feed at this time.</div>';
-          });
-      }
-
-      // Load news feed when page loads
-      window.addEventListener('load', function() {
-        loadNewsFeed();
-      });
-    </script>
 
     <!-- Fuse.js for search functionality -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>

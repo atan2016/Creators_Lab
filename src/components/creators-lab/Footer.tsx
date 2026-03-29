@@ -9,6 +9,7 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
               <Link href="/about" style={{ color: '#fff', textDecoration: 'none' }}>About Us</Link>
               <Link href="/careers" style={{ color: '#fff', textDecoration: 'none' }}>Careers</Link>
+              <Link href="/privacy-policy" style={{ color: '#fff', textDecoration: 'none' }}>Privacy Policy</Link>
               <Link href="/login" style={{ color: '#fff', textDecoration: 'none' }}>Member Login</Link>
               <a href="https://www.facebook.com/profile.php?id=61582517454567" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }} aria-label="Follow us on Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

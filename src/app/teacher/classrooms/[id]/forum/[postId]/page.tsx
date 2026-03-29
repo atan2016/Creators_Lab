@@ -15,6 +15,8 @@ export default async function TeacherForumPostPage({
     redirect('/login')
   }
 
+  const isAdmin = (session.user as any).role === 'ADMIN'
+
   return (
     <Layout>
       <div className="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -28,7 +30,12 @@ export default async function TeacherForumPostPage({
             </Link>
           </div>
 
-          <ForumPostDetail postId={params.postId} classroomId={params.id} isTeacher={true} />
+          <ForumPostDetail
+            postId={params.postId}
+            classroomId={params.id}
+            isTeacher={true}
+            isAdmin={isAdmin}
+          />
         </div>
       </div>
     </Layout>

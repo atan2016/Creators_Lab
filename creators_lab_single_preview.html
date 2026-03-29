@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CreatorsLab — Single-file JSX Preview</title>
+    <title>Creators Lab — Single-file JSX Preview</title>
     <style>
       :root{--green-900:#064e3b;--green-700:#047857;--yellow-400:#facc15;--muted:rgba(6,78,59,.7)}
       html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;} 
@@ -76,7 +76,7 @@
             <header>
               <div className="container nav">
                 <a className="brand" href="#home" style={{display:'flex',alignItems:'center',gap:8}}>
-                  <img src="/assets/images/creatorslab_logo.png" alt="CreatorsLab" style={{height:'clamp(48px,5.25vw,72px)',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
+                  <img src="/assets/images/creatorslab_logo.png" alt="Creators Lab" style={{height:'clamp(48px,5.25vw,72px)',display:'inline-block',verticalAlign:'middle',marginRight:12}} />
                 </a>
                 <nav style={{display:'none'}} />
                 <div style={{display:'flex',gap:8}}>
@@ -143,7 +143,7 @@
               </div>
 
               <div className="cards" style={{marginTop:'1.5rem'}}>
-                {[{title:"Vibe Coding 101 (12–14)",desc:"Natural-language coding, git basics, and MVP design. Weekly 90‑min sessions.",image:"https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop"},{title:"Vibe Coding 101 (14–16)",desc:"Problem definition, prototyping, databases primer, and mini‑showcases.",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop"},{title:"Teen Venture Studio (14–18)",desc:"Teamwork, negotiation, lean canvas, prototyping, and pitch day.",image:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
+                {[{title:"Vibe Coding 101 — foundations",desc:"Natural-language coding, git basics, and MVP design.",image:"https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1600&auto=format&fit=crop"},{title:"Vibe Coding 101 — projects",desc:"Problem definition, prototyping, databases primer, and mini‑showcases.",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop"},{title:"Teen Venture Studio",desc:"Teamwork, negotiation, lean canvas, prototyping, and pitch day.",image:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
                   <div key={i} className="card">
                     <img src={p.image} alt={p.title} style={{width:'100%',height:160,objectFit:'cover',borderRadius:8}} />
                     <h4 style={{marginTop:8}}>{p.title}</h4>
@@ -153,7 +153,7 @@
               </div>
 
               <div style={{display:'grid',gridTemplateColumns:'1fr',gap:12,marginTop:16}}>
-                {[{title:"Advanced Vibe Coding",desc:"Go deeper: build with LLMs and services; explore MCP servers. (Prereq: Vibe Coding 101)",image:"https://images.unsplash.com/photo-1554891074-8c0c9c51e85e?q=80&w=1600&auto=format&fit=crop"},{title:"Summer Camp — 1 Week (Half Day)",desc:"Daily builds, git collaboration, and MVP showcase. 9:00–12:30.",image:"https://images.unsplash.com/photo-1485815457792-d1a966f9ef3f?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
+                {[{title:"Advanced Vibe Coding",desc:"Go deeper: build with LLMs and services; explore MCP servers. (Prereq: Vibe Coding 101)",image:"https://images.unsplash.com/photo-1554891074-8c0c9c51e85e?q=80&w=1600&auto=format&fit=crop"},{title:"Summer Camp",desc:"Daily builds, git collaboration, and MVP showcase.",image:"https://images.unsplash.com/photo-1485815457792-d1a966f9ef3f?q=80&w=1600&auto=format&fit=crop"}].map((p,i)=> (
                   <div key={i} className="card">
                     <img src={p.image} alt={p.title} style={{width:'100%',height:160,objectFit:'cover',borderRadius:8}} />
                     <h4 style={{marginTop:8}}>{p.title}</h4>
@@ -166,13 +166,13 @@
             <div id="about" style={{background:'#f0fdf4',borderTop:'1px solid rgba(4,120,87,.06)',borderBottom:'1px solid rgba(4,120,87,.06)'}}>
               <Section className="section two">
                 <div>
-                  <h3>About CreatorsLab</h3>
+                  <h3>About Creators Lab</h3>
                   <p className="muted">We’re seasoned entrepreneurs bringing real-world experience into community spaces where teens can create and grow. AI is a creative partner — and we teach young minds to use it responsibly and imaginatively.</p>
                   <p className="muted">Our mission is to equip young people with the mindset and tools to create, lead, and thrive in a world shaped by innovation.</p>
                 </div>
                 <div>
                   <h3>About Ashley</h3>
-                  <p className="muted">Ashley Tan is a technologist and entrepreneur with 20+ years building products and teams. She holds a BS in Computer Engineering (RPI) and an MS in Information Management & Systems (UC Berkeley). Inspired by her teens’ curiosity, she started CreatorsLab to help young people use AI as a tool for creativity, not just consumption.</p>
+                  <p className="muted">Ashley Tan is a technologist and entrepreneur with 20+ years building products and teams. She holds a BS in Computer Engineering (RPI) and an MS in Information Management & Systems (UC Berkeley). Inspired by her teens’ curiosity, she started Creators Lab to help young people use AI as a tool for creativity, not just consumption.</p>
                 </div>
               </Section>
             </div>
@@ -267,7 +267,7 @@
             <footer>
               <Section>
                 <div className="footer-row">
-                  <div style={{display:'flex',alignItems:'center',gap:8}}><Sparkles/>CreatorsLab</div>
+                  <div style={{display:'flex',alignItems:'center',gap:8}}><Sparkles/>Creators Lab</div>
                   <div className="center">© {new Date().getFullYear()} Rokk Research LLC • All rights reserved.</div>
                   <div style={{display:'flex',gap:12}}><a href="#home" style={{color:'#fff'}}>Back to top</a></div>
                 </div>

@@ -1,4 +1,4 @@
-// CreatorsLab Search Functionality
+// Creators Lab Search Functionality
 let fuse = null;
 let searchData = [];
 
