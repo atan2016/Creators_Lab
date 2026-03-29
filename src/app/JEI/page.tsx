@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import PageLayout from '@/components/creators-lab/PageLayout'
 import campHeroImage from '../../../assets/images/Events/camp 2026 (1).png'
+import creatorsLabJeiLogo from '../../../assets/images/creators-lab+JEI_logo.png'
 
 export const metadata = {
   title: 'JEI Programs — Creators Lab',
@@ -18,6 +19,17 @@ export default function JEIPage() {
                 <tr>
                   <td style={{ width: '58%', verticalAlign: 'top', paddingRight: '1.5rem', textAlign: 'center' }}>
                     <h1 style={{ fontSize: '2rem', color: 'var(--green-700)', marginBottom: '0.75rem' }}>JEI Programs</h1>
+                    <Image
+                      src={creatorsLabJeiLogo}
+                      alt="Creators Lab and JEI partnership logo"
+                      style={{
+                        width: '100%',
+                        maxWidth: '420px',
+                        height: 'auto',
+                        marginBottom: '0.75rem',
+                        display: 'inline-block',
+                      }}
+                    />
                     <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: '1.15rem', lineHeight: 1.6 }}>
                       <strong>Location:</strong>
                       <br />
