@@ -5,7 +5,7 @@ import studyBuddyImage from '../../../student-showcase/src/assets/study-buddy.we
 import galacticGuardianImage from '../../../student-showcase/src/assets/galactic-guardian.webp'
 import petPalImage from '../../../student-showcase/src/assets/pet-pal.webp'
 import taskMasterImage from '../../../student-showcase/src/assets/task_master.png'
-import restaurantFinderImage from '../../../student-showcase/src/assets/restaurant_finder_1.PNG'
+import restaurantFinderImage from '../../../student-showcase/src/assets/restaurant_finder_1.png'
 import codeQuestImage from '../../../student-showcase/src/assets/code_quest.png'
 import photoRestorationImage from '../../../student-showcase/src/assets/photorestoration_icon.png'
 
