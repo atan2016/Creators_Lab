@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import PageLayout from '@/components/creators-lab/PageLayout'
-import campHeroImage from '../../../assets/images/Events/camp 2026 (1).png'
+import campHeroImage from '../../../assets/images/Events/camp 2026.png'
 import creatorsLabJeiLogo from '../../../assets/images/creators-lab+JEI_logo.png'
 
 export const metadata = {
@@ -14,60 +14,57 @@ export default function JEIPage() {
       <div id="programs" style={{ background: '#f0fdf4', borderTop: '1px solid rgba(4,120,87,.06)', borderBottom: '1px solid rgba(4,120,87,.06)' }}>
         <section className="section">
           <div className="container">
-            <table style={{ width: '100%', marginTop: '0.5rem', marginBottom: '2rem', borderCollapse: 'separate', borderSpacing: 0 }}>
-              <tbody>
-                <tr>
-                  <td style={{ width: '58%', verticalAlign: 'top', paddingRight: '1.5rem', textAlign: 'center' }}>
-                    <h1 style={{ fontSize: '2rem', color: 'var(--green-700)', marginBottom: '0.75rem' }}>JEI Programs</h1>
-                    <Image
-                      src={creatorsLabJeiLogo}
-                      alt="Creators Lab and JEI partnership logo"
-                      style={{
-                        width: '100%',
-                        maxWidth: '420px',
-                        height: 'auto',
-                        marginBottom: '0.75rem',
-                        display: 'inline-block',
-                      }}
-                    />
-                    <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: '1.15rem', lineHeight: 1.6 }}>
-                      <strong>Location:</strong>
-                      <br />
-                      JEI Learning Center at Millbrae
-                      <br />
-                      233 El Camino Real
-                      <br />
-                      Millbrae, CA 94030
-                    </p>
-                    <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: '1.15rem', lineHeight: 1.6 }}>
-                      <strong>Time:</strong> 1 - 4pm
-                    </p>
-                    <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: '1.15rem', lineHeight: 1.6 }}>
-                      <strong>Date:</strong> June 1 - July 31 weekly with July 3rd off
-                    </p>
-                    <p className="muted" style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.6 }}>Hands-on programs that turns ideas into impact.</p>
-                  </td>
-                  <td style={{ width: '42%', verticalAlign: 'top', textAlign: 'left' }}>
-                    <Image
-                      src={campHeroImage}
-                      alt="STEAM Summer Camp 2026"
-                      style={{
-                        width: '92%',
-                        maxWidth: '340px',
-                        height: 'auto',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(4,120,87,.08)',
-                        boxShadow: '0 6px 18px rgba(6,78,59,.04)',
-                        display: 'inline-block',
-                      }}
-                      priority
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="jei-header-grid" style={{ marginTop: '0.5rem', marginBottom: '2rem' }}>
+              <div className="jei-header-left">
+                <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2rem)', color: 'var(--green-700)', marginBottom: '0.75rem' }}>JEI Programs</h1>
+                <Image
+                  src={creatorsLabJeiLogo}
+                  alt="Creators Lab and JEI partnership logo"
+                  style={{
+                    width: '100%',
+                    maxWidth: '420px',
+                    height: 'auto',
+                    marginBottom: '0.75rem',
+                    display: 'inline-block',
+                  }}
+                />
+                <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: 'clamp(1rem, 2.7vw, 1.15rem)', lineHeight: 1.6 }}>
+                  <strong>Location:</strong>
+                  <br />
+                  JEI Learning Center at Millbrae
+                  <br />
+                  233 El Camino Real
+                  <br />
+                  Millbrae, CA 94030
+                </p>
+                <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: 'clamp(1rem, 2.7vw, 1.15rem)', lineHeight: 1.6 }}>
+                  <strong>Time:</strong> 1 - 4pm
+                </p>
+                <p className="muted" style={{ margin: '0 0 0.75rem', fontSize: 'clamp(1rem, 2.7vw, 1.15rem)', lineHeight: 1.6 }}>
+                  <strong>Date:</strong> June 1 - July 31 weekly with July 3rd off
+                </p>
+                <p className="muted" style={{ margin: 0, fontSize: 'clamp(1rem, 2.7vw, 1.15rem)', lineHeight: 1.6 }}>Hands-on programs that turns ideas into impact.</p>
+              </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridAutoFlow: 'row', gap: '1.5rem', marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
+              <div className="jei-header-right">
+                <Image
+                  src={campHeroImage}
+                  alt="STEAM Summer Camp 2026"
+                  style={{
+                    width: '100%',
+                    maxWidth: '360px',
+                    height: 'auto',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(4,120,87,.08)',
+                    boxShadow: '0 6px 18px rgba(6,78,59,.04)',
+                    display: 'inline-block',
+                  }}
+                  priority
+                />
+              </div>
+            </div>
+
+            <div className="jei-programs-grid" style={{ marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
               <div className="card">
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 1)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
@@ -274,6 +271,70 @@ export default function JEIPage() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            <div className="card" style={{ marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
+              <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Refunds, Credits & Program Policies</h3>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Refunds</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                Full refunds are available up to 30 days before the program start date, minus a 3% processing fee.
+              </p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                Within 30 days of the start date, refunds are not available. However, a credit may be issued at our discretion.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Credits</p>
+              <ul className="muted" style={{ marginTop: 0, paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                <li>Credits can be applied to future Creators Lab programs</li>
+                <li>Credits must be used within 6 months</li>
+                <li>All credits are non-transferable and subject to availability</li>
+              </ul>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Cancellations by Creators Lab</p>
+              <p className="muted" style={{ marginTop: 0, marginBottom: '0.5rem', lineHeight: 1.7 }}>
+                If a program is canceled due to low enrollment or unforeseen circumstances:
+              </p>
+              <ul className="muted" style={{ marginTop: 0, paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                <li>You will receive a full refund (no processing fee) OR</li>
+                <li>The option to receive a full credit</li>
+              </ul>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Missed Classes</p>
+              <ul className="muted" style={{ marginTop: 0, paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                <li>No refunds or make-ups for missed classes</li>
+                <li>We may provide materials or summaries when available</li>
+              </ul>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Transfers</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                Transfer requests to another session or program may be accommodated up to 14 days before the start date, subject to availability.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Behavior &amp; Participation</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                Creators Lab strives to provide a positive and respectful learning environment. We reserve the right to remove a student for disruptive behavior. In such cases, no refund will be issued.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Minimum Enrollment</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                Programs require a minimum number of students. If the minimum is not met, Creators Lab may cancel or reschedule the program.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Agreement</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                By registering, you agree to the terms of this policy.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Late Pickup</p>
+              <p className="muted" style={{ marginTop: 0, lineHeight: 1.7 }}>
+                A late pickup fee of $10 per 10 minutes may apply.
+              </p>
+
+              <p className="muted" style={{ marginBottom: '0.5rem', fontWeight: 700 }}>Medical/Emergency Exception</p>
+              <p className="muted" style={{ marginTop: 0, marginBottom: 0, lineHeight: 1.7 }}>
+                Exceptions may be considered for medical emergencies with documentation.
+              </p>
             </div>
           </div>
         </section>

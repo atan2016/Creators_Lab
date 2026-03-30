@@ -900,6 +900,31 @@ select:focus {
   text-decoration: underline;
 }
 
+/* JEI page responsive layout */
+.jei-header-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.jei-header-left {
+  text-align: center;
+  min-width: 0;
+}
+
+.jei-header-right {
+  text-align: left;
+  min-width: 0;
+}
+
+.jei-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+  gap: 1.5rem;
+}
+
 /* Program cards: collapsed description preview (homepage #programs) */
 .program-card-desc-preview {
   margin-bottom: 0.5rem;
@@ -922,6 +947,19 @@ select:focus {
 
 /* Responsive grid for events */
 @media (max-width: 768px) {
+  .jei-header-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .jei-header-right {
+    text-align: center;
+  }
+
+  .jei-programs-grid {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
