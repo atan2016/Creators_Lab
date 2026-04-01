@@ -70,6 +70,9 @@ export default function JEIPage() {
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/1 - 6/5
                 </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
+                </p>
                 <p className="muted">
                   Discover the art of bringing your imagination to life! In this beginner-friendly Blender class, you&apos;ll learn how 3D characters, buildings, and entire worlds are created for animated films and video games. We&apos;ll cover the essential tools of 3D modeling and how to navigate the 3D space using Blender, a powerful free software used by creators worldwide.
                 </p>
@@ -92,6 +95,9 @@ export default function JEIPage() {
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Product Design and Prototyping with AI Tools</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/8 - 6/12
+                </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted">
                   In this hands-on class, students will learn the core skills of product design and bring their ideas to life with the AI-powered IDE. They&apos;ll work both individually and collaboratively-brainstorming, designing screens, planning user flows, and building features together as a team.
@@ -116,6 +122,9 @@ export default function JEIPage() {
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/15 - 6/19
                 </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
+                </p>
                 <p className="muted">
                   Jump into the world of game creation with this beginner-friendly Unity course! Students learn the basics of 2D game design, coding, and animation while building their very own playable platformer. Using Unity and C#, students create characters, obstacles, collectibles, and a complete level-learning real coding concepts through hands-on creativity.
                 </p>
@@ -138,6 +147,9 @@ export default function JEIPage() {
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 2)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/22 - 6/26
+                </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Prerequisite: 3D Product Design with Blender (Level 1)</strong>
@@ -166,6 +178,9 @@ export default function JEIPage() {
                   <strong>Date:</strong> 6/29 - 7/2
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
+                </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Prerequisite: Unity Game Design Level 1</strong>
                 </p>
                 <p className="muted">
@@ -191,6 +206,9 @@ export default function JEIPage() {
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 7/6 - 7/10
                 </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $550/Week
+                </p>
                 <p className="muted" style={{ marginBottom: 0 }}>
                   In this exciting 1-week camp, students become inventors-building circuits, writing code, and bringing their ideas to life. They&apos;ll create interactive projects like motion alarms, auto night lights, and reaction games while learning the fundamentals of electronics and programming. Perfect for beginners, this program builds confidence, creativity, and real-world STEM skills.
                 </p>
@@ -211,6 +229,9 @@ export default function JEIPage() {
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 7/13 - 7/17
                 </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $550/Week
+                </p>
                 <p className="muted" style={{ marginBottom: 0 }}>
                   Ready to go beyond the basics? In this advanced Arduino camp, students build more powerful, interactive systems by combining sensors, motors, and logic. From smart security systems to automated devices, campers will tackle bigger challenges, improve their coding skills, and create a more sophisticated project they&apos;ll be proud to showcase.
                 </p>
@@ -230,6 +251,9 @@ export default function JEIPage() {
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 3)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 7/20 - 7/24
+                </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Prerequisite: 3D Product Design with Blender (Level 2)</strong>
@@ -253,6 +277,9 @@ export default function JEIPage() {
                 <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Unity Game Design and C# Programming (Level 3)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 7/27 - 7/31
+                </p>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}>
+                  <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Prerequisite: Unity Game Design Level 2</strong>

@@ -101,16 +101,24 @@ export default async function TeacherResourcePage({
           </div>
 
           <div className="bg-white shadow rounded-lg p-6">
-            <div className="mb-4">
-              <h1 className="text-3xl font-bold text-gray-900">{resource.title}</h1>
-              <p className="mt-2 text-sm text-gray-500">
-                by {resource.createdBy.name} • {resource.type.replace('_', ' ')}
-              </p>
-              {resource._count.copies > 0 && (
-                <p className="mt-1 text-sm text-gray-500">
-                  {resource._count.copies} student{resource._count.copies !== 1 ? 's' : ''} copied this resource
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">{resource.title}</h1>
+                <p className="mt-2 text-sm text-gray-500">
+                  by {resource.createdBy.name} • {resource.type.replace('_', ' ')}
                 </p>
-              )}
+                {resource._count.copies > 0 && (
+                  <p className="mt-1 text-sm text-gray-500">
+                    {resource._count.copies} student{resource._count.copies !== 1 ? 's' : ''} copied this resource
+                  </p>
+                )}
+              </div>
+              <Link
+                href={`/teacher/classrooms/${params.id}/resources/${params.resourceId}/edit`}
+                className="text-sm text-blue-600 hover:text-blue-700 whitespace-nowrap"
+              >
+                Edit Resource
+              </Link>
             </div>
 
             {resource.description && (
