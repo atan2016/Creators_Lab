@@ -17,7 +17,13 @@ export async function POST(request: NextRequest) {
 
     if (!process.env.STRIPE_SECRET_KEY) {
       console.error('STRIPE_SECRET_KEY is not configured')
-      return NextResponse.json({ error: 'Payment processing is not configured.' }, { status: 500 })
+      return NextResponse.json(
+        {
+          error:
+            'Payments are not configured on this deployment (missing STRIPE_SECRET_KEY). If you are registering, complete payment using the main site at https://www.creators-lab.org or email info@creators-lab.org. If you deploy this app, add STRIPE_SECRET_KEY under Vercel → Project → Settings → Environment Variables for Preview and Production, then redeploy.',
+        },
+        { status: 503 }
+      )
     }
 
     const registration = await prisma.jeiRegistration.findUnique({
