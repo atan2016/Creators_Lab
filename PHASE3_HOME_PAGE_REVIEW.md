@@ -12,7 +12,7 @@ The home page (`index.html`) has been successfully converted to Next.js (`src/ap
 - ✅ Announcements section (dynamically loaded)
 - ✅ "Why Creators Lab?" section with 4 feature cards
 - ✅ Programs section with all 9 program cards:
-  - 3D Product Design with Blender (Level 1 & 2)
+  - Fundamental of 3D Modeling and Design with Blender (Level 1 & 2)
   - Unity Game Design (Level 1 & 2)
   - Product Design with Figma
   - Design Thinking with AI

@@ -14,6 +14,8 @@ export async function middleware(request: NextRequest) {
   const publicPages = [
     '/',
     '/JEI',
+    '/JEI/register',
+    '/JEI/register/cancel',
     '/jei',
     '/privacy-policy',
     '/about',
@@ -31,6 +33,10 @@ export async function middleware(request: NextRequest) {
     '/api/create-checkout-session',
     '/api/move-past-events',
     '/api/auth',
+    '/api/jei/programs',
+    '/api/jei/register',
+    '/api/jei/register/cancel-request',
+    '/api/jei/register/cancel-confirm',
   ]
 
   // Allow public pages - bypass all middleware logic

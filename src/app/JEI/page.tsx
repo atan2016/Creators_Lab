@@ -66,7 +66,7 @@ export default function JEIPage() {
 
             <div className="jei-programs-grid" style={{ marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 1)</h3>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Fundamental of 3D Modeling and Design with Blender (Level 1)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/1 - 6/5
                 </p>
@@ -81,9 +81,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/dRm00d0iP3XT6tT1b68k80a"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=blender-l1"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -107,9 +105,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/9B6fZb5D9amhbOd7zu8k80c"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=product-design-ai"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -133,9 +129,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/bJe9AN8Pl7a57xX3je8k80b"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=unity-l1"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -144,7 +138,7 @@ export default function JEIPage() {
               </div>
 
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 2)</h3>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Fundamental of 3D Modeling and Design with Blender (Level 2)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 6/22 - 6/26
                 </p>
@@ -152,7 +146,7 @@ export default function JEIPage() {
                   <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
-                  <strong>Prerequisite: 3D Product Design with Blender (Level 1)</strong>
+                  <strong>Prerequisite: Fundamental of 3D Modeling and Design with Blender (Level 1)</strong>
                 </p>
                 <p className="muted">
                   Take your 3D skills to the next level in this immersive Level 2 Blender camp! Students dive deeper into modeling, sculpting, materials, and lighting while learning advanced tools like modifiers, rigging basics, particle effects, and scene optimization.
@@ -162,9 +156,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/eVq9AN5D92TP4lL0728k804"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=blender-l2"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -191,9 +183,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/5kQeV76Hd7a55pP8Dy8k805"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=unity-l2"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -214,9 +204,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/bJefZb3v16616tT4ni8k806"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=robotics-l1"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -237,9 +225,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/4gMaER3v1cupcSh3je8k807"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=robotics-l2"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -248,7 +234,7 @@ export default function JEIPage() {
               </div>
 
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 3)</h3>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Fundamental of 3D Modeling and Design with Blender (Level 3)</h3>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
                   <strong>Date:</strong> 7/20 - 7/24
                 </p>
@@ -256,16 +242,14 @@ export default function JEIPage() {
                   <strong>Price:</strong> $350/Week
                 </p>
                 <p className="muted" style={{ marginBottom: '0.5rem' }}>
-                  <strong>Prerequisite: 3D Product Design with Blender (Level 2)</strong>
+                  <strong>Prerequisite: Fundamental of 3D Modeling and Design with Blender (Level 2)</strong>
                 </p>
                 <p className="muted" style={{ marginBottom: 0 }}>
                   Take your 3D skills even further in this advanced Blender camp! Students create a polished, portfolio-ready project using advanced modeling, sculpting, texturing, lighting, and animation techniques. They&apos;ll explore more complex workflows, refine details, and optimize scenes for realistic results. Perfect for students ready to produce high-quality designs and showcase professional-level 3D work.
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/6oUdR35D90LH19zcTO8k808"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=blender-l3"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now
@@ -289,9 +273,7 @@ export default function JEIPage() {
                 </p>
                 <div style={{ marginTop: '1rem' }}>
                   <a
-                    href="https://buy.stripe.com/8x2cMZ3v11PLg4tg608k809"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/JEI/register?program=unity-l3"
                     style={{ display: 'inline-block', padding: '0.75rem 1.25rem', background: 'var(--green-700)', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: 600 }}
                   >
                     Register Now

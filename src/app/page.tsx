@@ -200,7 +200,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginTop: '2rem', maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
               {/* Program Card 1: Blender Level 1 */}
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 1)</h3>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Fundamental of 3D Modeling and Design with Blender (Level 1)</h3>
                 <div id="blender-l1-preview" className="program-card-desc-preview muted">
                   <p>Discover the art of bringing your imagination to life! In this beginner-friendly Blender class, you&apos;ll learn how 3D characters, buildings, and entire worlds are created for animated films and video games. We&apos;ll cover the essential tools of 3D modeling and how to navigate the 3D space using Blender, a powerful free software used by creators worldwide.</p>
                 </div>
@@ -215,8 +215,8 @@ export default function Home() {
 
               {/* Program Card 2: Blender Level 2 */}
               <div className="card">
-                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>3D Product Design with Blender (Level 2)</h3>
-                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Prerequisite: 3D Product Design with Blender (Level 1)</strong></p>
+                <h3 style={{ marginTop: 0, color: 'var(--green-700)' }}>Fundamental of 3D Modeling and Design with Blender (Level 2)</h3>
+                <p className="muted" style={{ marginBottom: '0.5rem' }}><strong>Prerequisite: Fundamental of 3D Modeling and Design with Blender (Level 1)</strong></p>
                 <div id="blender-l2-preview" className="program-card-desc-preview muted">
                   <p>Take your 3D skills to the next level in this immersive Level 2 Blender camp! Students dive deeper into modeling, sculpting, materials, and lighting while learning advanced tools like modifiers, rigging basics, particle effects, and scene optimization.</p>
                 </div>

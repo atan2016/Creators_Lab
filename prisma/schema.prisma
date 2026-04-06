@@ -24,6 +24,14 @@ enum ResourceType {
   GOOGLE_DRIVE_LINK
 }
 
+enum JeiRegistrationStatus {
+  PENDING_REVIEW
+  INVOICED
+  PAID
+  CANCELLED_REFUNDED
+  CANCELLED_CREDITED
+}
+
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
@@ -47,6 +55,7 @@ model User {
   schedules     Schedule[]
   activityLogs ActivityLog[]
   timeEntries  TimeEntry[]
+  jeiRegistrations JeiRegistration[] @relation("JeiRegistrationReviewer")
 }
 
 model Classroom {
@@ -66,6 +75,121 @@ model Classroom {
   forumPosts  ForumPost[]
   syllabusEntries SyllabusEntry[]
   schedules   Schedule[]
+}
+
+model JeiProgram {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  dateLabel   String
+  startDate   DateTime
+  endDate     DateTime
+  weeklyPrice Int
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  registrations JeiRegistration[]
+}
+
+model JeiRegistration {
+  id                   String                @id @default(cuid())
+  parentName           String
+  parentEmail          String
+  parentPhone          String
+  emergencyPhone       String
+  selectedProgramName  String?
+  selectedProgramPrice Int?
+  selectedProgramDates String?
+  studentCount         Int                   @default(0)
+  totalAmountCents     Int                   @default(0)
+  status               JeiRegistrationStatus @default(PENDING_REVIEW)
+  updatesOnly          Boolean               @default(false)
+  policySnapshot       String?
+  notes                String?
+  reviewedAt           DateTime?
+  paidAt               DateTime?
+  cancelledAt          DateTime?
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+
+  selectedProgramId String?
+  selectedProgram   JeiProgram? @relation(fields: [selectedProgramId], references: [id], onDelete: SetNull)
+  reviewedById      String?
+  reviewedBy        User?       @relation("JeiRegistrationReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  students         JeiStudent[]
+  authorizedPickup JeiAuthorizedPickup[]
+  cancellationTokens JeiCancellationToken[]
+  credits          JeiCredit[]
+
+  @@index([parentEmail])
+  @@index([status])
+}
+
+model JeiStudent {
+  id             String   @id @default(cuid())
+  registrationId String
+  name           String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  registration JeiRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model JeiAuthorizedPickup {
+  id             String   @id @default(cuid())
+  registrationId String
+  name           String
+  phone          String
+  relation       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  registration JeiRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model JeiCancellationToken {
+  id             String   @id @default(cuid())
+  registrationId String
+  tokenHash      String   @unique
+  expiresAt      DateTime
+  usedAt         DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  registration JeiRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+  @@index([expiresAt])
+}
+
+model JeiCredit {
+  id             String   @id @default(cuid())
+  registrationId String
+  amountCents    Int
+  expiresAt      DateTime
+  usedAt         DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  registration JeiRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+  @@index([expiresAt])
+}
+
+model UpdatesSubscriber {
+  id         String   @id @default(cuid())
+  parentName String
+  email      String   @unique
+  optedInAt  DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model ClassroomMember {

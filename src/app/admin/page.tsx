@@ -121,6 +121,24 @@ export default async function AdminDashboard() {
             </div>
           </div>
 
+          {/* JEI Registrations */}
+          <div className="bg-white shadow overflow-hidden sm:rounded-md mb-6">
+            <div className="px-4 py-5 sm:px-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">JEI Registrations</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Review JEI signups, student rosters, and update invoiced/paid/cancelled statuses.
+              </p>
+              <div className="mt-4">
+                <Link
+                  href="/admin/jei-registrations"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700"
+                >
+                  View JEI Registrations
+                </Link>
+              </div>
+            </div>
+          </div>
+
           <DuplicateClassroomPanel />
 
           {/* Classrooms Link */}
