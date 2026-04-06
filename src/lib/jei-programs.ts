@@ -14,7 +14,7 @@ export type JeiProgramSeed = {
 export const JEI_PROGRAMS: JeiProgramSeed[] = [
   {
     slug: 'blender-l1',
-    name: 'Fundamental of 3D Modeling and Design with Blender (Level 1)',
+    name: 'Fundamentals of 3D Modeling and Design with Blender (Level 1)',
     dateLabel: '6/1 - 6/5',
     startDate: '2026-06-01',
     endDate: '2026-06-05',
@@ -53,13 +53,13 @@ export const JEI_PROGRAMS: JeiProgramSeed[] = [
   },
   {
     slug: 'blender-l2',
-    name: 'Fundamental of 3D Modeling and Design with Blender (Level 2)',
+    name: 'Fundamentals of 3D Modeling and Design with Blender (Level 2)',
     dateLabel: '6/22 - 6/26',
     startDate: '2026-06-22',
     endDate: '2026-06-26',
     weeklyPrice: 350,
     stripeUrl: 'https://buy.stripe.com/eVq9AN5D92TP4lL0728k804',
-    prerequisite: 'Fundamental of 3D Modeling and Design with Blender (Level 1)',
+    prerequisite: 'Fundamentals of 3D Modeling and Design with Blender (Level 1)',
     description:
       'Take your 3D skills to the next level in this immersive Level 2 Blender camp! Students dive deeper into modeling, sculpting, materials, and lighting while learning advanced tools like modifiers, rigging basics, particle effects, and scene optimization.',
     details:
@@ -103,13 +103,13 @@ export const JEI_PROGRAMS: JeiProgramSeed[] = [
   },
   {
     slug: 'blender-l3',
-    name: 'Fundamental of 3D Modeling and Design with Blender (Level 3)',
+    name: 'Fundamentals of 3D Modeling and Design with Blender (Level 3)',
     dateLabel: '7/20 - 7/24',
     startDate: '2026-07-20',
     endDate: '2026-07-24',
     weeklyPrice: 350,
     stripeUrl: 'https://buy.stripe.com/6oUdR35D90LH19zcTO8k808',
-    prerequisite: 'Fundamental of 3D Modeling and Design with Blender (Level 2)',
+    prerequisite: 'Fundamentals of 3D Modeling and Design with Blender (Level 2)',
     description:
       "Take your 3D skills even further in this advanced Blender camp! Students create a polished, portfolio-ready project using advanced modeling, sculpting, texturing, lighting, and animation techniques. They'll explore more complex workflows, refine details, and optimize scenes for realistic results. Perfect for students ready to produce high-quality designs and showcase professional-level 3D work.",
   },
