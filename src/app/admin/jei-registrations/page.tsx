@@ -1,3 +1,4 @@
+import type { JeiStudent } from '@prisma/client'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
@@ -73,7 +74,10 @@ export default async function AdminJeiRegistrationsPage() {
                     <p className="text-xs text-gray-500 mt-1">Registration ID: {reg.id}</p>
                     {reg.students.length > 0 && (
                       <p className="text-sm text-gray-700 mt-2">
-                        Student(s): {reg.students.map((s: any) => s.name).join(', ')}
+                        Student(s):{' '}
+                        {reg.students
+                          .map((s: JeiStudent) => (s.age != null ? `${s.name} (age ${s.age})` : s.name))
+                          .join(', ')}
                       </p>
                     )}
                     {reg.authorizedPickup.length > 0 && (

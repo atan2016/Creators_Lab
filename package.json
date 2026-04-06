@@ -4,6 +4,8 @@
   "private": true,
   "description": "Creators Lab - AI Education & Learning Management System",
   "scripts": {
+    "predev": "prisma generate",
+    "prebuild": "prisma generate",
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
     "build": "next build",

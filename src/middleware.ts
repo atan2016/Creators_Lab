@@ -11,12 +11,18 @@ export async function middleware(request: NextRequest) {
 
   // CRITICAL: Allow all public pages immediately - no auth check at all
   // This MUST happen before any imports or async operations
+  // All JEI pages (register, pay, cancel, etc.) must stay public — no session required.
+  if (
+    path === '/JEI' ||
+    path.startsWith('/JEI/') ||
+    path === '/jei' ||
+    path.startsWith('/jei/')
+  ) {
+    return NextResponse.next()
+  }
+
   const publicPages = [
     '/',
-    '/JEI',
-    '/JEI/register',
-    '/JEI/register/cancel',
-    '/jei',
     '/privacy-policy',
     '/about',
     '/resources',
@@ -33,11 +39,14 @@ export async function middleware(request: NextRequest) {
     '/api/create-checkout-session',
     '/api/move-past-events',
     '/api/auth',
-    '/api/jei/programs',
-    '/api/jei/register',
-    '/api/jei/register/cancel-request',
-    '/api/jei/register/cancel-confirm',
   ]
+
+  /** JEI public APIs (registration, payment session, saved students — no login). */
+  const isPublicJeiApi =
+    path.startsWith('/api/jei/programs') ||
+    path.startsWith('/api/jei/register') ||
+    path === '/api/jei/checkout-session' ||
+    path === '/api/jei/parent-students'
 
   // Allow public pages - bypass all middleware logic
   if (publicPages.includes(path)) {
@@ -56,7 +65,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Allow public API routes
-  if (path.startsWith('/api/auth/') || publicApiRoutes.includes(path)) {
+  if (path.startsWith('/api/auth/') || isPublicJeiApi || publicApiRoutes.includes(path)) {
     return NextResponse.next()
   }
 

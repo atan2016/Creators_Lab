@@ -127,10 +127,24 @@ model JeiRegistration {
   @@index([status])
 }
 
+// Children linked to a parent by email (reused across JEI registrations).
+model JeiParentStudent {
+  id           String   @id @default(cuid())
+  parentEmail  String
+  firstName    String
+  lastName     String
+  age          Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([parentEmail])
+}
+
 model JeiStudent {
   id             String   @id @default(cuid())
   registrationId String
   name           String
+  age            Int?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 

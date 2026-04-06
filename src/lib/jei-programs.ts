@@ -134,3 +134,7 @@ export function formatProgramOptionLabel(program: {
 }) {
   return `${program.name} — $${program.weeklyPrice}/Week — ${program.dateLabel}`
 }
+
+export function getStripeUrlForJeiSlug(slug: string): string | undefined {
+  return JEI_PROGRAMS.find((p) => p.slug === slug)?.stripeUrl
+}

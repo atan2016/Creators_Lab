@@ -1,45 +1,36 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { JEI_PROGRAMS, formatProgramOptionLabel } from '@/lib/jei-programs'
+import { ensureJeiProgramsSeeded } from '@/lib/jei-program-db'
+import { JEI_PROGRAMS, formatProgramOptionLabel, getStripeUrlForJeiSlug } from '@/lib/jei-programs'
 
-async function ensureProgramsSeeded() {
-  const db: any = prisma as any
-  for (const program of JEI_PROGRAMS) {
-    await db.jeiProgram.upsert({
-      where: { slug: program.slug },
-      create: {
-        slug: program.slug,
-        name: program.name,
-        dateLabel: program.dateLabel,
-        startDate: new Date(program.startDate),
-        endDate: new Date(program.endDate),
-        weeklyPrice: program.weeklyPrice,
-        isActive: true,
-      },
-      update: {
-        name: program.name,
-        dateLabel: program.dateLabel,
-        startDate: new Date(program.startDate),
-        endDate: new Date(program.endDate),
-        weeklyPrice: program.weeklyPrice,
-        isActive: true,
-      },
-    })
+function staticProgramsPayload() {
+  return {
+    programSelection: 'slug' as const,
+    programs: JEI_PROGRAMS.map((p) => ({
+      slug: p.slug,
+      name: p.name,
+      dateLabel: p.dateLabel,
+      weeklyPrice: p.weeklyPrice,
+      startDate: p.startDate,
+      endDate: p.endDate,
+      optionLabel: formatProgramOptionLabel(p),
+      stripeUrl: getStripeUrlForJeiSlug(p.slug) ?? p.stripeUrl,
+    })),
   }
 }
 
 export async function GET() {
   try {
-    const db: any = prisma as any
-    await ensureProgramsSeeded()
+    await ensureJeiProgramsSeeded()
 
-    const programs = await db.jeiProgram.findMany({
+    const programs = await prisma.jeiProgram.findMany({
       where: { isActive: true },
       orderBy: { startDate: 'asc' },
     })
 
     return NextResponse.json({
-      programs: programs.map((p: any) => ({
+      programSelection: 'id' as const,
+      programs: programs.map((p) => ({
         id: p.id,
         slug: p.slug,
         name: p.name,
@@ -48,10 +39,15 @@ export async function GET() {
         startDate: p.startDate,
         endDate: p.endDate,
         optionLabel: formatProgramOptionLabel(p),
+        stripeUrl: getStripeUrlForJeiSlug(p.slug),
       })),
     })
   } catch (error) {
     console.error('Error fetching JEI programs:', error)
-    return NextResponse.json({ error: 'Failed to fetch JEI programs' }, { status: 500 })
+    // Still return 200 with catalog from code so the registration page works when DB is unavailable.
+    return NextResponse.json({
+      ...staticProgramsPayload(),
+      usedStaticFallback: true,
+    })
   }
 }
