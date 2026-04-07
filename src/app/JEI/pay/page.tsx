@@ -67,6 +67,7 @@ function JeiPayContent() {
                 <h1 style={{ marginTop: 0, color: 'var(--green-800)' }}>Redirecting to checkout…</h1>
                 <p className="muted" style={{ lineHeight: 1.55 }}>
                   You are being sent to Stripe to complete payment for the correct number of students and amount.
+                  If you have a promotion or coupon code, you can enter it on the Stripe checkout page.
                 </p>
               </>
             )}

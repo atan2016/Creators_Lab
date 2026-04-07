@@ -1043,6 +1043,9 @@ function JeiRegisterPageContent() {
               </button>
             </div>
             <p style={{ margin: '0 0 1rem', lineHeight: 1.55 }}>{success}</p>
+            <p className="muted" style={{ margin: '0 0 1rem', fontSize: '0.9rem', lineHeight: 1.5 }}>
+              Have a promotion or coupon code? Enter it on the Stripe checkout page after you open the payment link.
+            </p>
 
             {successBatch && (
               <div style={{ borderTop: '1px solid rgba(22, 101, 52, 0.25)', paddingTop: '0.85rem' }}>
