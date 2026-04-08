@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./creators-lab-styles.css";
 import SessionProvider from "@/components/providers/SessionProvider";
+import { MetaPixel } from "@/components/MetaPixel";
 
 export const metadata: Metadata = {
   title: "Creators Lab — Enrich Youth Innovations",
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <MetaPixel />
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
