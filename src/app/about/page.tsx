@@ -75,9 +75,123 @@ export default function AboutPage() {
 
         <section className="section">
           <div className="container">
+            <h2 style={{ color: 'var(--green-700)', textAlign: 'center', marginTop: 0, marginBottom: '2rem', fontSize: '2rem' }}>
+              Instructors
+            </h2>
+            <div
+              className="instructor-profiles-grid"
+              style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+              }}
+            >
+              <div className="card" style={{ padding: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                  <Image
+                    src="/assets/images/Events/Vee/vee-headshot.jpg"
+                    alt="Vee"
+                    width={120}
+                    height={120}
+                    style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '3px solid var(--green-700)',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <h3 style={{ color: 'var(--green-700)', marginTop: 0, marginBottom: '0.5rem', fontSize: '1.5rem' }}>
+                      Vee
+                    </h3>
+                    <p style={{ color: 'var(--green-700)', fontWeight: 600, margin: 0 }}>Instructor</p>
+                  </div>
+                </div>
+                <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                  Vee is an experienced educator and game developer who has been working with students since 2013. He has
+                  taught math, science, coding, and game design in small, engaging group settings. With a background in
+                  Unity and Unreal Engine and experience from companies like Waymo and Zoox, Vee loves helping students
+                  build confidence through creativity, problem-solving, and hands-on learning.
+                </p>
+              </div>
+
+              <div className="card" style={{ padding: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                  <Image
+                    src="/assets/images/Events/Atul/atul-headshot.jpeg"
+                    alt="Atul"
+                    width={120}
+                    height={120}
+                    style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '3px solid var(--green-700)',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <h3 style={{ color: 'var(--green-700)', marginTop: 0, marginBottom: '0.5rem', fontSize: '1.5rem' }}>
+                      Atul
+                    </h3>
+                    <p style={{ color: 'var(--green-700)', fontWeight: 600, margin: 0 }}>Instructor</p>
+                  </div>
+                </div>
+                <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                  Atul is a Product Designer focused on creating clear, user-friendly digital experiences. Experience in
+                  designing AI-driven products, conversational interfaces, SaaS, Ed-tech and e-commerce platforms,
+                  delivering seamless user experiences.
+                </p>
+              </div>
+
+              <div className="card" style={{ padding: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                  <Image
+                    src="/assets/images/Events/Paige/paige-headshot.jpg"
+                    alt="Paige"
+                    width={120}
+                    height={120}
+                    style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '3px solid var(--green-700)',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <h3 style={{ color: 'var(--green-700)', marginTop: 0, marginBottom: '0.5rem', fontSize: '1.5rem' }}>
+                      Paige
+                    </h3>
+                    <p style={{ color: 'var(--green-700)', fontWeight: 600, margin: 0 }}>Instructor</p>
+                  </div>
+                </div>
+                <p className="muted" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                  Paige is a passionate game designer with strong experience in Blender and Unreal Engine for creating 3D
+                  visuals. Beyond her skills in programming and 3D modeling, she has experience teaching children how to
+                  code, including the fundamentals of game design using Scratch and LEGO Spike.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-              <h2 style={{ color: 'var(--green-700)', textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>Student Outreach and Instructor</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginTop: '2rem' }} className="student-profiles-grid">
+              <h2 style={{ color: 'var(--green-700)', textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>Student Outreach</h2>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                  gap: '2rem',
+                  marginTop: '2rem',
+                }}
+                className="student-profiles-grid"
+              >
                 <div className="card" style={{ padding: '2rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.5rem' }}>
                     <Image
